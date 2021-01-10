@@ -1,135 +1,132 @@
-/****************************************************
-*  													*
-*	Author:		James Marion Lynch			 		*
-*  	Date:		01-04-2021                          *
-* 	Version:	Alpha 1.0.0.0                      	*
-* 	Title:		Chess game   			         	*
-*  	Filename:	js/Chessboard.js           			*
-* 	Language:	ES7 2017                       		*
-*                                                   *
-*****************************************************
- *  Dependencies:
- *  Filenames:			Description
- *
- *  ChessBoard.html		The main web page document.
- *  normalize.css		The Cascading Style Sheet (reset).
- *  style.css			The Cascading Style Sheet (specific.)
- *  math.js				The class definition file for Camera, Vec3, Vec4, Quat, Mat4, (3D graphics library.)
- *  utils.js			A Utility lib. of functions, setupWebGL() called ChessBoard.html onload event handler.
- *  ChessBoard.js       The class definition file for class Chessboard & Square
- *
- *
- *	Properties on instance:          data type:
- *
- *  this._boardSize                  integer
- *  this._squareSize                 integer
- *  this._blackSquare                new Image() black square
- *  this._whiteSquare                new Image() white square
- *	this._imgPieces					 literal Array() with 12 new Image()s
- *	this.drawCharPieces				 default true
- *	this.moves                       literal Array()
- *	this.squares                     literal Array()
- *	this.canvas;                     HTML5 element
- *	this.gl;                         canvas.getContext('2d');
- *
- *
- *	accessors:
- *
- *  get boardSize                    integer
- *	get strBrd                       string
- *	get squareSize                   integer
- *
- *	ChessBoard.prototype methods
- *
- *	drawBoard()				         draws the board & pieces. Border, box-shadow & padding done with CSS3.
- *	createPiece(strChar)	         creates the chess pieces based on strChar p r n b q k  P R N B Q K
- *	loadStrBrd(strBrd = NEW_STR_BRD) load pieces onto chessboard (squares[ ]) Array.
- *	loadFullStrTitles()				 gives new board piece 32 specific title names. (WhiteQueenRookPawn.) 
- *	isValidStrBrd(strBrd)			 returns a bool true or false (validates strBrd is good.)
- *	cmdPlayGame()					 start the chain reation!
- *	cmdQuitGame()					 clean up & call shutdown()
- *
- *  the clock div gets set in utils.js if it exists in ChessBoard.html?
- *
- *	class Piece() is the abstract base class which never gets instantiated.
- *	class Pawn, Rook, Knight, Bishop, King & Queen all extends Piece.
- *	Piece extends Object without coding it as all Objects spring from Object.
- *
- *	The prototype chain of inheritance starts with Object => Piece => onto all chess pieces.
- *	Object is the base class for all JavaScript objects.
- *
- *
- *  white pawn = 'p' = 0, rook = 'r' = 1, knight = 'n' = 2, bishop = 'b' = 3, queen = 'q' = 4, king = 'k' = 5; 			0-5
- *  black pawn = 'P' = 6, rook = 'R' = 7, knight = 'N' = 8, bishop = 'B' = 9, queen = 'Q' = 10, king = 'K' = 11; 		6-11
- *
- *	indexes into CHESS_PIECES_UNICODE array shown above.
- *	generic piece is 0-5 above.
- *	when you add (6*team) to the generic piece you get team character upper or lower case since team = 0 or 1 value.
- *  The 8888 is 32 empty squares in the center of board.
- *
- *  All classes will inherit from Obj3() class for 3D games.
- *
-
  
-************************ FEN = Forsyth Edwards Notation **********************************
+ 
+ 
+    /****************************************************
+    *  													*
+    *	Author:		James Marion Lynch			 		*
+    *  	Date:		01-10-2021                          *
+    * 	Version:	Alpha 1.0.0.0                      	*
+    * 	Title:		Chess game   			         	*
+    *  	Filename:	js/ChessBoard.js           			*
+    * 	Language:	ES7 2017                       		*
+    *                                                   *
+    *****************************************************
+    *  
+    *  Dependencies:
+    *  Filenames:			Description
+    *
+    *  ChessBoard.html		            The main web page document.
+    *  normalize.css		            The Cascading Style Sheet (reset).
+    *  style.css			            The Cascading Style Sheet (specific.)
+    *  math.js				            The class definition file for Camera, Vec3, Vec4, Quat, Mat4, (3D graphics library.)
+    *  utils.js			                A Utility lib. of functions, setupWebGL() called ChessBoard.html onload event handler.
+    *  ChessBoard.js                    The class definition file for class Chessboard & Square
+    *
+    *
+    *	Properties on instance:          data type:
+    *
+    *   this._boardSize                  integer
+    *   this._squareSize                 integer
+    *   this._blackSquare                new Image() black square
+    *   this._whiteSquare                new Image() white square
+    *	this.drawCharPieces				 true (default)
+    *	this.moves                       literal Array()
+    *	this.squares                     literal Array()
+    *	this.canvas;                     HTML5 element
+    *	this.gl;                         canvas.getContext('2d');
+    *
+    *
+    *	accessors:
+    *
+    *   get boardSize                    integer
+    *	get strBrd                       string
+    *	get squareSize                   integer
+    *
+    *	ChessBoard.prototype methods:
+    *
+    *	drawBoard()				         draws the board & pieces. Border, box-shadow & padding done with CSS3.
+    *	createPiece(strChar)	         creates the chess pieces based on strChar p r n b q k  P R N B Q K
+    *	loadStrBrd(strBrd = NEW_STR_BRD) load pieces onto chessboard (squares[ ]) Array.
+    *	loadFullStrTitles()				 gives new board piece 32 specific title names. (WhiteQueenRookPawn.) 
+    *	isValidStrBrd(strBrd)			 returns a bool true or false (validates strBrd is good.)
+    *	cmdPlayGame()					 start the chain reation!
+    *	cmdQuitGame()					 clean up & call shutdown()
+    *
+    *   the clock div gets set in utils.js if it exists in ChessBoard.html?
+    *
+    *	class Piece() is the abstract base class which never gets instantiated.
+    *	class Pawn, Rook, Knight, Bishop, King & Queen all extends Piece.
+    *	Piece extends Object without coding it; all Objects spring from Object.
+    *
+    *	The prototype chain of inheritance starts with Object => Piece => onto all chess pieces.
+    *	Object is the base class for all JavaScript objects.
+    *   (Future versions will have Piece inherit form Obj3, making all Piece decendants 3D objects).
+    *
+    *   white pawn = 'p' = 0, rook = 'r' = 1, knight = 'n' = 2, bishop = 'b' = 3, queen = 'q' = 4, king = 'k' = 5; 			0-5
+    *   black pawn = 'P' = 6, rook = 'R' = 7, knight = 'N' = 8, bishop = 'B' = 9, queen = 'Q' = 10, king = 'K' = 11; 		6-11
+    *
+    *	indexes into CHESS_PIECES_UNICODE array shown above.
+    *	generic piece is 0-5 above.
+    *	when you add (6 * team) you get team character upper or lower case (team = 0 or 1).
+    *   The 8888 is 32 empty squares in the center of board.
+    *
+    *
+    * * *   FEN = Forsyth Edwards Notation   * * *
 
-Forsyth–Edwards Notation (FEN) is a standard notation for describing a particular board position of a chess game.
-The purpose of FEN is to provide all the necessary information to restart a game from a particular position.
-FEN is based on a system developed by Scottish newspaper journalist David Forsyth.
+    Forsyth–Edwards Notation (FEN) is a standard notation for describing a particular board position of a chess game.
+    The purpose of FEN is to provide all the necessary information to restart a game from a particular position.
+    FEN is based on a system developed by Scottish newspaper journalist David Forsyth.
 
-A FEN "record" defines a particular game position, all in one text line and using only the ASCII character set.
-A text file with only FEN data records should have the file extension ".fen".
+    A FEN "record" defines a particular game position, all in one text line and using only the ASCII character set.
+    A text file with only FEN data records should have the file extension ".fen".
 
-A FEN record contains six fields. The separator between fields is a space. The fields are:
+    A FEN record contains six fields. The separator between fields is a space. The fields are:
 
-Piece placement (from White's perspective). Each rank is described, starting with rank 8 and ending with rank 1; 
-within each rank, the contents of each square are described from file "a" through file "h". 
+    Piece placement (from White's perspective). Each rank is described, starting with rank 8 and ending with rank 1; 
+    within each rank, the contents of each square are described from file "a" through file "h". 
 
-Following the Standard Algebraic Notation (SAN), each piece is identified by a single letter taken from the standard:
-English names (pawn = "P", knight = "N", bishop = "B", rook = "R", queen = "Q" and king = "K").
+    Following the Standard Algebraic Notation (SAN), each piece is identified by a single letter taken from the standard:
+    English names (pawn = "P", knight = "N", bishop = "B", rook = "R", queen = "Q" and king = "K").
 
-White pieces are designated using upper-case letters ("PNBRQK") while black pieces use lowercase ("pnbrqk"). 
-Empty squares are noted using digits 1 through 8 (the number of empty squares), and "/" separates ranks.
+    White pieces are designated using upper-case letters ("PNBRQK") while black pieces use lowercase ("pnbrqk"). 
+    Empty squares are noted using digits 1 through 8 (the number of empty squares), and "/" separates ranks.
 
-Active color. "w" means White moves next, "b" means Black moves next.
+    Active color. "w" means White moves next, "b" means Black moves next.
 
-Castling availability. If neither side can castle, this is "-". 
-Otherwise, this has one or more letters: 
+    Castling availability. If neither side can castle, this is "-". 
+    Otherwise, this has one or more letters: 
 
-"K" (White can castle kingside)
-"Q" (White can castle queenside)
-"k" (Black can castle kingside)
-"q" (Black can castle queenside)
+    "K" (White can castle kingside)
+    "Q" (White can castle queenside)
+    "k" (Black can castle kingside)
+    "q" (Black can castle queenside)
 
-A move that temporarily prevents castling does not negate this notation.
+    A move that temporarily prevents castling does not negate this notation.
 
-En passant target square in algebraic notation. If there's no en passant target square, this is "-".
-If a pawn has just made a two-square move, this is the position "behind" the pawn.
-This is recorded regardless of whether there is a pawn in position to make an en passant capture.
+    En passant target square in algebraic notation. If there's no en passant target square, this is "-".
+    If a pawn has just made a two-square move, this is the position "behind" the pawn.
+    This is recorded regardless of whether there is a pawn in position to make an en passant capture.
 
-Halfmove clock: This is the number of halfmoves since the last capture or pawn advance. 
-The reason for this field is that the value is used in the fifty-move rule.
+    Halfmove clock: This is the number of halfmoves since the last capture or pawn advance. 
+    The reason for this field is that the value is used in the fifty-move rule.
 
-Fullmove number: The number of the full move. It starts at 1, and is incremented after Black's move.
+    Fullmove number: The number of the full move. It starts at 1, and is incremented after Black's move.
 
-Examples
+    Examples:
 
-The following example is from the FEN specification:
-Here's the FEN for the starting position:
+    The following example is from the FEN specification:
+    Here's the FEN for the starting position:
 
-rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
-After the move 1. e4:
+    rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+    After the move 1. e4:
 
-rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1
-Then after 1. ... c5:
+    rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1
+    Then after 1. ... c5:
 
-rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2
-Then after 2. Nf3:
+    rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2
+    Then after 2. Nf3:
 
-rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2
-
-
-
+    rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2
 
  */
 
@@ -141,14 +138,14 @@ const MIN_SQUARE_INDEX = 0,
       STRING_CHARACTERS = "prnbqkPRNBQK",	
       PERCENTAGE_OF_SCREEN_MULTIPLIER = 0.60,
       NEW_STR_BRD = "rnbqkbnrpppppppp8888PPPPPPPPRNBQKBNR",
-      whiteSquareIndices = [ 0, 2, 4, 6, 9, 11, 13, 15, 16, 18, 20, 22, 25, 27, 29, 31, 32, 34, 36, 38, 41, 43, 45, 47, 48, 50, 52, 54, 57, 59, 61, 63 ],
+      whiteSquareIndices = [ 0, 2, 4, 6, 9, 11, 13, 15, 16, 18, 20, 22, 25, 27, 29, 31, 32, 34, 36, 38, 41, 43, 45, 47, 48, 50, 52, 54, 59, 61, 63 ],
       CHESS_PIECES_FILENAMES = [ "WhitePawn", "WhiteRook", "WhiteBishop", "WhiteKnight", "WhiteQueen", "WhiteKing", "BlackPawn", "BlackRook", "BlackBishop", "BlackKnight", "BlackQueen", "BlackKing" ],
       CHESS_PIECES_FILENAMES_SIMPLE = [ "wP", "wR", "wB", "wN", "wQ", "wK", "bP", "bR", "bB", "bN", "bQ", "bK" ],
       CHESS_PIECES_UNICODE = [ "\u2659", "\u2656", "\u2658", "\u2657", "\u2655", "\u2654", "\u265F", "\u265C", "\u265E", "\u265D", "\u265B", "\u265A" ];
 
-Object.freeze(CHESS_PIECES_FILENAMES_SIMPLE, CHESS_PIECES_FILENAMES, CHESS_PIECES_UNICODE, whiteSquareIndices);
 
-function drawScene() {}	// a dummy sub called from 'js/utils.js'
+
+function drawScene() {}	// a dummy function called from 'js/utils.js'
 
 // A Square for any board game, in this case a 64 Square chessboard (8x8) grid.
 class Square
@@ -167,9 +164,6 @@ class Square
 	get strColor(){ return (whiteSquareIndices.indexOf(this.index) >= 0) ? WHITE_SQUARE_COLOR : BLACK_SQUARE_COLOR; }
     get isEmpty() { return this.piece === null; }
 }
-
-// Prevent tampering.
-Object.freeze(Square);
 
 // The ChessBoard() class definition.
 class ChessBoard
@@ -621,8 +615,8 @@ class ChessBoard
 	}
 }
 
-// Prevent the object from being tampered with.
-Object.freeze(ChessBoard);
+// Prevent tampering with our Object classes.
+Object.freeze(CHESS_PIECES_FILENAMES_SIMPLE, CHESS_PIECES_FILENAMES, CHESS_PIECES_UNICODE, whiteSquareIndices, Square, ChessBoard);
 
 function setupGraphicsPipeline()
 {   
