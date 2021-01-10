@@ -5,18 +5,15 @@
 	*****************************************************
 	*  													*
 	*	Author:		James Marion Lynch			 		*
-	*  	Date:		12-28-2020                          *
+	*  	Date:		01-10-2020                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
 	* 	Title:		Audio Player                       	*
-	*  	Filename:	w3-example-01.html     		    	*
+	*  	Filename:	Audio-Player.html    		    	*
 	* 	Language:	HTML5                          		*
 	*                                                   *
 	*****************************************************
 
 	Notes: 
-
-
-*****************************************************
 
 	Dependencies:       		(Shown in load order.)
 	Filenames:					Descriptions:
@@ -27,41 +24,14 @@
     img\img.jpg
     img\li-img.png
     img\li-img-redSq.jpg
-    img\covers\arlo-gunthrie.png
-    img\covers\beach-boys.png
-    img\covers\blue-ocean.jpg
-    img\covers\golden-ocean.jpg
-    img\covers\h2r.jpg
-    img\covers\janis-joplin.jpg
-    img\covers\joe-walsh.jpg
-    img\covers\led-zeppelin.jpg
-    img\covers\love-songs.jpg
-    img\covers\oldies.jpg
-    img\covers\pink-floyd.jpg
-    img\covers\vortex.png
+    img\covers\ (4 images in jpg format.
     img\Slides\slide (1).jpg (thru 32)
     js\audio-player.js
     js\jquery.min.js
     js\math.min.js
     js\utils.js
-    res\amazing-grace.mp3
-    res\Bring It On Home.mp3
-    res\Coming Into Los Angeles.mp3
-    res\lifes-been-good.mp3
-    res\Money.mp3
-    res\movie.mp4
-    res\movie-save.mp4
-    res\music1.mp3
-    res\music2.mp3
-    res\music3.mp3
-    res\music4.mp3
-    res\papa-loved-momma.mp3
-    res\Piece Of My Heart.mp3
-    res\Respect.mp3
-    res\Time.mp3
-    res\When A Man Loves A Woman.mp3
-    res\Whole Lotta Love.mp3
-
+    res\music1.mp3 	4 total songs in the public domain for testing
+	res\movie.mp4
     
 	The head element has meta data, links external Style Sheets & JavaScript.
 	The title element is mandatory per w3schools.com.
@@ -173,16 +143,10 @@
 			</div>
 
 			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
-				<li song="amazing-grace.mp3" 			cover="h2r.jpg" 		  artist="Judy Collins"    title="Amazing Grace!">Amazing Grace</li>
-				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Money">Money</li>
-				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Time">Time</li>
-				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks"    title="Papa Loved Momma">Papa Loved Momma</li>
-				<li song="Respect.mp3" 					cover="h2r.jpg"           artist="Aretha Franklin" title="Respect">Respect</li>
-				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie"   title="Comming Into Los Angeles">Coming Into Los Angeles</li>
-				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin" 	   title="Whole Lotta Love">Whole Lotta Love</li>
-				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin"	   title="Piece Of My Heart">Piece Of My Heart</li>
-				<li song="When A Man Loves A Woman.mp3" cover="h2r.jpg" 	  	  artist="Percy Sledge"    title="When A Man Loves A Woman">When A Man Loves A Woman</li>
-				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh" 	   title="Lifes Been Good">Lifes Been Good</li>
+				<li song="music1.mp3" cover="albumn-cover-art-1.jpg" artist="Artist 1">Song-1</li>
+				<li song="music2.mp3" cover="albumn-cover-art-2.jpg" artist="Artist 2">Song-2</li>
+				<li song="music3.mp3" cover="albumn-cover-art-3.jpg" artist="Artist 3">Song-3</li>
+				<li song="music4.mp3" cover="albumn-cover-art-4.jpg" artist="Artist 4">Song-4</li>
 			</ul>
 			
 		<!-- End of Audio Player element.  -->
@@ -200,7 +164,7 @@
             <button type="button" id="cmd_toggle_log"  onclick="cmdToggleLog();"  title="Show log history?">View?</button>
         </div>
         
-       		<!--  The 32 background images for slideshow.  -->
+       	<!--  The 32 background images for slideshow.  -->
 		<div class="w3-content w3-display-container">
 			<img class="mySlides" src="img/Slides/slide(1).jpg" alt="an image load error">
 			<img class="mySlides" src="img/Slides/slide(2).jpg" alt="an image load error">
