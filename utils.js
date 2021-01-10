@@ -185,7 +185,6 @@ function setupWebGL(id = "JML_canvas", type = "webgl")
 		alert(msg);
 	}
 
-    
     let audioPlayer = document.getElementById("audio-player");
 	if (audioPlayer !== null)
     {
@@ -213,9 +212,7 @@ function setupWebGL(id = "JML_canvas", type = "webgl")
 	{
         // error condition.
 		alert("No canvas element or WebGL context()");
-	}
-	
-		
+	}	
 }
 
 function setClock()
