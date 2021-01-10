@@ -24,7 +24,7 @@
     *
     *
     *	Properties on instance:          data type:
-    *
+    * 
     *   this._boardSize                  integer
     *   this._squareSize                 integer
     *   this._blackSquare                new Image() black square
