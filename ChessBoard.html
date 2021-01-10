@@ -58,21 +58,12 @@ Language is English, US.  -->
 
         <title>JML 3D Studios: Chess 2021</title>
         
-    </head>	<!-- The closing tag for the head element. -->
-
-	<!-- body is the opening tag for the mandatory body element in all HTML documents,
-		 & loads the JavaScript function to run after the document has been loaded. 
-         The file 'js/utils.js' is designed to be a helper library for 'js/math.min.js' 
-         which is the JML 3D Studios 3D Graphics Library. The library is the definition file for 
-         class Vec3, Vec4, Mat4, Quat, and Camera; math objects required to do 3D graphics.
-         
-         File 'js/utils.js' contains function setupWebGL() which sets up canvas & gl
-         (gl  graphics 3D library). Also the clock if exists, audio-player if exists and assigns
-         all the canvas event handlers.  After that it calls setupGraphicsPipeline()
-         which is the 2D id="chessboard".   -->
-         
+    </head>
     <body onload="setupWebGL('chessboard', '2d');">
     
+        <!-- The canvas element to display the chessboard in 2D.  -->
+        <canvas id="chessboard" title="Scroll wheel me to zoom!"></canvas>
+        
          <!-- The log history element shares screen space with below Audio Player element.  -->
         <div id="log_div" style="visibility: hidden"></div>
 
