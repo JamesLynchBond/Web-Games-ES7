@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<!--
+
+	*****************************************************
+	*  													*
+	*	Author:		James Marion Lynch			 		*
+	*  	Date:		12-28-2020                          *
+	* 	Version:	Alpha 1.0.0.0                      	*
+	* 	Title:		Audio Player                       	*
+	*  	Filename:	w3-example-01.html     		    	*
+	* 	Language:	HTML5                          		*
+	*                                                   *
+	*****************************************************
+
+	Notes: 
+
+
+*****************************************************
+
+	Dependencies:       		(Shown in load order.)
+	Filenames:					Descriptions:
+
+    Audio-Player.html
+    css\normalize.css
+    css\style.css
+    img\img.jpg
+    img\li-img.png
+    img\li-img-redSq.jpg
+    img\covers\arlo-gunthrie.png
+    img\covers\beach-boys.png
+    img\covers\blue-ocean.jpg
+    img\covers\golden-ocean.jpg
+    img\covers\h2r.jpg
+    img\covers\janis-joplin.jpg
+    img\covers\joe-walsh.jpg
+    img\covers\led-zeppelin.jpg
+    img\covers\love-songs.jpg
+    img\covers\oldies.jpg
+    img\covers\pink-floyd.jpg
+    img\covers\vortex.png
+    img\Slides\slide (1).jpg (thru 32)
+    js\audio-player.js
+    js\jquery.min.js
+    js\math.min.js
+    js\utils.js
+    res\amazing-grace.mp3
+    res\Bring It On Home.mp3
+    res\Coming Into Los Angeles.mp3
+    res\lifes-been-good.mp3
+    res\Money.mp3
+    res\movie.mp4
+    res\movie-save.mp4
+    res\music1.mp3
+    res\music2.mp3
+    res\music3.mp3
+    res\music4.mp3
+    res\papa-loved-momma.mp3
+    res\Piece Of My Heart.mp3
+    res\Respect.mp3
+    res\Time.mp3
+    res\When A Man Loves A Woman.mp3
+    res\Whole Lotta Love.mp3
+
+    
+	The head element has meta data, links external Style Sheets & JavaScript.
+	The title element is mandatory per w3schools.com.
+	
+***************************************************** -->
+	
+	
+<html lang="en-US">
+
+    <head>
+
+		<!-- Meta-data is content type=text/html, encoding is utf-8, en-US, viewport size & limits.
+			 page contents, all so Search Engines can better index the page.  -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="viewport"    content="width=device-width, initial-scale=1" />
+        <meta name="description" content="JML 3D Studios, Audi Player 2021" />
+        <meta name="keywords"    content="label, head, form, input, type." />
+        <meta name="author"      content="James M. Lynch." />
+        <meta name="college"     content="Los Angeles Trade Tech College (LATTC)." />
+
+		<!-- Link external Cascading Style Sheets to page. -->
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+		<!-- Load external JavaScript program text files. -->
+		<script type="text/ecmascript" src="js/jquery.min.js"></script>
+        <script type="text/ecmascript" src="js/math.min.js"></script>
+        <script type="text/ecmascript" src="js/utils.js"></script>
+        
+ 
+		<!-- The title appears in browser tab. -->
+		<title>JML 3D Studios, Audi Player 2021</title>
+
+ 
+ 	<!-- The closing tag for the head element. -->
+    </head>
+
+	<!-- body is the opening tag for the mandatory body element in all HTML documents,
+		 & loads the JavaScript function to run after the document has been loaded. 
+         The file 'js/utils.js' is designed to be a helper library for 'js/math.min.js' 
+         which is the JML 3D Studios 3D Graphics Library. The library is the definition file for 
+         class Vec3, Vec4, Mat4, Quat, and Camera; math objects required to do 3D graphics.
+         
+         File 'js/utils.js' contains function setupWebGL() which sets up canvas & gl
+         (gl  graphics 3D library). Also the clock if exists, audio-player if exists and assigns
+         all the canvas event handlers.  After that it calls setupGraphicsPipeline()
+         which is the 3D Icosahedron, one of only five Platonic solids.   -->
+         
+    <body onload="setupWebGL();">
+
+        <!-- The canvas element to display the Icosahedron 3D WebGL content.  -->
+        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
+
+		<!-- The parent element allows resize of the child element.  -->
+		<div id="video_container" class="resizable" style="visibility:hidden;">
+			<video id="video_element" style="visibility:hidden;" mute controls loop>
+				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
+			</video>
+		</div>
+
+		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed  -->
+        <div id="title_bar"></div>
+
+         <!-- The log history element shares screen space with below Audio Player element.  -->
+        <div id="log_div" style="visibility: hidden"></div>
+
+		<div id="audio-player">
+		
+			<!-- The clock is updated by setInterval() every second.  -->
+			<div id="clock" title="Local time"></div>
+		
+			<!-- Audio Image (album covers)-->
+			<div id="audio-image">
+				<img class="cover" alt="Album covers and or Media Art">
+				<p id="audio_title">Scroll down for controls!</p>
+			</div>
+
+			<!-- Audio information. -->
+            <div id="audio-info">
+				<p>Artist/Band:</p><span class="artist"></span>		
+            </div>
+			
+			<div class="clearboth"></div>
+			<br>&nbsp;	
+			
+			<p style="margin-left: 3vh; font-weight: bold;">Volume:
+			
+				<!-- Volume Control, your cursor keys control volume. -->
+				<input id="audio_volume" class="slider" type="range" min="0" max="20" 
+					   title="Slide right to increase volume, left decreases!" value="3" />
+			</p>
+				   
+			<br>&nbsp;
+
+			<!-- The Audio menu container element. -->
+			<div id="audio_bar" class="menus">
+				<span>
+					<button id="prev"  type="button" title="Previous song?">&#10094;</button>
+					<button id="play"  type="button" title="Play song?">Play</button>
+					<button id="pause" type="button" title="Pause song?">Pause</button>
+					<button id="stop"  type="button" title="Stop song?">Stop</button>
+					<button id="next"  type="button" title="Next song?">&#10095;</button>
+				</span>
+			</div>
+
+            <!-- Tracker Audio View -->
+            <div id="tracker">
+				<span id="duration"></span>
+			</div>
+
+			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
+				<li song="amazing-grace.mp3" 			cover="h2r.jpg" 		  artist="Judy Collins"    title="Amazing Grace!">Amazing Grace</li>
+				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Money">Money</li>
+				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Time">Time</li>
+				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks"    title="Papa Loved Momma">Papa Loved Momma</li>
+				<li song="Respect.mp3" 					cover="h2r.jpg"           artist="Aretha Franklin" title="Respect">Respect</li>
+				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie"   title="Comming Into Los Angeles">Coming Into Los Angeles</li>
+				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin" 	   title="Whole Lotta Love">Whole Lotta Love</li>
+				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin"	   title="Piece Of My Heart">Piece Of My Heart</li>
+				<li song="When A Man Loves A Woman.mp3" cover="h2r.jpg" 	  	  artist="Percy Sledge"    title="When A Man Loves A Woman">When A Man Loves A Woman</li>
+				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh" 	   title="Lifes Been Good">Lifes Been Good</li>
+			</ul>
+			
+		<!-- End of Audio Player element.  -->
+		</div>
+       
+        <!-- The menu button container element @bottom of screen. -->
+        <div id="task_bar" class="menus">
+            <button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
+			 <input type="range"  id="cmd_opacity"     onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
+			</button>
+            <button type="button" id="cmd_toggle_vid"  onclick="cmdToggleVid();"  title="Play Pause Video">Video?</button>
+			<button type="button" id="cmd_slide_left"  onclick="plusDivs(-1)"     title="Slide show left?">&#10094;</button>  
+			<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"      title="Slide show right?">&#10095;</button>  
+           	<button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?">Mode?</button>
+            <button type="button" id="cmd_toggle_log"  onclick="cmdToggleLog();"  title="Show log history?">View?</button>
+        </div>
+        
+       		<!--  The 32 background images for slideshow.  -->
+		<div class="w3-content w3-display-container">
+			<img class="mySlides" src="img/Slides/slide(1).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(2).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(3).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(4).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(5).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(6).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(7).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(8).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(9).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(10).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(12).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(13).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(14).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(15).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(16).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(17).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(18).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(19).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(20).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(22).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(23).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(24).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(25).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(26).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(27).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(28).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(29).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(30).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(31).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(32).jpg" alt="an image load error">
+		</div>
+        
+        <!-- The scripts I want loaded last.  -->
+		<script type="text/ecmascript" src="js/audio-player.js"></script>
+		<script type="text/ecmascript" src="js/Icosa.js"></script>
+
+    </body>
+    
+ </html>
+    
+ <!-- eof  -->
+    

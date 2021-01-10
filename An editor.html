@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<!--
+
+*****************************************************
+*  													*
+*	Author:		James Marion Lynch			 		*
+*  	Date:		12-08-2020                          *
+* 	Version:	Alpha 1.0.0.0                      	*
+* 	Title:		An editor.html                   	*
+*  	Filename:	editor.html             			*
+* 	Language:	HTMl5                          		*
+*                                                   *
+*****************************************************
+
+
+	Notes: 
+
+
+
+-->
+
+<html lang="en-US">
+
+	<!-- The head tells browsers about the contents for indexing with search engines and display.   -->
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="viewport"     content="width=device-width, initial-scale=1" />
+        <meta name="description"  content="Plain Text Editor in HTML5 CSS3 JavaScript ES7 2017 EcmaScript" />
+        <meta name="keywords"     content="HTML5, CSS3, JavaScript ES7 2017" />
+		<meta name="author"       content="James M. Lynch" />
+        <meta name="college"      content="Los Angeles Trade Tecn COllege (LATTC)" />
+		
+		<!-- Link the external style sheets to document. -->
+        <link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		
+		<!-- Link external JavaScript file(s) to document.  -->
+		<script type="text/ecmascript" src="js/jquery.min.js"></script>
+		<script type="text/ecmascript" src="js/math.min.js"></script>
+		<script type="text/ecmascript" src="js/utils.js"></script>
+		
+		<!-- This is the title to place in the tab of browser. -->
+        <title>JML 3D Studios, Text Editor 2021</title>
+		
+	<!-- The ending tag for the head element. -->
+    </head>
+
+	<!-- The opening tag for body element which is mandatory in all HTML5 documents,
+		 & which JavaScript functions to run when the body of the document is finished loading.  -->
+    <body onload="setupWebGL();">
+	
+        <!-- The log history element shares screen space with below Audio Player element.  -->
+        <div id="log_div" style="visibility: hidden"></div>
+
+		<div id="audio-player">
+		
+			<!-- The clock is updated by setInterval() every second.  -->
+			<div id="clock" title="Local time"></div>
+		
+			<!-- Audio Image (album covers)-->
+			<div id="audio-image">
+				<img class="cover" alt="Album covers and or Media Art">
+				<p id="audio_title">Scroll down for controls!</p>
+			</div>
+
+			<!-- Audio information. -->
+            <div id="audio-info">
+				<p>Artist/Band:</p><span class="artist"></span>		
+            </div>
+			
+			<div class="clearboth"></div>
+			<br>&nbsp;	
+			
+			<p style="margin-left: 3vh; font-weight: bold;">Volume:
+			
+				<!-- Volume Control, your cursor keys control volume. -->
+				<input id="audio_volume" class="slider" type="range" min="0" max="20" 
+					   title="Slide right to increase volume, left decreases!" value="3" />
+			</p>
+				   
+			<br>&nbsp;
+
+			<!-- The Audio menu container element. -->
+			<div id="audio_bar" class="menus">
+				<span>
+					<button id="prev"  type="button" title="Previous song?">&#10094;</button>
+					<button id="play"  type="button" title="Play song?">Play</button>
+					<button id="pause" type="button" title="Pause song?">Pause</button>
+					<button id="stop"  type="button" title="Stop song?">Stop</button>
+					<button id="next"  type="button" title="Next song?">&#10095;</button>
+				</span>
+			</div>
+
+            <!-- Tracker Audio View -->
+            <div id="tracker">
+				<span id="duration"></span>
+			</div>
+
+			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
+				<li song="amazing-grace.mp3" 			cover="h2r.jpg" 		  artist="Judy Collins"    title="Amazing Grace!">Amazing Grace</li>
+				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Money">Money</li>
+				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Time">Time</li>
+				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks"    title="Papa Loved Momma">Papa Loved Momma</li>
+				<li song="Respect.mp3" 					cover="h2r.jpg"           artist="Aretha Franklin" title="Respect">Respect</li>
+				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie"   title="Comming Into Los Angeles">Coming Into Los Angeles</li>
+				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin" 	   title="Whole Lotta Love">Whole Lotta Love</li>
+				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin"	   title="Piece Of My Heart">Piece Of My Heart</li>
+				<li song="When A Man Loves A Woman.mp3" cover="h2r.jpg" 	  	  artist="Percy Sledge"    title="When A Man Loves A Woman">When A Man Loves A Woman</li>
+				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh" 	   title="Lifes Been Good">Lifes Been Good</li>
+			</ul>
+			
+		<!-- End of Audio Player element.  -->
+		</div>
+
+		<!-- The lower menu bar button container element. -->
+        <div id="task_bar" class="menus">
+			<button type="button" id="cmd_open_file"   onclick="cmdOpenFile();"     title="Click to open file?">Open?</button>
+			<button type="button" id="cmd_close_file"  onclick="cmdCloseFile();"    title="Click to make selected text bold?">Close?</button>
+			<button type="button" id="cmd_bold"        onclick="format('bold');"    title="Click to make selected text bold?">Bold?</button>
+			<button type="button" id="cmd_italics"     onclick="format('italics');" title="Click to make selected text italics?">Italic?</button>
+			<button type="button" id="cmd_insert_ul"   onclick="format('insertunorderedlist');" title="Click to insert unordered list?">ul?</button>
+            <button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
+			 <input type="range"  id="cmd_opacity"  onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
+			</button>
+            <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>            
+            <button type="button" id="cmd_full_screen" onclick="cmdFullScreen();"   title="Full Screen Mode?">Mode?</button>
+            <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
+        </div>
+        
+        <!-- The canvas element to display the Icosahedron 3D WebGL content.  -->
+        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
+
+		<!-- The parent element allows resize of the child elements width & height.  -->
+		<div class="resizable">
+	
+			<!-- Use JavaScript to get the innerHTML.  -->
+			<div id="editor_content" contenteditable="true"></div>
+		</div>
+        
+        <!-- The parent element allows resize of the child elements width & height.  -->
+		<div id="video_container" class="resizable" style="visibility:hidden;">
+			<video id="video_element" style="visibility:hidden;" mute controls loop>
+				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
+			</video>
+		</div>
+        
+        <!-- The scripts I want loaded last.  -->
+		<script type="text/ecmascript" src="js/audio-player.js"></script>
+		<script type="text/ecmascript" src="js/Icosa.js"></script>
+
+	</body>
+</html>
+
+<!-- eof  -->

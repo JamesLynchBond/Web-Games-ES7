@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<!--
+
+	Author:					James Marion Lynch
+	Date:					12-08-2020
+	Title:					A Space Ship
+	Filename:				CommandShip.html
+	Language:				HTML5, CSS3 & JavaScript (ES7 2017), webGL and GLSL.
+
+
+	Dependencies:
+	Filenames				Description
+
+	CommandShip.html		This file, the main web page document (HTML5.)
+	css/normalize.css		The Cascading Style Sheet (reset.)
+	css/style.css			The Cascading Style Sheet (specific.)
+	js/jquery.min.js
+	js/math.min.js			The class definition file for My 3D Graphics Library.
+	js/utils.js				Utility library for this math.js & others, functions createShip, createIcosahedron, textures, ...
+	js/System.js			The class definition file. 
+	js/Laser.js				The class definition file.
+	js/Blackjack.js        	The class definition file for Player, hand, Card, deck and Blackjack.
+	js/CommandShip.js		The class definition file. 
+	js/Ship-3D.js			The geometry file.
+
+
+	My 3D Graphics Library 'math.min.js' defines these class objects. 
+	The classes are  Vec3, Vec4, Mat4, Quat (for Quaternion), Camera(fov, aspect, far, near);
+
+	The math.js has a companion file named utils.js for many repeated tasks.
+
+	A SpaceShip is a complex class with any number of add on systems.
+	Laser system is the default system.
+
+	They will include
+
+	Guidance
+	Collision
+	Health
+	Computer
+	Communications
+	Engine
+
+	any sub systems of a large ship this stimulates.
+
+	This program is in the beta testing for the last 2 years, in development for more than a decade.
+	It will link all games for the ship which is really a large planned game with a space ship to command.
+	I have other games which link through books, games and future web sites.
+	I am still learning and plan to build a game engine or use THREE.js or playcanvas.
+	I have many book projects in the works, I have tied the storyline together for a mega project 
+
+	The head element has meta data, links external Style Sheets & JavaScript text files.
+	The title element is mandatory according to the book. -->
+
+    <head>
+
+		<!-- Meta-data is content type=text, encoding is utf-8, en-US, viewport size & limits.
+			 The head provides a mandatory title element, page contents, all so Search Engines can better index the page.  -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="viewport"    content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1.5" />
+        <meta name="description" content="Blackjack Card Game, Audio & Video player." />
+        <meta name="keywords"    content="HTML5, CSS3, JavaScript ES7 2017, WebGL, GLSL." />
+        <meta name="author"      content="James M. Lynch." />
+        <meta name="college"     content="Los Angeles Trade Tech College (LATTC)." />
+
+		<!-- Link external Cascading Style Sheets to page. -->
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+		<!-- Load external JavaScript program text files.  -->
+		<script src="js/jquery.min.js"></script>
+        <script src="js/math.min.js"></script>
+        <script src="js/utils.js"></script>
+
+		<!-- The title that appears in the tab of browser. -->
+		<title>JML 3D Studios, Command Ship 2021</title>
+
+	<!-- The closing tag for the head element. -->
+    </head>
+
+	<!-- The opening tag for body element which is mandatory in all HTML5 documents,
+		 & which JavaScript function to run when the main document is finished loading.  -->
+    <body onload="setupWebGL();">
+
+        <!-- The upper task_bar menu button container element. -->
+        <div id="menu_bar" class="menus">
+            <button type="button" id="cmd_decrease_thrust" onclick="ship.decreaseThrust();">Thrusters+ </button>
+			<button type="button" id="cmd_increase_thrust" onclick="ship.increaseThrust();">Thrusters- </button>
+			<button type="button" id="cmd_apply_thrust"    onclick="ship.applyThrust();">   Thrust     </button>
+			<button type="button" id="cmd_laser_fire"      onclick="ship.fire();">          Fire Laser </button>
+        </div>
+        
+		<!-- The canvas element to display the Icosahedron 3D WebGL content. -->
+        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
+
+        <!-- The log history element shares screen space with below Audio Player element.  -->
+        <div id="log_div" style="visibility: hidden"></div>
+
+		<div id="audio-player">
+		
+			<!-- The clock is updated by setInterval() every second.  -->
+			<div id="clock" title="Local time"></div>
+		
+			<!-- Audio Image (album covers)-->
+			<div id="audio-image">
+				<img class="cover" alt="Album covers and or Media Art">
+				<p id="audio_title">Scroll down for controls!</p>
+			</div>
+
+			<!-- Audio information. -->
+            <div id="audio-info">
+				<p>Artist/Band:</p><span class="artist"></span>		
+            </div>
+			
+			<div class="clearboth"></div>
+			<br>&nbsp;	
+			
+			<p style="margin-left: 3vh; font-weight: bold;">Volume:
+			
+				<!-- Volume Control, your cursor keys control volume. -->
+				<input id="audio_volume" class="slider" type="range" min="0" max="20" 
+					   title="Slide right to increase volume, left decreases!" value="3" />
+			</p>
+				   
+			<br>&nbsp;
+
+			<!-- The Audio menu container element. -->
+			<div id="audio_bar" class="menus">
+				<span>
+					<button id="prev"  type="button" title="Previous song?">&#10094;</button>
+					<button id="play"  type="button" title="Play song?">Play</button>
+					<button id="pause" type="button" title="Pause song?">Pause</button>
+					<button id="stop"  type="button" title="Stop song?">Stop</button>
+					<button id="next"  type="button" title="Next song?">&#10095;</button>
+				</span>
+			</div>
+
+            <!-- Tracker Audio View -->
+            <div id="tracker">
+				<span id="duration"></span>
+			</div>
+
+			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
+				<li song="amazing-grace.mp3" 			cover="h2r.jpg" 		  artist="Judy Collins"    title="Amazing Grace!">Amazing Grace</li>
+				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Money">Money</li>
+				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Time">Time</li>
+				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks"    title="Papa Loved Momma">Papa Loved Momma</li>
+				<li song="Respect.mp3" 					cover="h2r.jpg"           artist="Aretha Franklin" title="Respect">Respect</li>
+				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie"   title="Comming Into Los Angeles">Coming Into Los Angeles</li>
+				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin" 	   title="Whole Lotta Love">Whole Lotta Love</li>
+				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin"	   title="Piece Of My Heart">Piece Of My Heart</li>
+				<li song="When A Man Loves A Woman.mp3" cover="h2r.jpg" 	  	  artist="Percy Sledge"    title="When A Man Loves A Woman">When A Man Loves A Woman</li>
+				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh" 	   title="Lifes Been Good">Lifes Been Good</li>
+			</ul>
+			
+		<!-- End of Audio Player element.  -->
+		</div>
+        
+		<!-- The parent element allows resize of the child elements width & height.  -->
+		<div class="resizable">
+			<video id="video_element" style="visibility:hidden;" title="Place your movie.mp4 in /res/ to play it." muted controls loop>
+				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
+			</video>
+		</div>
+
+		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed  -->
+        <div id="title_bar"></div>
+
+		<!-- The progress bar percentage is displayed in this div element. -->
+		<div id="displayProgress"></div>
+
+		<!-- The progress bar container div element. -->
+		<div id="myProgress" style="visibility: hidden">
+
+			<!-- The progress bar div element. -->
+			<div id="myBar"></div>
+		</div>
+
+		<!-- The lower task_bar menu button container element. -->
+        <div id="task_bar" class="menus">
+			<button type="button" id="cmd_slide_left"   onclick="plusDivs(-1)"       title="Slide show left?">&#10094;</button>  
+			<button type="button" id="cmd_slide_right"  onclick="plusDivs(1)"        title="Slide show right?">&#10095;</button>
+            <button type="button" id="cmd_get_gps"      onclick="cmdGetGPS();"       title="Get GPS location?">GPS?</button>
+			<button type="button" id="btn_progress_bar" onclick="moveProgressBar();" title="Progress Bar">Test</button>  
+            <button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
+			 <input type="range"  id="cmd_opacity"      onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
+			</button>
+            <button type="button" id="cmd_toggle_vid"   onclick="cmdToggleVid();"     title="Play Pause Video">Video?</button>
+            <button type="button" id="cmd_toggle_log"   onclick="cmdToggleLog();"      title="Show log history?">View?</button>
+            <button type="button" id="cmd_full_screen"  onclick="cmdFullScreen();"     title="Full Screen Mode?">Mode?</button>
+        </div>
+		
+		<!--  The 32 background images for slideshow.  -->
+		<div class="w3-content w3-display-container">
+			<img class="mySlides" src="img/Slides/slide(1).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(2).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(3).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(4).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(5).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(6).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(7).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(8).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(9).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(10).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(12).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(13).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(14).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(15).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(16).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(17).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(18).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(19).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(20).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(22).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(23).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(24).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(25).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(26).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(27).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(28).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(29).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(30).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(31).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(32).jpg" alt="an image load error">
+		</div>
+
+		<!-- The scripts I want loaded last.  -->
+		<script src="js/audio-player.js"></script>
+		<script src="js/Icosa.js"></script>
+        <script src="js/Obj3.js"></script>
+		<script src="js/System.js"></script>
+		<script src="js/Laser.js"></script>
+		<script src="js/CommandShip.js"></script>
+		<script src="js/Ship-3D.js"></script>
+
+	<!-- The closing tag of the body element.  -->
+    </body>
+	
+<!-- The closing tag of the html document.  -->
+</html>
+
+<!-- eof -->
+

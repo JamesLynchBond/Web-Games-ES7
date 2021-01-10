@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<!--
+
+Author:							James Marion Lynch
+Date:							12-06-2020
+Title:							Chess Game
+Filename:						ChessBoard.html
+Languages:						HTML5, CSS3 & JavaScript ES7 2017, WebGL and GLSL.
+	
+Dependencies:	   				(Shown in the order they must be loaded in.)
+Filenames:						Description:
+
+ChessBoard.html					The HTML5 document (this file.)
+css/normalize.css				The Cascading Style Sheet (reset.)
+css/style.css					The Cascading Style Sheet (specific.)
+img/img.png        				The background image.
+img/blackSquare.png 			The chessboard square images
+img/whiteSquare.png 			The chessboard square images
+js/jquery.min.js
+js/math.min.js					The class definition file for Camera, Vec3, Vec4, Quat, Mat4 & more.
+js/utils.js						Helper function library, contains setupWebGL().
+js/audio-player.js
+js/Pieces/Piece.js				class definition file for Piece, (definition files below:)
+js/Pieces/Pawn.js				class Pawn   extends Piece.
+js/Pieces/Rook.js				class Rook   extends Piece.
+js/Pieces/Bishop.js				class Bishop extends Piece.
+js/Pieces/King.js				class King   extends Piece.
+js/Pieces/Queen.js				class Queen  extends Piece.
+js/ChessBoard.js				class definition file for Chessboard.
+
+
+
+Language is English, US.  -->
+
+<html lang="en-US">
+
+	<!-- The head element has meta data, links external Style Sheets & JavaScript text files.
+         The title element is mandatory according to the book. -->
+    <head>
+
+		<!-- Meta-data is content type=text, encoding is utf-8, en-US, viewport size & limits.
+			 The head provides a mandatory title element, page contents, all so Search Engines can better index the page.  -->
+        <meta content="text/html;  charset=utf-8" http-equiv="Content-Type" />
+        <meta name="viewport"    content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Chess game in ES7 2017, CSS3"/>
+        <meta name="keywords"    content="HTML5, CSS3, JavaScript ES7 2017, WebGL, GLSL" />
+        <meta name="author"      content="James M. Lynch" />
+		
+		<!-- Link external Cascading Style Sheets to page. -->
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/style.css" />  
+		
+       	<!-- Load external JavaScript program text files.  -->
+		<script type="text/ecmascript" src="js/jquery.min.js"></script>
+        <script type="text/ecmascript" src="js/math.min.js"></script>
+        <script type="text/ecmascript" src="js/utils.js"></script>
+
+        <title>JML 3D Studios: Chess 2021</title>
+        
+    </head>	<!-- The closing tag for the head element. -->
+
+	<!-- body is the opening tag for the mandatory body element in all HTML documents,
+		 & loads the JavaScript function to run after the document has been loaded. 
+         The file 'js/utils.js' is designed to be a helper library for 'js/math.min.js' 
+         which is the JML 3D Studios 3D Graphics Library. The library is the definition file for 
+         class Vec3, Vec4, Mat4, Quat, and Camera; math objects required to do 3D graphics.
+         
+         File 'js/utils.js' contains function setupWebGL() which sets up canvas & gl
+         (gl  graphics 3D library). Also the clock if exists, audio-player if exists and assigns
+         all the canvas event handlers.  After that it calls setupGraphicsPipeline()
+         which is the 2D id="chessboard".   -->
+         
+    <body onload="setupWebGL('chessboard', '2d');">
+    
+         <!-- The log history element shares screen space with below Audio Player element.  -->
+        <div id="log_div" style="visibility: hidden"></div>
+
+		<div id="audio-player">
+		
+			<!-- The clock is updated by setInterval() every second.  -->
+			<div id="clock" title="Local time"></div>
+		
+			<!-- Audio Image (album covers)-->
+			<div id="audio-image">
+				<img class="cover" alt="Album covers and or Media Art">
+				<p id="audio_title">Scroll down for controls!</p>
+			</div>
+
+			<!-- Audio information. -->
+            <div id="audio-info">
+				<p>Artist/Band:</p><span class="artist"></span>		
+            </div>
+			
+			<div class="clearboth"></div>
+			<br>&nbsp;	
+			
+			<p style="margin-left: 3vh; font-weight: bold;">Volume:
+			
+				<!-- Volume Control, your cursor keys control volume. -->
+				<input id="audio_volume" class="slider" type="range" min="0" max="20" 
+					   title="Slide right to increase volume, left decreases!" value="3" />
+			</p>
+				   
+			<br>&nbsp;
+
+			<!-- The Audio menu container element. -->
+			<div id="audio_bar" class="menus">
+				<span>
+					<button id="prev"  type="button" title="Previous song?">&#10094;</button>
+					<button id="play"  type="button" title="Play song?">Play</button>
+					<button id="pause" type="button" title="Pause song?">Pause</button>
+					<button id="stop"  type="button" title="Stop song?">Stop</button>
+					<button id="next"  type="button" title="Next song?">&#10095;</button>
+				</span>
+			</div>
+
+            <!-- Tracker Audio View -->
+            <div id="tracker">
+				<span id="duration"></span>
+			</div>
+
+			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
+				<li song="amazing-grace.mp3" 			cover="h2r.jpg" 		  artist="Judy Collins"    title="Amazing Grace!">Amazing Grace</li>
+				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Money">Money</li>
+				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Time">Time</li>
+				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks"    title="Papa Loved Momma">Papa Loved Momma</li>
+				<li song="Respect.mp3" 					cover="h2r.jpg"           artist="Aretha Franklin" title="Respect">Respect</li>
+				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie"   title="Comming Into Los Angeles">Coming Into Los Angeles</li>
+				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin" 	   title="Whole Lotta Love">Whole Lotta Love</li>
+				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin"	   title="Piece Of My Heart">Piece Of My Heart</li>
+				<li song="When A Man Loves A Woman.mp3" cover="h2r.jpg" 	  	  artist="Percy Sledge"    title="When A Man Loves A Woman">When A Man Loves A Woman</li>
+				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh" 	   title="Lifes Been Good">Lifes Been Good</li>
+			</ul>
+			
+		<!-- End of Audio Player element.  -->
+		</div>
+
+		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed  -->
+        <div id="title_bar"></div>
+        
+        <!-- The menu button container element @bottom of screen. -->
+        <div id="task_bar" class="menus">
+            <button type="button" id="cmd_play_game"   onclick="JML_Chess.cmdPlayGame();" disabled>Play?</button>
+			<button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
+			 <input type="range"  id="cmd_opacity"  onchange="cmdOpacity()" class="slider" min="1"  max="20" value="2"/>
+			</button>
+            <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>
+            <button type="button" id="cmd_slide_left"  onclick="plusDivs(-1)"     title="Slide show left?">&#10094;</button>  
+			<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"      title="Slide show right?">&#10095;</button> 
+            <button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?">Mode?</button>
+            <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
+        </div>
+
+		<!--  The 32 background images for slideshow.  -->
+		<div class="w3-content w3-display-container">
+			<img class="mySlides" src="img/Slides/slide(1).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(2).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(3).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(4).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(5).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(6).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(7).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(8).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(9).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(10).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(12).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(13).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(14).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(15).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(16).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(17).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(18).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(19).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(20).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(22).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(23).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(24).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(25).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(26).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(27).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(28).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(29).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(30).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(31).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide(32).jpg" alt="an image load error">
+		</div>
+
+        <div id="log_div" style="visibility:hidden"></div>
+		
+		<!-- The ES7 2017 scripts  -->
+<!--	<script type="text/ecmascript" src="js/audio-player.js"></script>   -->
+        <script type="text/ecmascript" src="js/Pieces/Piece.js"></script>
+        <script type="text/ecmascript" src="js/Pieces/Pawn.js"></script>
+        <script type="text/ecmascript" src="js/Pieces/Rook.js"></script>
+        <script type="text/ecmascript" src="js/Pieces/Knight.js"></script>
+        <script type="text/ecmascript" src="js/Pieces/Bishop.js"></script>
+        <script type="text/ecmascript" src="js/Pieces/King.js"></script>
+        <script type="text/ecmascript" src="js/Pieces/Queen.js"></script>
+        <script type="text/ecmascript" src="js/ChessBoard.js"></script>
+		
+    </body>
+	
+</html>
+
+
+
+
