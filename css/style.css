@@ -110,9 +110,9 @@ ul#playlist li{
 	font-size: 3vh;
 	font-weight: bold;
 	opacity: 1;
-	padding: 5vh;
+	padding: 3vh;
 	height: 90%; 
-	width:  45%;
+	width:  30%;
 	z-index: 1000000;
 }
 
@@ -185,8 +185,8 @@ ul#playlist li{
 	border-radius: 2vh;
 	top: 8vh;
 	left: 0;
-	max-width: 90%;
-	max-height: 90%;
+	max-width: 68%;
+	max-height: 80%;
 	min-width: 0;
 	min-height: 0;
 	width: 45%;
