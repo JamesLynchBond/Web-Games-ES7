@@ -12,9 +12,9 @@ Below, see a copy of Blackjack.html
 	*****************************************************
 	*  													*
 	*	Author:		James Marion Lynch			 		*
-	*  	Date:		01-10-2020                          *
+	*  	Date:		02-02-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
-	* 	Title:		Blackjack game		              	*
+	* 	Title:		Audi, Blackjack, Video             	*
 	*  	Filename:	Blackjack.html             			*
 	* 	Language:	HTML5                          		*
 	*                                                   *
@@ -25,13 +25,15 @@ Below, see a copy of Blackjack.html
 	This program scales with the window, so it is able
 	to be played on any size screen, 100 inches diagonal,
 	or down to your cell phone screen size. 
-	I tested it on both my 43 inch TV hooked up to a Windows 10 Home laptop,
-	and my cell phone screen, running Android 10.
-	It uses viewport height, or viewport width for all that was px = pixel.
-	vh = viewport height, vw = viewport width.
-	Normally, people would use pixels like margin: 10px; this program says margin: 1vh;
-	By me using vh & vw, it scales with the browser, from 25% to 500% it all looks the same.
-	The only downside of this is you cannot scale the window.
+    
+	I tested it on both my 43 inch TV HDMI cabled an Asus Rog String (Windows 10 Home) laptop,
+	and my S21 Ultra Samsung 6.8 inch sreen, running Android 11 OS, 6 GB System RAM, 256 BG SSD.
+	It uses viewport height, or viewport width for a way to size things in relation to screen.
+	(vh = viewport height, vw = viewport width).
+	Normally, people would use pixels, em, % or something else.
+    like margin: 10px; this program says margin: 1vh;
+	By using vh & vw, it scales with the browser, from 25% to 500% it all looks the same.
+	The only downside of this is you cannot scale the window to zoom in or out.
 
 
 
@@ -40,11 +42,18 @@ Below, see a copy of Blackjack.html
 
 	Blackjack.html				The main HTML5 document (this file.)
 	
-	css/normalize.css			The Cascading Style Sheet (reset).
-	css/style.css				The Cascading Style Sheet (specific.)
+	css/normalize.css			The Cascading Style Sheet (browsers all behave the same, found on github.com).
+	css/style.css				The Cascading Style Sheet (specific, when fully devoloped, many style sheets will exist,
+                                    so user can choose light or dark theme or other.
+                                    This one file gives the entire game info on how to look and behave.)
 	
-	img/Cards/*.png				52 card images.
-	img/covers/*.jpg		    Audio music files for playlist.
+	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
+                                Based on 4 suits and 13 types, numbered 0-3, 0-12.
+                                Any card name is built from these 2 numbers and filename extension.
+                                
+	img/covers/*.png/jpg		Audio music files for playlist.
+    
+    img/Slides/slide (1 thru 15) .jpg
 	
 	js/jquery.min.js			Helper Utility library
 	js/math.min.js				class definitions for Vec3, Vec4, Mat4,...
@@ -56,26 +65,157 @@ Below, see a copy of Blackjack.html
 	res/movie.mp4				Place your file here of favorite movie.mp4
 	res/*.mp3					Place your file here of favorite music.mp3 and edit this file.
 
-	The head element has meta data, links external Style Sheets & JavaScript.
-	The title element is mandatory per w3schools.com.
+    Files that display when you issue the MS-DOS cmd.exe on the working folder or directory.
+    
+    dir /a:-d /s /b /o:n > "Dir list.txt"
+    
+    An editor.html
+    Audio-Player.html
+    Blackjack.html
+    ChessBoard.html
+    Deck of Unicode Playing Cards.html
+    Dir list.txt
+    Dir.bat
+    Flippable Playing Card.html
+    index.docx
+    template.html
+    css\normalize.css
+    css\style.css
+    img\blackSquare.png
+    img\li-img.png
+    img\li-img-redSq.jpg
+    img\whiteSquare.png
+    img\Cards\Ace_of_clubs.png
+    img\Cards\Ace_of_diamonds.png
+    img\Cards\Ace_of_hearts.png
+    img\Cards\ace_of_spades.png
+    img\Cards\CardBack.jpg
+    img\Cards\Eight_of_clubs.png
+    img\Cards\Eight_of_diamonds.png
+    img\Cards\Eight_of_hearts.png
+    img\Cards\Eight_of_spades.png
+    img\Cards\Five_of_clubs.png
+    img\Cards\Five_of_diamonds.png
+    img\Cards\Five_of_hearts.png
+    img\Cards\Five_of_spades.png
+    img\Cards\Four_of_clubs.png
+    img\Cards\Four_of_diamonds.png
+    img\Cards\Four_of_hearts.png
+    img\Cards\Four_of_spades.png
+    img\Cards\jack_of_clubs.png
+    img\Cards\jack_of_diamonds.png
+    img\Cards\jack_of_hearts.png
+    img\Cards\jack_of_spades.png
+    img\Cards\king_of_clubs.png
+    img\Cards\king_of_diamonds.png
+    img\Cards\king_of_hearts.png
+    img\Cards\king_of_spades.png
+    img\Cards\Nine_of_clubs.png
+    img\Cards\Nine_of_diamonds.png
+    img\Cards\Nine_of_hearts.png
+    img\Cards\Nine_of_spades.png
+    img\Cards\Queen_of_clubs.png
+    img\Cards\Queen_of_diamonds.png
+    img\Cards\Queen_of_hearts.png
+    img\Cards\queen_of_spades.png
+    img\Cards\Seven_of_clubs.png
+    img\Cards\Seven_of_diamonds.png
+    img\Cards\Seven_of_hearts.png
+    img\Cards\Seven_of_spades.png
+    img\Cards\Six_of_clubs.png
+    img\Cards\Six_of_diamonds.png
+    img\Cards\Six_of_hearts.png
+    img\Cards\Six_of_spades.png
+    img\Cards\Ten_of_clubs.png
+    img\Cards\Ten_of_diamonds.png
+    img\Cards\Ten_of_hearts.png
+    img\Cards\Ten_of_spades.png
+    img\Cards\Three_of_clubs.png
+    img\Cards\Three_of_diamonds.png
+    img\Cards\Three_of_hearts.png
+    img\Cards\Three_of_spades.png
+    img\Cards\Two_of_clubs.png
+    img\Cards\Two_of_diamonds.png
+    img\Cards\Two_of_hearts.png
+    img\Cards\Two_of_spades.png
+    img\covers\arlo-gunthrie.png
+    img\covers\beach-boys.png
+    img\covers\blue-ocean.jpg
+    img\covers\golden-ocean.jpg
+    img\covers\h2r.jpg
+    img\covers\janis-joplin.jpg
+    img\covers\joe-walsh.jpg
+    img\covers\led-zeppelin.jpg
+    img\covers\love-songs.jpg
+    img\covers\oldies.jpg
+    img\covers\pink-floyd.jpg
+    img\covers\vortex.png
+    img\Slides\slide1.jpg
+    img\Slides\slide10.jpg
+    img\Slides\slide11.jpg
+    img\Slides\slide12.jpg
+    img\Slides\slide13.jpg
+    img\Slides\slide14.jpg
+    img\Slides\slide15.jpg
+    img\Slides\slide2.jpg
+    img\Slides\slide3.jpg
+    img\Slides\slide4.jpg
+    img\Slides\slide5.jpg
+    img\Slides\slide6.jpg
+    img\Slides\slide7.jpg
+    img\Slides\slide8.jpg
+    img\Slides\slide9.jpg
+    js\audio-player.js
+    js\Blackjack.js
+    js\ChessBoard.js
+    js\Icosa.js
+    js\jquery.min.js
+    js\math.min.js
+    js\utils.js
+    js\Pieces\Bishop.js
+    js\Pieces\King.js
+    js\Pieces\Knight.js
+    js\Pieces\Pawn.js
+    js\Pieces\Piece.js
+    js\Pieces\Queen.js
+    js\Pieces\Rook.js
+    res\amazing-grace.mp3
+    res\Bring It On Home.mp3
+    res\Coming Into Los Angeles.mp3
+    res\lifes-been-good.mp3
+    res\Money.mp3
+    res\movie.mp4
+    res\papa-loved-momma.mp3
+    res\Piece Of My Heart.mp3
+    res\Respect.mp3
+    res\Time.mp3
+    res\When A Man Loves A Woman.mp3
+    res\Whole Lotta Love.mp3
+
+
+	The head element has meta data, links external Cascading Style Sheets & JavaScript.
+	The <title>element</title> is mandatory per w3schools.com.
+	
  -->
- 
+
 <html lang="en-US">
+
     <head>
 
 		<!-- Meta-data is content type=text/html, encoding is utf-8, en-US, viewport size & limits.
 			 page contents, all so Search Engines can better index the page.  -->
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport"    content="width=device-width, initial-scale=1" />
         <meta name="description" content="Blackjack Card Game, Audio & Video player." />
         <meta name="keywords"    content="HTML5, CSS3, JavaScript ES7 2017, WebGL, GLSL." />
         <meta name="author"      content="James M. Lynch." />
         <meta name="college"     content="Los Angeles Trade Tech College (LATTC)." />
-		<meta name="professor"   content="Lin" />
+		<meta name="professor"   content="Albert Saryan" />
 
 		<!-- Link external Cascading Style Sheets to page. -->
-        <link rel="stylesheet" href="css/normalize.css" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 		<!-- Load external JavaScript program text files.  -->
 		<script type="text/ecmascript" src="js/jquery.min.js"></script>
@@ -83,16 +223,17 @@ Below, see a copy of Blackjack.html
         <script type="text/ecmascript" src="js/utils.js"></script>
 
 		<!-- The title appears in browser tab. -->
-		<title>JML 3D Studios, Blackjack 2021</title>
+		<title>JML 3D Studios, Blackjack 2021 writen in ES7 2017</title>
 
 	<!-- The closing tag for the head element. -->
     </head>
 
 	<!-- The opening tag for the body element which is mandatory in all HTML5 documents,
 		 & shows the JavaScript function to run when the body element is through loading.  -->
+
     <body onload="setupWebGL();">
 
-		<!-- The menu button container element @top of screen. -->
+		<!-- The menu_bar button container element @top of screen. -->
         <div id="menu_bar" class="menus">
 			<button type="button" id="cmd_edit_name"    onclick="JML_Blackjack.player.cmdEditName();"  title="Edit your name?"></button> 
 			<button type="button" id="bank"             onclick="JML_Blackjack.player.cmdResetBank();" title="Click to set bank $0.00"></button>
@@ -114,7 +255,7 @@ Below, see a copy of Blackjack.html
            	<button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?" style="float: right;" >Mode?</button>
         </div>
         
-        <!-- The log history element shares screen space with below Audio Player element.  -->
+        <!-- The log history element shares screen space with Audio Player element.  -->
         <div id="log_div" style="visibility: hidden"></div>
 
 		<div id="audio-player">
@@ -125,7 +266,7 @@ Below, see a copy of Blackjack.html
 			<!-- Audio Image (album covers)-->
 			<div id="audio-image">
 				<img class="cover" alt="Album covers and or Media Art">
-				<p id="audio_title">Scroll down for controls!</p>
+				<p id="audio_title">Scroll down for Audio Player controls!</p>
 			</div>
 
 			<!-- Audio information. -->
@@ -162,16 +303,21 @@ Below, see a copy of Blackjack.html
 			</div>
 
 			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
-				<li song="music1.mp3" cover="albumn-cover-art-1.jpg" artist="Artist 1">Song-1</li>
-				<li song="music2.mp3" cover="albumn-cover-art-2.jpg" artist="Artist 2">Song-1</li>
-				<li song="music3.mp3" cover="albumn-cover-art-3.jpg" artist="Artist 3">Song-1</li>
-				<li song="music4.mp3" cover="albumn-cover-art-4.jpg" artist="Artist 4">Song-1</li>
+				<li song="amazing-grace.mp3" 			cover="pink-floyd.jpg"    artist="Judy Collins">   Amazing Grace</li>
+				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Money</li>
+				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Time</li>
+				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks">   Papa Loved Momma</li>
+				<li song="Respect.mp3" 					cover="pink-floyd.jpg"    artist="Aretha Franklin">Respect</li>
+				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie">  Coming Into Los Angeles</li>
+				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin">    Whole Lotta Love</li>
+				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin">   Piece Of My Heart</li>
+				<li song="When A Man Loves A Woman.mp3" cover="pink-floyd.jpg" 	  artist="Percy Sledge">   When A Man Loves A Woman</li>
+				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh">      Lifes Been Good</li>
 			</ul>
 			
 		<!-- End of Audio Player element.  -->
 		</div>
 
-		<!-- The canvas element to display the Icosahedron 3D WebGL content.  -->
         <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
 
 		<!-- The parent element allows resize of the child elements width & height.  -->
@@ -181,7 +327,7 @@ Below, see a copy of Blackjack.html
 			</video>
 		</div>
 
-		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed  -->
+		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed.  -->
         <div id="title_bar"></div>
 
 		<!-- Our card table elements. -->
@@ -204,41 +350,24 @@ Below, see a copy of Blackjack.html
             <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>
             <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
         </div>
-		
-		<!--  The 32 background images for slideshow.  -->
+
+		<!--  The 16 background images for slideshow.  -->
 		<div id="mySlideShow" class="w3-content w3-display-container">
-			<img class="mySlides" src="img/Slides/slide(1).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(2).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(3).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(4).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(5).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(6).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(7).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(8).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(9).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(10).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(12).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(13).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(14).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(15).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(16).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(17).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(18).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(19).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(20).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(22).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(23).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(24).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(25).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(26).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(27).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(28).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(29).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(30).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(31).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(32).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide1.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide2.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide3.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide4.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide5.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide6.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide7.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide8.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide9.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide10.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide11.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide12.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide13.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide14.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide15.jpg" alt="an image load error">
 		</div>
 
 		<!-- The scripts I want loaded last.  -->
@@ -253,5 +382,3 @@ Below, see a copy of Blackjack.html
 </html>
 
 <!-- eof -->
-
-
