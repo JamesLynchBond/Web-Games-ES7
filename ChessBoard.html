@@ -61,10 +61,7 @@ Language is English, US.  -->
     </head>
     <body onload="setupWebGL('chessboard', '2d');">
     
-        <!-- The canvas element to display the chessboard in 2D.  -->
-        <canvas id="chessboard" title="Scroll wheel me to zoom!"></canvas>
-        
-       <!-- The log history element shares screen space with below Audio Player element.  -->
+        <!-- The log history element shares screen space with Audio Player element.  -->
         <div id="log_div" style="visibility: hidden"></div>
 
 		<div id="audio-player">
@@ -126,9 +123,10 @@ Language is English, US.  -->
 			
 		<!-- End of Audio Player element.  -->
 		</div>
-        
-        
-        <!-- The parent element allows resize of the child elements width & height.  -->
+
+        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
+
+		<!-- The parent element allows resize of the child elements width & height.  -->
 		<div id="video_container" class="resizable" style="visibility:hidden;">
 			<video id="video_element" style="visibility:hidden;" mute controls loop>
 				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
@@ -151,8 +149,8 @@ Language is English, US.  -->
             <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
         </div>
 
-		<!--  The 32 background images for slideshow.  -->
-		<div class="w3-content w3-display-container">
+		<!--  The 16 background images for slideshow.  -->
+		<div id="mySlideShow" class="w3-content w3-display-container">
 			<img class="mySlides" src="img/Slides/slide(1).jpg" alt="an image load error">
 			<img class="mySlides" src="img/Slides/slide(2).jpg" alt="an image load error">
 			<img class="mySlides" src="img/Slides/slide(3).jpg" alt="an image load error">
@@ -168,23 +166,6 @@ Language is English, US.  -->
 			<img class="mySlides" src="img/Slides/slide(13).jpg" alt="an image load error">
 			<img class="mySlides" src="img/Slides/slide(14).jpg" alt="an image load error">
 			<img class="mySlides" src="img/Slides/slide(15).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(16).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(17).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(18).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(19).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(20).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(22).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(23).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(24).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(25).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(26).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(27).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(28).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(29).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(30).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(31).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(32).jpg" alt="an image load error">
 		</div>
 
         <script type="text/ecmascript" src="js/audio-player.js"></script>   

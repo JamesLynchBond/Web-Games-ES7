@@ -43,14 +43,11 @@
 		<!-- This is the title to place in the tab of browser. -->
         <title>JML 3D Studios, Text Editor 2021</title>
 		
-	<!-- The ending tag for the head element. -->
     </head>
-
-	<!-- The opening tag for body element which is mandatory in all HTML5 documents,
-		 & which JavaScript functions to run when the body of the document is finished loading.  -->
     <body onload="setupWebGL();">
 	
-        <!-- The log history element shares screen space with below Audio Player element.  -->
+         
+        <!-- The log history element shares screen space with Audio Player element.  -->
         <div id="log_div" style="visibility: hidden"></div>
 
 		<div id="audio-player">
@@ -112,6 +109,16 @@
 			
 		<!-- End of Audio Player element.  -->
 		</div>
+
+        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
+
+		<!-- The parent element allows resize of the child elements width & height.  -->
+		<div id="video_container" class="resizable" style="visibility:hidden;">
+			<video id="video_element" style="visibility:hidden;" mute controls loop>
+				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
+			</video>
+		</div>
+        
 		<!-- The lower menu bar button container element. -->
         <div id="task_bar" class="menus">
 			<button type="button" id="cmd_open_file"   onclick="cmdOpenFile();"     title="Click to open file?">Open?</button>
@@ -126,22 +133,12 @@
             <button type="button" id="cmd_full_screen" onclick="cmdFullScreen();"   title="Full Screen Mode?">Mode?</button>
             <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
         </div>
-        
-        <!-- The canvas element to display the Icosahedron 3D WebGL content.  -->
-        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
 
 		<!-- The parent element allows resize of the child elements width & height.  -->
 		<div class="resizable">
 	
 			<!-- Use JavaScript to get the innerHTML.  -->
 			<div id="editor_content" contenteditable="true"></div>
-		</div>
-        
-        <!-- The parent element allows resize of the child elements width & height.  -->
-		<div id="video_container" class="resizable" style="visibility:hidden;">
-			<video id="video_element" style="visibility:hidden;" mute controls loop>
-				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
-			</video>
 		</div>
         
         <!-- The scripts I want loaded last.  -->
