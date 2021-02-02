@@ -2,32 +2,32 @@
 
 <!--
 
-Author:							James Marion Lynch
-Date:							12-06-2020
-Title:							Chess Game
-Filename:						ChessBoard.html
-Languages:						HTML5, CSS3 & JavaScript ES7 2017, WebGL and GLSL.
-	
-Dependencies:	   				(Shown in the order they must be loaded in.)
-Filenames:						Description:
+    Author:							James Marion Lynch
+    Date:							12-06-2020
+    Title:							Chess Game
+    Filename:						ChessBoard.html
+    Languages:						HTML5, CSS3 & JavaScript ES7 2017, WebGL and GLSL.
+        
+    Dependencies:	   				(Shown in the order they must be loaded in.)
+    Filenames:						Description:
 
-ChessBoard.html					The HTML5 document (this file.)
-css/normalize.css				The Cascading Style Sheet (reset.)
-css/style.css					The Cascading Style Sheet (specific.)
-img/img.png        				The background image.
-img/blackSquare.png 			The chessboard square images
-img/whiteSquare.png 			The chessboard square images
-js/jquery.min.js
-js/math.min.js					The class definition file for Camera, Vec3, Vec4, Quat, Mat4 & more.
-js/utils.js						Helper function library, contains setupWebGL().
-js/audio-player.js
-js/Pieces/Piece.js				class definition file for Piece, (definition files below:)
-js/Pieces/Pawn.js				class Pawn   extends Piece.
-js/Pieces/Rook.js				class Rook   extends Piece.
-js/Pieces/Bishop.js				class Bishop extends Piece.
-js/Pieces/King.js				class King   extends Piece.
-js/Pieces/Queen.js				class Queen  extends Piece.
-js/ChessBoard.js				class definition file for Chessboard.
+    ChessBoard.html					The HTML5 document (this file.)
+    css/normalize.css				The Cascading Style Sheet (reset.)
+    css/style.css					The Cascading Style Sheet (specific.)
+    img/img.png        				The background image.
+    img/blackSquare.png 			The chessboard square images
+    img/whiteSquare.png 			The chessboard square images
+    js/jquery.min.js
+    js/math.min.js					The class definition file for Camera, Vec3, Vec4, Quat, Mat4 & more.
+    js/utils.js						Helper function library, contains setupWebGL().
+    js/audio-player.js
+    js/Pieces/Piece.js				class definition file for Piece, (definition files below:)
+    js/Pieces/Pawn.js				class Pawn   extends Piece.
+    js/Pieces/Rook.js				class Rook   extends Piece.
+    js/Pieces/Bishop.js				class Bishop extends Piece.
+    js/Pieces/King.js				class King   extends Piece.
+    js/Pieces/Queen.js				class Queen  extends Piece.
+    js/ChessBoard.js				class definition file for Chessboard.
 
 
 
@@ -124,7 +124,7 @@ Language is English, US.  -->
 		<!-- End of Audio Player element.  -->
 		</div>
 
-        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
+        <canvas id="chessboard" title="Scroll wheel me to zoom!"></canvas>
 
 		<!-- The parent element allows resize of the child elements width & height.  -->
 		<div id="video_container" class="resizable" style="visibility:hidden;">
