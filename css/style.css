@@ -1,25 +1,32 @@
+/*
 
+	Author:		James Marion Lynch, CEO
+    Corp:       JML_3D_Studios
+	Date:		02-02-2021
+	Version:	Alpha 1.0.0.0
+	Title:		Cascading Style Sheet
+	Filename:	css/style.css
+	Language:	CSS3
+    
+    Other languages used are: HTML5, JavaScript (ECMAScript = ES7 2017),
+    WebGL, a sub-set of OpenGL, GLSL (Graphics Language Shader Language).
+    There is one page which uses jquery.js in audio-player.js.
 
-
-	/****************************************************
-	*  													*
-	*	Author:		James Marion Lynch			 		*
-	*  	Date:		01-07-2021                          *
-	* 	Version:	Alpha 1.0.0.0                      	*
-	* 	Title:		Cascading Style Sheet              	*
-	*  	Filename:	css/style.css             			*
-	* 	Language:	CSS3                          		*
-	*                                                   *
-	****************************************************/
+*/
 
 html{ 
 	font-size: 1vh;
 }
 
-body{
+/*
+
+    The background is of the ocean @sunset, with storm clouds.
+    A skull & Corporation name embedded with Microsoft 3D Paint.
     
-    /* ocean sunset w skull & logo   */
-	background: url(../img/img.jpg);
+*/
+body
+{
+	background: url(../img/Slides/slide(1).jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: white;
@@ -87,7 +94,6 @@ ul#playlist li{
     }
 }
 
-
 /*  
 	Prevents audio-player & log_div elements from having scrollbars, scrolls with mouse wheel.
 */
@@ -98,8 +104,6 @@ ul#playlist li{
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
-
-
 
 #audio-player:hover, #log_div:hover{
 	border: 1vh solid purple;
@@ -156,21 +160,8 @@ ul#playlist li{
 	z-index: 1000; 	
 }
 
-
 /*
-	The 3 elements below are members of class menus & hold all our button elements.
-	Class menus gives the padding space for click event, y-axis has shadow space.
-	Because the menus class is box-sizing: 
-*/
-#menu_bar, 			/* 	Top buttons.  	  */
-#audio_bar,  		/* 	Middle buttons.   */
-#task_bar 			/* 	Bottom buttons.   */
-{ 		
-	z-index: 10;
-}
-
-/*
-	Below is our Audio Player menus bar for our buttons.
+	Below is our Audio Player menu bar for our buttons.
 
 */
 #audio_bar{
@@ -185,12 +176,12 @@ ul#playlist li{
 	border-radius: 2vh;
 	top: 8vh;
 	left: 0;
-	max-width: 68%;
+	max-width: 85%;
 	max-height: 80%;
 	min-width: 0;
 	min-height: 0;
-	width: 45%;
-	height: 45%;
+	width: 30%;
+	height: 30%;
 	resize: both;
 	margin: 1vh;
 	overflow: hidden;
@@ -445,20 +436,18 @@ ul#playlist li{
 	I am making a compromise and will not use @media commands, slows down the code.
 	Also complicates the code when a compromise is best.
 	
-	Note:	This program will not resize when a browser window is changed.
-			Bu using box-sizing: border-box; The element does not grow due to margin or padding.
-			I am using vh = viewport height & vw = viewport width sizes, so browser cannot grow or shrink page elements.
-			So calculations on size are based as a percentage of screen size.
+    This program will not resize when a browser window is changed.
+    By using box-sizing: border-box; The element does not grow due to margin or padding.
+    I am using vh = viewport height & vw = viewport width sizes, so browser cannot grow or shrink page elements.
+    Calculations on size are based as a percentage of screen size.
 */
-
 .menus{
 	box-sizing: border-box;
 	display: inline-block;
 	height: 8vh;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0;
 	overflow: hidden;
-	padding: .8vh;				/* Allows for .6vh long shadow effects, buttons actually moves on page.  */
+	padding: .7vh;
 	position: fixed;
 	left: 0;
 	text-align: center;
@@ -469,7 +458,7 @@ ul#playlist li{
 button, select{
 	background-color: white;
 	color: black;
-	border: .3vh solid purple;
+	border: .25vh solid purple;
 	border-radius: 2vh;							/*  Half the size of the height gives rounded buttons.  */
 	-moz-box-shadow: 	.7vh .8vh 1vh black;	
 	-webkit-box-shadow: .7vh .8vh 1vh black;	
@@ -478,12 +467,12 @@ button, select{
 	cursor: pointer;
 	display: inline-block;
 	float: left;
-	font-size: 1.7vh;
+	font-size: 1.6vh;
 	font-weight: normal;
 	height: 4vh;
-	width: 8.4vh;
+	width: 8.5vh;
 	margin: 0 .5vh 0 .5vh;						
-	opacity: .8;
+	opacity: .9;
 	outline:  0 !important;
 	overflow: hidden;
 	padding:  0;										
@@ -494,17 +483,16 @@ button, select{
 	z-index: 10000;
 }
 
+/*  
+	The buttons 0 .5vh = .6vh shadow which disappears matching the length of shadow.
+	The button moves down the y-axis when clicked, see transform: translateY(.6vh);  
+*/
 button:active, select:active{
 	-moz-box-shadow: 	0 .5vh black;	
 	-webkit-box-shadow: 0 .5vh black;	
 	box-shadow: 		0 .5vh black;
 	transform: translateY(.6vh);
 }
-/*  
-	The button moves down the y-axis when clicked, (see above transform: translateY(.6vh);  
-	The buttons 0 .5vh = .6vh shadow which disappears matching the length of shadow.
-*/
-
 
 button:disabled, button[disabled], select:disabled, select[disabled]{
     background-color: purple;
@@ -564,7 +552,7 @@ button:hover, select:hover{
 	-webkit-box-shadow: 10px 10px 10px gray;    
  	-moz-box-shadow:    10px 10px 10px gray;   
 	box-shadow:         10px 10px 10px gray;
-	border: .3vh solid purple;
+	border: .25vh solid purple;
 	border-radius: 1vh;
    	box-sizing: border-box;
 	color: black;
@@ -623,8 +611,8 @@ button:hover, select:hover{
 
 .card_table{
     display: inline-block;
-	margin: .8vh;
-	padding: .5vh;
+	margin: 1vh;
+	padding: 1vh;
 	position: absolute;
 	z-index: 10;
 	overflow-y: scroll;
@@ -643,7 +631,6 @@ button:hover, select:hover{
 	top: 20vh;
 	left: 0;
 	height: auto;
-	padding: .6vh;
 	width: 50%;
 }
 
@@ -651,23 +638,21 @@ button:hover, select:hover{
 	top: 20vh;
 	left: 50%;
 	height: auto;
-	padding: .6vh;
 	width: 50%;
 }
 
 #card_table_player_split_hand{
 	top: 44vh;
 	left: 0;
-	height: auto;
-	padding: .6vh;	
+	height: auto;	
 	width: 50%;
 }
 
 #card_table_fullscreen{
 	top: 9vh;
 	left: 0;
-	height: 80%;
-	width: 75%;
+	height: auto;
+	width: 82%;
 }
 
 #editor_content{
@@ -710,15 +695,18 @@ button:hover, select:hover{
 	scrollbar-width: none; 
 }
 
+canvas{
+    position: fixed;
+	z-index: 10;
+}
+
 #JML_canvas{
 	background-color: transparent;
 	color: transparent;
 	top: 0;
 	right: 0;
-	width: 15vh;
-	height: 15vh;
-	position: fixed;
-	z-index: 20;
+	width: 13vh;
+	height: 13vh;
 }
 
 #chessboard{
@@ -734,8 +722,6 @@ button:hover, select:hover{
 	font-weight: normal;
     margin: 2vh;
     padding: 3vh;
-    position: fixed;
-	z-index: 10;
 }
 
 footer{

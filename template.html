@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<!--
+
+	*****************************************************
+	*  													*
+	*	Author:		James Marion Lynch			 		*
+	*  	Date:		01-10-2020                          *
+	* 	Version:	Alpha 1.0.0.0                      	*
+	* 	Title:		Blackjack game		              	*
+	*  	Filename:	Blackjack.html             			*
+	* 	Language:	HTML5                          		*
+	*                                                   *
+	*****************************************************
+
+	Notes: 
+	
+	This program scales with the window, so it is able
+	to be played on any size screen, 100 inches diagonal,
+	or down to your cell phone screen size. 
+    
+	I tested it on both my 43 inch TV HDMI cabled an Asus Rog String (Windows 10 Home) laptop,
+	and my S21 Ultra Samsung 6.8 inch sreen, running Android 11 OS, 6 GB System RAM, 256 BG SSD.
+	It uses viewport height, or viewport width for a way to size things in relation to screen.
+	(vh = viewport height, vw = viewport width).
+	Normally, people would use pixels, em, % or something else.
+    like margin: 10px; this program says margin: 1vh;
+	By using vh & vw, it scales with the browser, from 25% to 500% it all looks the same.
+	The only downside of this is you cannot scale the window to zoom in or out.
+
+
+
+	Dependencies:       		(Shown in load order.)
+	Filenames:					Descriptions:
+
+	template.html				The main HTML5 document (this file.)
+	
+	css/normalize.css			The Cascading Style Sheet (browsers all behave the same, found on github.com).
+    
+    The Specific Cascading Style Sheet allows the user to choose light or dark themes, possibly.
+    Just write 2 different css text files with only the color theme different.
+    This file tells the browser color, size, page behavior and event handlers.
+    
+	css/style.css				
+	
+	
+	js/jquery.min.js			Helper Utility library
+	js/math.min.js				class definitions for Vec3, Vec4, Mat4,...
+	js/utils.js					Utility Helper library, geometry for Platonic solids.
+	js/audio-player.js			The Audio Player jQuery program.
+	js/Icosa.js	 				WebGL codes, GLSL shader programs, geo data sets it gets from above.
+	
+	res/movie.mp4				Place your file here of favorite movie.mp4
+	res/*.mp3					Place your file here of favorite music.mp3 and edit this file.
+
+	The head element has meta data the browser needs to properly display your page.
+    Links external Cascading Style Sheets & JavaScript programming code.
+    The head element lets a browser look at the cotents of the head, 
+    from its opening element tag, to its closing elements tag.
+    
+    The <!DOCTYPE html>, <html>, <head>, and <body> tags are all mandatory.
+    
+    Most all elements in an html document, have a tag called the opening and closing tag of the element.
+    p is the tag for a paragraph. 
+    
+    <p>This is a paragraph.</p>
+    
+    The html language do not care about blank spaces or indentation.
+    That is so a programmer can read it.
+    
+    The reserved word div is an element used 
+    
+    
+	The <title>element</title> is mandatory per w3schools.com.
+	
+ -->
+
+<html lang="en-US">
+
+    <head>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="viewport"    content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Blackjack Card Game, Audio & Video player." />
+        <meta name="keywords"    content="HTML5, CSS3, JavaScript ES7 2017, WebGL, GLSL." />
+        <meta name="author"      content="James M. Lynch." />
+        <meta name="college"     content="Los Angeles Trade Tech College (LATTC)." />
+		<meta name="professor"   content="Albert Saryan" />
+
+		<!-- Link external Cascading Style Sheets to page. -->
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+		<!-- Load external JavaScript program text files.  -->
+		<script type="text/ecmascript" src="js/jquery.min.js"></script>
+        <script type="text/ecmascript" src="js/math.min.js"></script>
+        <script type="text/ecmascript" src="js/utils.js"></script>
+
+		<!-- The title appears in browser tab. -->
+		<title>JML_3D_Studios, Template.html, circa 2021.</title>
+
+	<!-- The closing tag for the head element. -->
+    </head>
+    <body>
+    
+    
+
+	<!-- The closing tag of the body element.  -->
+    </body>
+
+<!-- The closing tag of the html document.  -->
+</html>
+
+<!-- eof -->

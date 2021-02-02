@@ -1,6 +1,3 @@
-
-
-
 	/************************************************
 	*  												*
 	*	Author:		James Marion Lynch			 	*
@@ -358,11 +355,41 @@ const STR_HIDDEN     = 'hidden',
 	  SHUFFLE_X		 = 10,
 	  MIN_DELAY      = 10,
 	  MAX_DELAY      = 3000,
+      
+/*
+
+    Below is the syntax used to create an Array literal, this avoids a call to Array(),
+    which is a function with more overhead than below literal syntax.
+    I use to speed up the program a bit more.
+
+*/     
+      
 	  COLOR_ARRAY    = ['black', 'red', 'red', 'black'],
 	  SUIT_ARRAY     = ['clubs', 'diamonds', 'hearts', 'spades'],
 	  SYMBOL_ARRAY   = ['&#9827', '&#9830', '&#9829', '&#9824'],
 	  TYPE_ARRAY_1   = ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten','Jack', 'Queen', 'King', 'Ace'],
 	  TYPE_ARRAY_2   = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'],
+      
+/*
+
+    There are 52 playing card symbols in the Unicode set of Characters or Symbols.
+    There are also Jokers, Backs, and so many symbols you could never ;earn them all!
+    This has a huge memory savings versus *.png files, which are 50,000 bytes in size on average.
+    A Unicode Character Symbol uses 2 bytes of memory be card for the image it looks like.
+    Just Google "Unicode Playing Card Symbols" The chess pieces use Unicode Charaters to save memory.
+    Memory saving of 25,000 times per card means a very low power device could better play the game.
+    (look on WiKi for info on Unicode chars., 1, 2, 3, 4, a, b, c, A, B, C, ...)
+    In the early days of computing there was an ASCII set of characters, 128 of them, 7 bits per character.
+    Next the extended set of ASCI character came out, doubling the character count to 256!
+    Unicode is so vast it is broken up into planes of symbols! 
+    Remember, the Chinese alphabet is about 3,000 characters.
+    (Unicode was designed to never run out of space I hear.)
+    
+
+*/
+      
+      
+      
 	  UNICODE_PLAYING_CARDS	= [
 	"&#127186;", "&#127187;", "&#127188;", "&#127189;", "&#127190;", "&#127191;", "&#127192;", "&#127193;", "&#127194;", "&#127195;", "&#127197;", "&#127198;", "&#127185;",
 	"&#127170;", "&#127171;", "&#127172;", "&#127173;", "&#127174;", "&#127175;", "&#127176;", "&#127177;", "&#127178;", "&#127179;", "&#127181;", "&#127182;", "&#127169;",
@@ -378,7 +405,7 @@ class Card
 	constructor(index = MIN_CARD_INDEX, visible = STR_VISIBLE)
 	{
 		
-		logEvent("Program entered class Card() constructor function.");
+		logEvent("Program entered class Card constructor() function.");
 		
 		// Insure card index is a positive integer with 0-51 values.
 		index = Math.floor(Math.abs(index));					    // create a positive integer.
@@ -409,11 +436,17 @@ class Card
 		let div = document.createElement("div");
 		div.innerHTML = this.strUnicode;
 		div.id = this.id;
+        
+        // visibility is only allowed to be 'hidden' or 'visible'.
+        // Below is called an immediate if statement. (iff) in some languages, and that is no type.
 		div.style.visibility = (visible === STR_HIDDEN) ? STR_HIDDEN : STR_VISIBLE;
 		
 		let strColor = (this.strColor === "red") ? "card-red" : "card";
 		div.classList.add(strColor);
 		
+        // What get's stored here is a pointer to the original class Object().
+        // This does not make a deep copy of a new Object.
+        // Any class your create 
 		this.cardDiv = div;
 		this.isOnTable = false;
 		
@@ -429,6 +462,8 @@ class Card
 		
 	}
  
+    // By default the Player passes no arguments, unless player splits his hand into 2.
+    // There is a small logic error which stops you from hitting after splitting.
     draw(id = 'card_table_player', visible = STR_VISIBLE)
 	{
 		let strID = id.toLowerCase();

@@ -64,7 +64,7 @@ Language is English, US.  -->
         <!-- The canvas element to display the chessboard in 2D.  -->
         <canvas id="chessboard" title="Scroll wheel me to zoom!"></canvas>
         
-        <!-- The log history element shares screen space with below Audio Player element.  -->
+       <!-- The log history element shares screen space with below Audio Player element.  -->
         <div id="log_div" style="visibility: hidden"></div>
 
 		<div id="audio-player">
@@ -75,7 +75,7 @@ Language is English, US.  -->
 			<!-- Audio Image (album covers)-->
 			<div id="audio-image">
 				<img class="cover" alt="Album covers and or Media Art">
-				<p id="audio_title">Scroll down for controls!</p>
+				<p id="audio_title">Scroll down for Audio Player controls!</p>
 			</div>
 
 			<!-- Audio information. -->
@@ -112,19 +112,27 @@ Language is English, US.  -->
 			</div>
 
 			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
-				<li song="amazing-grace.mp3" 			cover="h2r.jpg" 		  artist="Judy Collins"    title="Amazing Grace!">Amazing Grace</li>
-				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Money">Money</li>
-				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd"      title="Time">Time</li>
-				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks"    title="Papa Loved Momma">Papa Loved Momma</li>
-				<li song="Respect.mp3" 					cover="h2r.jpg"           artist="Aretha Franklin" title="Respect">Respect</li>
-				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie"   title="Comming Into Los Angeles">Coming Into Los Angeles</li>
-				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin" 	   title="Whole Lotta Love">Whole Lotta Love</li>
-				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin"	   title="Piece Of My Heart">Piece Of My Heart</li>
-				<li song="When A Man Loves A Woman.mp3" cover="h2r.jpg" 	  	  artist="Percy Sledge"    title="When A Man Loves A Woman">When A Man Loves A Woman</li>
-				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh" 	   title="Lifes Been Good">Lifes Been Good</li>
+				<li song="amazing-grace.mp3" 			cover="pink-floyd.jpg"    artist="Judy Collins">   Amazing Grace</li>
+				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Money</li>
+				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Time</li>
+				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks">   Papa Loved Momma</li>
+				<li song="Respect.mp3" 					cover="pink-floyd.jpg"    artist="Aretha Franklin">Respect</li>
+				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie">  Coming Into Los Angeles</li>
+				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin">    Whole Lotta Love</li>
+				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin">   Piece Of My Heart</li>
+				<li song="When A Man Loves A Woman.mp3" cover="pink-floyd.jpg" 	  artist="Percy Sledge">   When A Man Loves A Woman</li>
+				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh">      Lifes Been Good</li>
 			</ul>
 			
 		<!-- End of Audio Player element.  -->
+		</div>
+        
+        
+        <!-- The parent element allows resize of the child elements width & height.  -->
+		<div id="video_container" class="resizable" style="visibility:hidden;">
+			<video id="video_element" style="visibility:hidden;" mute controls loop>
+				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
+			</video>
 		</div>
 
 		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed  -->
@@ -179,10 +187,7 @@ Language is English, US.  -->
 			<img class="mySlides" src="img/Slides/slide(32).jpg" alt="an image load error">
 		</div>
 
-        <div id="log_div" style="visibility:hidden"></div>
-		
-		<!-- The ES7 2017 scripts  -->
-<!--	<script type="text/ecmascript" src="js/audio-player.js"></script>   -->
+        <script type="text/ecmascript" src="js/audio-player.js"></script>   
         <script type="text/ecmascript" src="js/Pieces/Piece.js"></script>
         <script type="text/ecmascript" src="js/Pieces/Pawn.js"></script>
         <script type="text/ecmascript" src="js/Pieces/Rook.js"></script>

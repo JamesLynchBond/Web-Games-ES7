@@ -34,7 +34,7 @@ drag(ev);
 startTouch(evt);
 continueTouch(evt);
 stopTouch();
-moveProgressBar(id = "myBar", maxBarWidth = 100, delayInMilliseconds = 80)
+cmdProgressBar(id = "myBar", maxBarWidth = 100, delayInMilliseconds = 80)
 mouseDown(ev);
 mouseUp(ev);
 mouseMove(ev);
@@ -338,7 +338,7 @@ function wheelHandler(ev)
   if (drawScene !== null) drawScene();
 }
 
-function moveProgressBar(id = "myBar", maxBarWidth = 100, delayInMilliseconds = 80)
+function cmdProgressBar(id = "myBar", maxBarWidth = 100, delayInMilliseconds = 80)
 {
 	const elem = document.getElementById(id);
 	if (elem && startingWidth === 0)

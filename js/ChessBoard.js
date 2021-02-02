@@ -136,14 +136,12 @@ const MIN_SQUARE_INDEX = 0,
       INNER_BORDER_COLOR = "black",
       INNER_BORDER_THICKNESS = 1,
       STRING_CHARACTERS = "prnbqkPRNBQK",	
-      PERCENTAGE_OF_SCREEN_MULTIPLIER = 0.60,
+      SCREEN_MULTIPLE = 0.55,
       NEW_STR_BRD = "rnbqkbnrpppppppp8888PPPPPPPPRNBQKBNR",
       whiteSquareIndices = [ 0, 2, 4, 6, 9, 11, 13, 15, 16, 18, 20, 22, 25, 27, 29, 31, 32, 34, 36, 38, 41, 43, 45, 47, 48, 50, 52, 54, 59, 61, 63 ],
       CHESS_PIECES_FILENAMES = [ "WhitePawn", "WhiteRook", "WhiteBishop", "WhiteKnight", "WhiteQueen", "WhiteKing", "BlackPawn", "BlackRook", "BlackBishop", "BlackKnight", "BlackQueen", "BlackKing" ],
       CHESS_PIECES_FILENAMES_SIMPLE = [ "wP", "wR", "wB", "wN", "wQ", "wK", "bP", "bR", "bB", "bN", "bQ", "bK" ],
       CHESS_PIECES_UNICODE = [ "\u2659", "\u2656", "\u2658", "\u2657", "\u2655", "\u2654", "\u265F", "\u265C", "\u265E", "\u265D", "\u265B", "\u265A" ];
-
-
 
 function drawScene() {}	// a dummy function called from 'js/utils.js'
 
@@ -170,29 +168,11 @@ class ChessBoard
 {
 	constructor()
 	{
-        // setupWebGL() in utils.js file prepares the canvas & gl context.
-		// Should make this setup its own canvas & gl if not set by setupWebGL() in utils.js file.
-        if (!canvas)
-        {
-            let msg = "Error, canvas.getContext not found?";
-            alert(msg);
-            console.log(msg);
-            logEvent(msg);
-            return;
-        }
-        
-        if (!gl)
-        {
-            let msg = "Error, WebGL graphics library not found?";
-            alert(msg);
-            console.log(msg);
-            logEvent(msg);
-            return;
-        }
+        if (canvas === null || gl === null) return;
 
 		this.gameStarted = false;
 
-		let size = Math.floor((Math.min(screen.height, screen.width) * PERCENTAGE_OF_SCREEN_MULTIPLIER) / NUMBER_OF_COLUMNS);
+		let size = Math.floor((Math.min(screen.height, screen.width) * SCREEN_MULTIPLE) / NUMBER_OF_COLUMNS);
 
 		this._squareSize = size;
         this._boardSize = size * NUMBER_OF_COLUMNS;
