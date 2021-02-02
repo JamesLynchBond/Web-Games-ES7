@@ -4,46 +4,172 @@
 
 	*****************************************************
 	*  													*
-	*	Author:		James Marion Lynch			 		*
-	*  	Date:		01-10-2020                          *
+	*	Author:		James Marion Lynch, CEO		 		*
+    *   Corp:       JML_3D_Studios                      *
+	*  	Date:		02-02-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
-	* 	Title:		Audio Player                       	*
-	*  	Filename:	Audio-Player.html    		    	*
+	* 	Title:		Audio-Player Web Page              	*
+	*  	Filename:	Audio-Player.html          			*
 	* 	Language:	HTML5                          		*
 	*                                                   *
 	*****************************************************
 
 	Notes: 
+	
+	This program scales with the window, so it is able
+	to be played on any size screen, 100 inches diagonal,
+	or down to your cell phone screen size. 
+    
+	I tested it on both my 43 inch TV HDMI cabled an Asus Rog String (Windows 10 Home) laptop,
+	and my S21 Ultra Samsung 6.8 inch sreen, running Android 11 OS, 6 GB System RAM, 256 BG SSD.
+	It uses viewport height, or viewport width for a way to size things in relation to screen.
+	(vh = viewport height, vw = viewport width).
+	Normally, people would use pixels, em, % or something else.
+    like margin: 10px; this program says margin: 1vh;
+	By using vh & vw, it scales with the browser, from 25% to 500% it all looks the same.
+	The only downside of this is you cannot scale the window to zoom in or out.
+    Files normally used are:
+    
+    css/normalize.css
+    
 
-	Dependencies:       		(Shown in load order.)
-	Filenames:					Descriptions:
-
+    Files that display when you issue the MS-DOS cmd.exe on the working folder or directory.
+    
+    dir /a:-d /s /b /o:n > "Dir list.txt"
+    
+    An editor.html
     Audio-Player.html
+    Blackjack.html
+    ChessBoard.html
+    Deck of Unicode Playing Cards.html
+    Dir list.txt
+    Dir.bat
+    Flippable Playing Card.html
+    index.docx
+    template.html
     css\normalize.css
     css\style.css
-    img\img.jpg
+    img\blackSquare.png
     img\li-img.png
     img\li-img-redSq.jpg
-    img\covers\ (4 images in jpg format.
-    img\Slides\slide (1).jpg (thru 32)
+    img\whiteSquare.png
+    img\Cards\Ace_of_clubs.png
+    img\Cards\Ace_of_diamonds.png
+    img\Cards\Ace_of_hearts.png
+    img\Cards\ace_of_spades.png
+    img\Cards\CardBack.jpg
+    img\Cards\Eight_of_clubs.png
+    img\Cards\Eight_of_diamonds.png
+    img\Cards\Eight_of_hearts.png
+    img\Cards\Eight_of_spades.png
+    img\Cards\Five_of_clubs.png
+    img\Cards\Five_of_diamonds.png
+    img\Cards\Five_of_hearts.png
+    img\Cards\Five_of_spades.png
+    img\Cards\Four_of_clubs.png
+    img\Cards\Four_of_diamonds.png
+    img\Cards\Four_of_hearts.png
+    img\Cards\Four_of_spades.png
+    img\Cards\jack_of_clubs.png
+    img\Cards\jack_of_diamonds.png
+    img\Cards\jack_of_hearts.png
+    img\Cards\jack_of_spades.png
+    img\Cards\king_of_clubs.png
+    img\Cards\king_of_diamonds.png
+    img\Cards\king_of_hearts.png
+    img\Cards\king_of_spades.png
+    img\Cards\Nine_of_clubs.png
+    img\Cards\Nine_of_diamonds.png
+    img\Cards\Nine_of_hearts.png
+    img\Cards\Nine_of_spades.png
+    img\Cards\Queen_of_clubs.png
+    img\Cards\Queen_of_diamonds.png
+    img\Cards\Queen_of_hearts.png
+    img\Cards\queen_of_spades.png
+    img\Cards\Seven_of_clubs.png
+    img\Cards\Seven_of_diamonds.png
+    img\Cards\Seven_of_hearts.png
+    img\Cards\Seven_of_spades.png
+    img\Cards\Six_of_clubs.png
+    img\Cards\Six_of_diamonds.png
+    img\Cards\Six_of_hearts.png
+    img\Cards\Six_of_spades.png
+    img\Cards\Ten_of_clubs.png
+    img\Cards\Ten_of_diamonds.png
+    img\Cards\Ten_of_hearts.png
+    img\Cards\Ten_of_spades.png
+    img\Cards\Three_of_clubs.png
+    img\Cards\Three_of_diamonds.png
+    img\Cards\Three_of_hearts.png
+    img\Cards\Three_of_spades.png
+    img\Cards\Two_of_clubs.png
+    img\Cards\Two_of_diamonds.png
+    img\Cards\Two_of_hearts.png
+    img\Cards\Two_of_spades.png
+    img\covers\arlo-gunthrie.png
+    img\covers\beach-boys.png
+    img\covers\blue-ocean.jpg
+    img\covers\golden-ocean.jpg
+    img\covers\h2r.jpg
+    img\covers\janis-joplin.jpg
+    img\covers\joe-walsh.jpg
+    img\covers\led-zeppelin.jpg
+    img\covers\love-songs.jpg
+    img\covers\oldies.jpg
+    img\covers\pink-floyd.jpg
+    img\covers\vortex.png
+    img\Slides\slide1.jpg
+    img\Slides\slide10.jpg
+    img\Slides\slide11.jpg
+    img\Slides\slide12.jpg
+    img\Slides\slide13.jpg
+    img\Slides\slide14.jpg
+    img\Slides\slide15.jpg
+    img\Slides\slide2.jpg
+    img\Slides\slide3.jpg
+    img\Slides\slide4.jpg
+    img\Slides\slide5.jpg
+    img\Slides\slide6.jpg
+    img\Slides\slide7.jpg
+    img\Slides\slide8.jpg
+    img\Slides\slide9.jpg
     js\audio-player.js
+    js\Blackjack.js
+    js\ChessBoard.js
+    js\Icosa.js
     js\jquery.min.js
     js\math.min.js
     js\utils.js
-    res\music1.mp3 	4 total songs in the public domain for testing
-	res\movie.mp4
+    js\Pieces\Bishop.js
+    js\Pieces\King.js
+    js\Pieces\Knight.js
+    js\Pieces\Pawn.js
+    js\Pieces\Piece.js
+    js\Pieces\Queen.js
+    js\Pieces\Rook.js
+    res\amazing-grace.mp3
+    res\Bring It On Home.mp3
+    res\Coming Into Los Angeles.mp3
+    res\lifes-been-good.mp3
+    res\Money.mp3
+    res\movie.mp4
+    res\papa-loved-momma.mp3
+    res\Piece Of My Heart.mp3
+    res\Respect.mp3
+    res\Time.mp3
+    res\When A Man Loves A Woman.mp3
+    res\Whole Lotta Love.mp3
     
+    // Save for later use.
     <li song="music1.mp3" cover="albumn-cover-art-1.jpg" artist="Artist 1">Song-1</li>
     <li song="music2.mp3" cover="albumn-cover-art-2.jpg" artist="Artist 2">Song-2</li>
     <li song="music3.mp3" cover="albumn-cover-art-3.jpg" artist="Artist 3">Song-3</li>
     <li song="music4.mp3" cover="albumn-cover-art-4.jpg" artist="Artist 4">Song-4</li>
 
-	The head element has meta data, links external Style Sheets & JavaScript.
 	The title element is mandatory per w3schools.com.
-	
-***************************************************** -->
-	
-	
+
+-->
+		
 <html lang="en-US">
 
     <head>
@@ -161,40 +287,23 @@
             <button type="button" id="cmd_toggle_log"  onclick="cmdToggleLog();"  title="Show log history?">View?</button>
         </div>
         
-       	<!--  The 32 background images for slideshow.  -->
+       	<!--  The 16 background images for slideshow.  -->
 		<div class="w3-content w3-display-container">
-			<img class="mySlides" src="img/Slides/slide(1).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(2).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(3).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(4).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(5).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(6).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(7).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(8).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(9).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(10).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(12).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(13).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(14).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(15).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(16).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(17).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(18).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(19).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(20).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(11).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(22).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(23).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(24).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(25).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(26).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(27).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(28).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(29).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(30).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(31).jpg" alt="an image load error">
-			<img class="mySlides" src="img/Slides/slide(32).jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide1.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide2.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide3.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide4.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide5.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide6.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide7.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide8.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide9.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide10.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide11.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide12.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide13.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide14.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide15.jpg" alt="an image load error">
 		</div>
         
         <!-- The scripts I want loaded last.  -->
