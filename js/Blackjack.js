@@ -1,14 +1,16 @@
-	/************************************************
-	*  												*
-	*	Author:		James Marion Lynch			 	*
-	*  	Date:		12-25-2020                      *
-	* 	Version:	Alpha 1.0.0.0                   *
-	* 	Title:		Blackjack game   		        *
-	*  	Filename:	js/Blackjack.js           		*
-	* 	Language:	JavaScript ES7 2017    			*
-	*                                               *
-	*************************************************
 
+
+	/****************************************************
+	*  													*
+	*	Author:		James Marion Lynch, CEO		 		*
+    *   Corp.:      JML_3D_Studios                      *
+	*  	Date:		02-02-2021                          *
+	* 	Version:	Alpha 1.0.0.0                      	*
+	* 	Title:		Audio, Blackjack, Video            	*
+	*  	Filename:	Blackjack.js             			*
+	* 	Language:	JaveScript                    		*
+	*                                                   *
+	*****************************************************
 
 The folders for files;
 	
@@ -23,7 +25,7 @@ The folders for files;
 	Dependencies:       		(Shown in load order.)
 	Filenames:					Descriptions:
 
-	Blackjack.html				The main HTML5 document (this file.)
+	Blackjack.html				The main HTML5 document.
 	
 	css/normalize.css			The Cascading Style Sheet (reset).
 	css/style.css				The Cascading Style Sheet (specific.)
@@ -36,7 +38,7 @@ The folders for files;
 	js/utils.js					Utility Helper library, geometry for Platonic solids.
 	js/audio-player.js			The Audio Player jQuery program.
 	js/Icosa.js	 				WebGL codes, GLSL shader programs, geo data sets it gets from above.
-	js/Blackjack.js				class definitions for Player, hand, Card, Deck & Blackjack.
+	js/Blackjack.js				class definitions for Player, hand, Card, Deck & Blackjack. (this file).
 	
 	res/movies.mp4				Place your file here of favorite movie.mp4
 	res/*.mp3					Place your file here of favorite music.mp3 and edit this file.

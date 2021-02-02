@@ -4,10 +4,11 @@
 
 	*****************************************************
 	*  													*
-	*	Author:		James Marion Lynch			 		*
+	*	Author:		James Marion Lynch, CEO		 		*
+    *   Corp.:      JML_3D_Studios                      *
 	*  	Date:		02-02-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
-	* 	Title:		Audi, Blackjack, Video             	*
+	* 	Title:		Audio, Blackjack, Video            	*
 	*  	Filename:	Blackjack.html             			*
 	* 	Language:	HTML5                          		*
 	*                                                   *
@@ -30,7 +31,7 @@
 
 
 
-	Dependencies:       		(Shown in load order.)   t
+	Dependencies:       		(Shown in load order.)
 	Filenames:					Descriptions:
 
 	Blackjack.html				The main HTML5 document (this file.)
@@ -328,6 +329,17 @@
         <div class="card_table" id="card_table_player_split_hand"></div>
         <div class="card_table" id="card_table_dealer"></div>
         <div class="card_table" id="card_table_fullscreen"></div>
+        
+        
+        <!-- The progress bar percentage is displayed in this div element. -->
+		<div id="displayProgress"></div>
+
+		<!-- The progress bar container div element. -->
+		<div id="myProgress" style="visibility: hidden">
+
+			<!-- The progress bar div element. -->
+			<div id="myBar"></div>
+		</div>
 
 		<!-- The menu button container element @bottom of screen. -->
         <div id="task_bar" class="menus">
@@ -337,11 +349,21 @@
             <button type="button" id="cmd_double_down" onclick="JML_Blackjack.cmdDoubleDown();" title="Double down?" disabled>Double?</button>
             <button type="button" id="cmd_split_hand"  onclick="JML_Blackjack.cmdSplitHand();"  title="Split hand?"  disabled>Split?</button>
             <button type="button" id="cmd_cardtype"    onclick="cmdCardType();"                 title="Switch card type?">    Unicode?</button>
+            
+            
 			<button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
 			 <input type="range"  id="cmd_opacity"  onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
 			</button>
             <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>
+<!--  
+      
+      <button type="button" id="cmd_progress_bar" onclick="cmdProgressBar();" title="Progress Bar">Test</button>  save code  
+      <button type="button" id="cmd_get_gps"      onclick="cmdGetGPS();"      title="Get GPS location?">GPS?</button>
+      
+-->
+      
             <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
+            
         </div>
 
 		<!--  The 16 background images for slideshow.  -->
