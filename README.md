@@ -11,10 +11,11 @@ Below, see a copy of Blackjack.html
 
 	*****************************************************
 	*  													*
-	*	Author:		James Marion Lynch			 		*
-	*  	Date:		02-02-2021                          *
+	*	Author:		James Marion Lynch, CEO		 		*
+    *   Corp.:      JML_3D_Studios                      *
+	*  	Date:		02-04-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
-	* 	Title:		Audi, Blackjack, Video             	*
+	* 	Title:		Audio, Blackjack, Video            	*
 	*  	Filename:	Blackjack.html             			*
 	* 	Language:	HTML5                          		*
 	*                                                   *
@@ -69,16 +70,21 @@ Below, see a copy of Blackjack.html
     
     dir /a:-d /s /b /o:n > "Dir list.txt"
     
+   A Template.html
     An editor.html
     Audio-Player.html
     Blackjack.html
+    Card, Playing, flippable.html
+    Chessboard CSS3.html
     ChessBoard.html
+    CommandShip.html
     Deck of Unicode Playing Cards.html
+    desktop.ini
     Dir list.txt
     Dir.bat
-    Flippable Playing Card.html
-    index.docx
-    template.html
+    Index.docx
+    Index.xlsx
+    css\chessboard.css3.css
     css\normalize.css
     css\style.css
     img\blackSquare.png
@@ -167,9 +173,12 @@ Below, see a copy of Blackjack.html
     img\Slides\slide9.jpg
     js\audio-player.js
     js\Blackjack.js
+    js\chessboard.css3.js
     js\ChessBoard.js
     js\Icosa.js
+    js\jquery.js
     js\jquery.min.js
+    js\math.js
     js\math.min.js
     js\utils.js
     js\Pieces\Bishop.js
@@ -179,6 +188,13 @@ Below, see a copy of Blackjack.html
     js\Pieces\Piece.js
     js\Pieces\Queen.js
     js\Pieces\Rook.js
+    js\ship\CommandShip.js
+    js\ship\Laser.js
+    js\ship\Obj3.js
+    js\ship\Particle.js
+    js\ship\ParticleEmitter.js
+    js\ship\Ship-3D.js
+    js\ship\System.js
     res\amazing-grace.mp3
     res\Bring It On Home.mp3
     res\Coming Into Los Angeles.mp3
@@ -191,6 +207,7 @@ Below, see a copy of Blackjack.html
     res\Time.mp3
     res\When A Man Loves A Woman.mp3
     res\Whole Lotta Love.mp3
+
 
 
 	The head element has meta data, links external Cascading Style Sheets & JavaScript.
@@ -335,6 +352,17 @@ Below, see a copy of Blackjack.html
         <div class="card_table" id="card_table_player_split_hand"></div>
         <div class="card_table" id="card_table_dealer"></div>
         <div class="card_table" id="card_table_fullscreen"></div>
+        
+        
+        <!-- The progress bar percentage is displayed in this div element. -->
+		<div id="displayProgress"></div>
+
+		<!-- The progress bar container div element. -->
+		<div id="myProgress" style="visibility: hidden">
+
+			<!-- The progress bar div element. -->
+			<div id="myBar"></div>
+		</div>
 
 		<!-- The menu button container element @bottom of screen. -->
         <div id="task_bar" class="menus">
@@ -344,11 +372,21 @@ Below, see a copy of Blackjack.html
             <button type="button" id="cmd_double_down" onclick="JML_Blackjack.cmdDoubleDown();" title="Double down?" disabled>Double?</button>
             <button type="button" id="cmd_split_hand"  onclick="JML_Blackjack.cmdSplitHand();"  title="Split hand?"  disabled>Split?</button>
             <button type="button" id="cmd_cardtype"    onclick="cmdCardType();"                 title="Switch card type?">    Unicode?</button>
+            
+            
 			<button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
 			 <input type="range"  id="cmd_opacity"  onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
 			</button>
             <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>
+<!--  
+      
+      <button type="button" id="cmd_progress_bar" onclick="cmdProgressBar();" title="Progress Bar">Test</button>  save code  
+      <button type="button" id="cmd_get_gps"      onclick="cmdGetGPS();"      title="Get GPS location?">GPS?</button>
+      
+-->
+      
             <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
+            
         </div>
 
 		<!--  The 16 background images for slideshow.  -->
