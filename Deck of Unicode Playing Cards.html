@@ -438,7 +438,7 @@ There is a clock and video player.
 			<button type="button" id="cmd_toggle_log"  onclick="cmdToggleLog();"  title="Show log history?">View?</button>
 		</div>
         
-        <!-- The log history element shares screen space with below Audio Player element.  -->
+       <!-- The log history element shares screen space with Audio Player element.  -->
         <div id="log_div" style="visibility: hidden"></div>
 
 		<div id="audio-player">
@@ -449,7 +449,7 @@ There is a clock and video player.
 			<!-- Audio Image (album covers)-->
 			<div id="audio-image">
 				<img class="cover" alt="Album covers and or Media Art">
-				<p id="audio_title">Audio Player 2021</p>
+				<p id="audio_title">Scroll down for Audio Player controls!</p>
 			</div>
 
 			<!-- Audio information. -->
@@ -486,26 +486,31 @@ There is a clock and video player.
 			</div>
 
 			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
-				<li song="music1.mp3" cover="albumn-cover-art-1.jpg" artist="Artist 1">Song-1</li>
-				<li song="music2.mp3" cover="albumn-cover-art-2.jpg" artist="Artist 2">Song-2</li>
-				<li song="music3.mp3" cover="albumn-cover-art-3.jpg" artist="Artist 3">Song-3</li>
-				<li song="music4.mp3" cover="albumn-cover-art-4.jpg" artist="Artist 4">Song-4</li>
+				<li song="amazing-grace.mp3" 			cover="pink-floyd.jpg"    artist="Judy Collins">   Amazing Grace</li>
+				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Money</li>
+				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Time</li>
+				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks">   Papa Loved Momma</li>
+				<li song="Respect.mp3" 					cover="pink-floyd.jpg"    artist="Aretha Franklin">Respect</li>
+				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie">  Coming Into Los Angeles</li>
+				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin">    Whole Lotta Love</li>
+				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin">   Piece Of My Heart</li>
+				<li song="When A Man Loves A Woman.mp3" cover="pink-floyd.jpg" 	  artist="Percy Sledge">   When A Man Loves A Woman</li>
+				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh">      Lifes Been Good</li>
 			</ul>
 			
 		<!-- End of Audio Player element.  -->
 		</div>
 
-		<!-- The canvas element to display the Icosahedron 3D WebGL content.  -->
         <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
 
-		<!-- The parent element allows resize of the child element.  -->
+		<!-- The parent element allows resize of the child elements width & height.  -->
 		<div id="video_container" class="resizable" style="visibility:hidden;">
 			<video id="video_element" style="visibility:hidden;" mute controls loop>
 				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
 			</video>
 		</div>
 
-		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed  -->
+		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed.  -->
         <div id="title_bar"></div>
         
         <!--  The 16 background images for slideshow.  -->
@@ -527,136 +532,7 @@ There is a clock and video player.
 			<img class="mySlides" src="img/Slides/slide15.jpg" alt="an image load error">
 		</div>
 
-/*
 
-    Files that display when you issue the MS-DOS cmd.exe on the working folder or directory.
-    
-    dir /a:-d /s /b /o:n > "Dir list.txt"
-    
-    An editor.html
-    Audio-Player.html
-    Blackjack.html
-    ChessBoard.html
-    Deck of Unicode Playing Cards.html
-    Dir list.txt
-    Dir.bat
-    Flippable Playing Card.html
-    index.docx
-    template.html
-    css\normalize.css
-    css\style.css
-    img\blackSquare.png
-    img\li-img.png
-    img\li-img-redSq.jpg
-    img\whiteSquare.png
-    img\Cards\Ace_of_clubs.png
-    img\Cards\Ace_of_diamonds.png
-    img\Cards\Ace_of_hearts.png
-    img\Cards\ace_of_spades.png
-    img\Cards\CardBack.jpg
-    img\Cards\Eight_of_clubs.png
-    img\Cards\Eight_of_diamonds.png
-    img\Cards\Eight_of_hearts.png
-    img\Cards\Eight_of_spades.png
-    img\Cards\Five_of_clubs.png
-    img\Cards\Five_of_diamonds.png
-    img\Cards\Five_of_hearts.png
-    img\Cards\Five_of_spades.png
-    img\Cards\Four_of_clubs.png
-    img\Cards\Four_of_diamonds.png
-    img\Cards\Four_of_hearts.png
-    img\Cards\Four_of_spades.png
-    img\Cards\jack_of_clubs.png
-    img\Cards\jack_of_diamonds.png
-    img\Cards\jack_of_hearts.png
-    img\Cards\jack_of_spades.png
-    img\Cards\king_of_clubs.png
-    img\Cards\king_of_diamonds.png
-    img\Cards\king_of_hearts.png
-    img\Cards\king_of_spades.png
-    img\Cards\Nine_of_clubs.png
-    img\Cards\Nine_of_diamonds.png
-    img\Cards\Nine_of_hearts.png
-    img\Cards\Nine_of_spades.png
-    img\Cards\Queen_of_clubs.png
-    img\Cards\Queen_of_diamonds.png
-    img\Cards\Queen_of_hearts.png
-    img\Cards\queen_of_spades.png
-    img\Cards\Seven_of_clubs.png
-    img\Cards\Seven_of_diamonds.png
-    img\Cards\Seven_of_hearts.png
-    img\Cards\Seven_of_spades.png
-    img\Cards\Six_of_clubs.png
-    img\Cards\Six_of_diamonds.png
-    img\Cards\Six_of_hearts.png
-    img\Cards\Six_of_spades.png
-    img\Cards\Ten_of_clubs.png
-    img\Cards\Ten_of_diamonds.png
-    img\Cards\Ten_of_hearts.png
-    img\Cards\Ten_of_spades.png
-    img\Cards\Three_of_clubs.png
-    img\Cards\Three_of_diamonds.png
-    img\Cards\Three_of_hearts.png
-    img\Cards\Three_of_spades.png
-    img\Cards\Two_of_clubs.png
-    img\Cards\Two_of_diamonds.png
-    img\Cards\Two_of_hearts.png
-    img\Cards\Two_of_spades.png
-    img\covers\arlo-gunthrie.png
-    img\covers\beach-boys.png
-    img\covers\blue-ocean.jpg
-    img\covers\golden-ocean.jpg
-    img\covers\h2r.jpg
-    img\covers\janis-joplin.jpg
-    img\covers\joe-walsh.jpg
-    img\covers\led-zeppelin.jpg
-    img\covers\love-songs.jpg
-    img\covers\oldies.jpg
-    img\covers\pink-floyd.jpg
-    img\covers\vortex.png
-    img\Slides\slide1.jpg
-    img\Slides\slide10.jpg
-    img\Slides\slide11.jpg
-    img\Slides\slide12.jpg
-    img\Slides\slide13.jpg
-    img\Slides\slide14.jpg
-    img\Slides\slide15.jpg
-    img\Slides\slide2.jpg
-    img\Slides\slide3.jpg
-    img\Slides\slide4.jpg
-    img\Slides\slide5.jpg
-    img\Slides\slide6.jpg
-    img\Slides\slide7.jpg
-    img\Slides\slide8.jpg
-    img\Slides\slide9.jpg
-    js\audio-player.js
-    js\Blackjack.js
-    js\ChessBoard.js
-    js\Icosa.js
-    js\jquery.min.js
-    js\math.min.js
-    js\utils.js
-    js\Pieces\Bishop.js
-    js\Pieces\King.js
-    js\Pieces\Knight.js
-    js\Pieces\Pawn.js
-    js\Pieces\Piece.js
-    js\Pieces\Queen.js
-    js\Pieces\Rook.js
-    res\amazing-grace.mp3
-    res\Bring It On Home.mp3
-    res\Coming Into Los Angeles.mp3
-    res\lifes-been-good.mp3
-    res\Money.mp3
-    res\movie.mp4
-    res\papa-loved-momma.mp3
-    res\Piece Of My Heart.mp3
-    res\Respect.mp3
-    res\Time.mp3
-    res\When A Man Loves A Woman.mp3
-    res\Whole Lotta Love.mp3
-
-*/
 		<!-- The script for the new Audio() Player with a Playlist. -->
 		<script src="js/audio-player.js"></script>
 		<script src="js/Icosa.js"></script>
