@@ -1,0 +1,1 @@
+dir /a:-d /s /b /o:n > "Dir list.txt"
