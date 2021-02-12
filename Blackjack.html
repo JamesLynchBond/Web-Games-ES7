@@ -1,12 +1,46 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <!--
+
+	According to the w3.org, who determine the specs of all web languages,
+	the <!DOCTYPE html> above should be the first line of code for a well formed document.
+	
+	From w3schools.com: 
+	
+		Definition and Usage
+		All HTML documents must start with a <!DOCTYPE> declaration.
+
+		The declaration is not an HTML tag. It is an "information" to the browser about what document type to expect.
+
+
+	World Wide Web Consortium (Standards organization) w3.org
+	
+		The World Wide Web Consortium is the main international standards organization for the World Wide Web. 
+		Founded in 1994 and currently led by Tim Berners-Lee, the consortium is made up of member organizations 
+		that maintain full-time staff working together in the development of standards for the World Wide Web. Wikipedia
+		
+		Founder: 		Tim Berners-Lee
+		Founded: 		October 1, 1994
+		CEO: 			Jeffrey M. Jaffe (Mar 8, 2010–)
+		Director: 		Tim Berners-Lee (author of HTML, which is why hyperlinks let us click to the next webpage!)
+		Purpose: 		Developing protocols and guidelines that ensure long-term growth for the Web
+		Formation: 		1 October 1994; 26 years ago
+	
+	About 429 world wide web consortium members from corporations form the board that decides future languages,
+	what goes in and what does not, (w3.org has collected all our info).
+	
+	 
+	
+	The corporations are all listed, if you want to see who they are, search "wiki.com w3c.org"
+	
+	Microsoft, Google, Samsung, ... 429 corps as of 02-01-2021.
+
 
 	*****************************************************
 	*  													*
 	*	Author:		James Marion Lynch, CEO		 		*
     *   Corp.:      JML_3D_Studios                      *
-	*  	Date:		02-04-2021                          *
+	*  	Date:		02-12-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
 	* 	Title:		Audio, Blackjack, Video            	*
 	*  	Filename:	Blackjack.html             			*
@@ -37,183 +71,174 @@
 	Blackjack.html				The main HTML5 document (this file.)
 	
 	css/normalize.css			The Cascading Style Sheet (browsers all behave the same, found on github.com).
-	css/style.css				The Cascading Style Sheet (specific, when fully devoloped, many style sheets will exist,
-                                    so user can choose light or dark theme or other.
-                                    This one file gives the entire game info on how to look and behave.)
+	css/style.css				The Cascading Style Sheet (specific codes to display size, color, special effects.
 	
 	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
                                 Based on 4 suits and 13 types, numbered 0-3, 0-12.
                                 Any card name is built from these 2 numbers and filename extension.
+								Cards are created with the JavaScript code inside Blackjack.js,
+								using the class keyword, along with classes, Hand, Deck, Player and Blackjack.
+								A nice touch was allowing the player to switch between the image files and Unicode characters.
+								An image file is about 50,000 bytes, whereas Unicode characters are 4 bytes each.
+								If a person has an old low power device, it will move 4 bytes versus 50,000 bytes, per card!
+								Whatever memory overhead per class Card() object is the same for either type.
+								The Unicode character set is huge, billions of characters or symbols, they name it in astral planes! 
                                 
-	img/covers/*.png/jpg		Audio music files for playlist.
+	img/covers/*.png			Audio music files for playlist (10).
     
-    img/Slides/slide (1 thru 15) .jpg
+    img/Slides/slide1.jpg		A background image, (1 thru 15) 2, 3, 4,  ... .jpg
 	
 	js/jquery.min.js			Helper Utility library
 	js/math.min.js				class definitions for Vec3, Vec4, Mat4,...
 	js/utils.js					Utility Helper library, geometry for Platonic solids.
 	js/audio-player.js			The Audio Player jQuery program.
 	js/Icosa.js	 				WebGL codes, GLSL shader programs, geo data sets it gets from above.
-	js/Blackjack.js				class definitions for Player, hand, Card, Deck & Blackjack.
+	js/Blackjack.js				class definitions for Player, Hand, Card, Deck & Blackjack.
 	
-	res/movie.mp4				Place your file here of favorite movie.mp4
-	res/*.mp3					Place your file here of favorite music.mp3 and edit this file.
-
-    Files that display when you issue the MS-DOS cmd.exe on the working folder or directory.
-    
-    dir /a:-d /s /b /o:n > "Dir list.txt"
-    
-   A Template.html
-    An editor.html
-    Audio-Player.html
-    Blackjack.html
-    Card, Playing, flippable.html
-    Chessboard CSS3.html
-    ChessBoard.html
-    CommandShip.html
-    Deck of Unicode Playing Cards.html
-    desktop.ini
-    Dir list.txt
-    Dir.bat
-    Index.docx
-    Index.xlsx
-    css\chessboard.css3.css
-    css\normalize.css
-    css\style.css
-    img\blackSquare.png
-    img\li-img.png
-    img\li-img-redSq.jpg
-    img\whiteSquare.png
-    img\Cards\Ace_of_clubs.png
-    img\Cards\Ace_of_diamonds.png
-    img\Cards\Ace_of_hearts.png
-    img\Cards\ace_of_spades.png
-    img\Cards\CardBack.jpg
-    img\Cards\Eight_of_clubs.png
-    img\Cards\Eight_of_diamonds.png
-    img\Cards\Eight_of_hearts.png
-    img\Cards\Eight_of_spades.png
-    img\Cards\Five_of_clubs.png
-    img\Cards\Five_of_diamonds.png
-    img\Cards\Five_of_hearts.png
-    img\Cards\Five_of_spades.png
-    img\Cards\Four_of_clubs.png
-    img\Cards\Four_of_diamonds.png
-    img\Cards\Four_of_hearts.png
-    img\Cards\Four_of_spades.png
-    img\Cards\jack_of_clubs.png
-    img\Cards\jack_of_diamonds.png
-    img\Cards\jack_of_hearts.png
-    img\Cards\jack_of_spades.png
-    img\Cards\king_of_clubs.png
-    img\Cards\king_of_diamonds.png
-    img\Cards\king_of_hearts.png
-    img\Cards\king_of_spades.png
-    img\Cards\Nine_of_clubs.png
-    img\Cards\Nine_of_diamonds.png
-    img\Cards\Nine_of_hearts.png
-    img\Cards\Nine_of_spades.png
-    img\Cards\Queen_of_clubs.png
-    img\Cards\Queen_of_diamonds.png
-    img\Cards\Queen_of_hearts.png
-    img\Cards\queen_of_spades.png
-    img\Cards\Seven_of_clubs.png
-    img\Cards\Seven_of_diamonds.png
-    img\Cards\Seven_of_hearts.png
-    img\Cards\Seven_of_spades.png
-    img\Cards\Six_of_clubs.png
-    img\Cards\Six_of_diamonds.png
-    img\Cards\Six_of_hearts.png
-    img\Cards\Six_of_spades.png
-    img\Cards\Ten_of_clubs.png
-    img\Cards\Ten_of_diamonds.png
-    img\Cards\Ten_of_hearts.png
-    img\Cards\Ten_of_spades.png
-    img\Cards\Three_of_clubs.png
-    img\Cards\Three_of_diamonds.png
-    img\Cards\Three_of_hearts.png
-    img\Cards\Three_of_spades.png
-    img\Cards\Two_of_clubs.png
-    img\Cards\Two_of_diamonds.png
-    img\Cards\Two_of_hearts.png
-    img\Cards\Two_of_spades.png
-    img\covers\arlo-gunthrie.png
-    img\covers\beach-boys.png
-    img\covers\blue-ocean.jpg
-    img\covers\golden-ocean.jpg
-    img\covers\h2r.jpg
-    img\covers\janis-joplin.jpg
-    img\covers\joe-walsh.jpg
-    img\covers\led-zeppelin.jpg
-    img\covers\love-songs.jpg
-    img\covers\oldies.jpg
-    img\covers\pink-floyd.jpg
-    img\covers\vortex.png
-    img\Slides\slide1.jpg
-    img\Slides\slide10.jpg
-    img\Slides\slide11.jpg
-    img\Slides\slide12.jpg
-    img\Slides\slide13.jpg
-    img\Slides\slide14.jpg
-    img\Slides\slide15.jpg
-    img\Slides\slide2.jpg
-    img\Slides\slide3.jpg
-    img\Slides\slide4.jpg
-    img\Slides\slide5.jpg
-    img\Slides\slide6.jpg
-    img\Slides\slide7.jpg
-    img\Slides\slide8.jpg
-    img\Slides\slide9.jpg
-    js\audio-player.js
-    js\Blackjack.js
-    js\chessboard.css3.js
-    js\ChessBoard.js
-    js\Icosa.js
-    js\jquery.js
-    js\jquery.min.js
-    js\math.js
-    js\math.min.js
-    js\utils.js
-    js\Pieces\Bishop.js
-    js\Pieces\King.js
-    js\Pieces\Knight.js
-    js\Pieces\Pawn.js
-    js\Pieces\Piece.js
-    js\Pieces\Queen.js
-    js\Pieces\Rook.js
-    js\ship\CommandShip.js
-    js\ship\Laser.js
-    js\ship\Obj3.js
-    js\ship\Particle.js
-    js\ship\ParticleEmitter.js
-    js\ship\Ship-3D.js
-    js\ship\System.js
-    res\amazing-grace.mp3
-    res\Bring It On Home.mp3
-    res\Coming Into Los Angeles.mp3
-    res\lifes-been-good.mp3
-    res\Money.mp3
-    res\movie.mp4
-    res\papa-loved-momma.mp3
-    res\Piece Of My Heart.mp3
-    res\Respect.mp3
-    res\Time.mp3
-    res\When A Man Loves A Woman.mp3
-    res\Whole Lotta Love.mp3
+	res/movie.mp4				Place your favorite movie.mp4
+	res/*.mp3					Place your favorite mp3 files, edit this file.
 
 
 
-	The head element has meta data, links external Cascading Style Sheets & JavaScript.
-	The <title>element</title> is mandatory per w3schools.com.
+
+    Dir output from batch file program;
 	
+	Blackjack.html
+	
+	Cascading Style Sheets
+	
+	css\normalize.css
+	css\style.css
+
+	Playing Card Images
+	
+	img\Cards\Ace_of_clubs.png
+	img\Cards\Ace_of_diamonds.png
+	img\Cards\Ace_of_hearts.png
+	img\Cards\ace_of_spades.png
+	img\Cards\CardBack.jpg
+	img\Cards\Eight_of_clubs.png
+	img\Cards\Eight_of_diamonds.png
+	img\Cards\Eight_of_hearts.png
+	img\Cards\Eight_of_spades.png
+	img\Cards\Five_of_clubs.png
+	img\Cards\Five_of_diamonds.png
+	img\Cards\Five_of_hearts.png
+	img\Cards\Five_of_spades.png
+	img\Cards\Four_of_clubs.png
+	img\Cards\Four_of_diamonds.png
+	img\Cards\Four_of_hearts.png
+	img\Cards\Four_of_spades.png
+	img\Cards\jack_of_clubs.png
+	img\Cards\jack_of_diamonds.png
+	img\Cards\jack_of_hearts.png
+	img\Cards\jack_of_spades.png
+	img\Cards\king_of_clubs.png
+	img\Cards\king_of_diamonds.png
+	img\Cards\king_of_hearts.png
+	img\Cards\king_of_spades.png
+	img\Cards\Nine_of_clubs.png
+	img\Cards\Nine_of_diamonds.png
+	img\Cards\Nine_of_hearts.png
+	img\Cards\Nine_of_spades.png
+	img\Cards\Queen_of_clubs.png
+	img\Cards\Queen_of_diamonds.png
+	img\Cards\Queen_of_hearts.png
+	img\Cards\queen_of_spades.png
+	img\Cards\Seven_of_clubs.png
+	img\Cards\Seven_of_diamonds.png
+	img\Cards\Seven_of_hearts.png
+	img\Cards\Seven_of_spades.png
+	img\Cards\Six_of_clubs.png
+	img\Cards\Six_of_diamonds.png
+	img\Cards\Six_of_hearts.png
+	img\Cards\Six_of_spades.png
+	img\Cards\Ten_of_clubs.png
+	img\Cards\Ten_of_diamonds.png
+	img\Cards\Ten_of_hearts.png
+	img\Cards\Ten_of_spades.png
+	img\Cards\Three_of_clubs.png
+	img\Cards\Three_of_diamonds.png
+	img\Cards\Three_of_hearts.png
+	img\Cards\Three_of_spades.png
+	img\Cards\Two_of_clubs.png
+	img\Cards\Two_of_diamonds.png
+	img\Cards\Two_of_hearts.png
+	img\Cards\Two_of_spades.png
+	
+	The Albumn covers or media art
+	
+	img\covers\arlo-gunthrie.png
+	img\covers\beach-boys.png
+	img\covers\blue-ocean.jpg
+	img\covers\golden-ocean.jpg
+	img\covers\h2r.jpg
+	img\covers\janis-joplin.jpg
+	img\covers\joe-walsh.jpg
+	img\covers\led-zeppelin.jpg
+	img\covers\love-songs.jpg
+	img\covers\oldies.jpg
+	img\covers\pink-floyd.jpg
+	img\covers\pink-floyd-sae.jpg
+	img\covers\vortex.png
+	
+	for the 16 background images you can change
+	
+	img\Slides\slide1.jpg
+	img\Slides\slide10.jpg
+	img\Slides\slide11.jpg
+	img\Slides\slide12.jpg
+	img\Slides\slide13.jpg
+	img\Slides\slide14.jpg
+	img\Slides\slide15.jpg
+	img\Slides\slide2.jpg
+	img\Slides\slide3.jpg
+	img\Slides\slide4.jpg
+	img\Slides\slide5.jpg
+	img\Slides\slide6.jpg
+	img\Slides\slide7.jpg
+	img\Slides\slide8.jpg
+	img\Slides\slide9.jpg
+	
+	Our JavaScript files
+	
+	js\audio-player.js
+	js\Blackjack.js
+	js\Icosa.js
+	js\jquery.min.js
+	js\math.min.js
+	js\utils.js
+	
+	Music files *.mp3 & movie.mp4, res = resources
+	
+	res\amazing-grace.mp3
+	res\Bring It On Home.mp3
+	res\Coming Into Los Angeles.mp3
+	res\lifes-been-good.mp3
+	res\Money.mp3
+	res\movie.mp4
+	res\papa-loved-momma.mp3
+	res\Piece Of My Heart.mp3
+	res\Respect.mp3
+	res\Time.mp3
+	res\When A Man Loves A Woman.mp3
+	res\Whole Lotta Love.mp3
+
  -->
 
 <html lang="en-US">
 
     <head>
 
-		<!-- Meta-data is content type=text/html, encoding is utf-8, en-US, viewport size & limits.
-			 page contents, all so Search Engines can better index the page.  -->
+<!-- 
+		
+		Meta-data is content type="text/html", encoding is utf-8, language is English, USA, viewport size & limits,
+		page contents, all so Search Engines can better index the page.
+		
+		The head element has meta data, links external Cascading Style Sheets & JavaScript.
+		The <title>element</title> is mandatory per w3schools.com.	 
+			 
+-->
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport"    content="width=device-width, initial-scale=1" />
@@ -233,7 +258,7 @@
         <script type="text/ecmascript" src="js/utils.js"></script>
 
 		<!-- The title appears in browser tab. -->
-		<title>JML 3D Studios, Blackjack 2021 writen in ES7 2017</title>
+		<title>JML 3D Studios, Blackjack in ES7 2017, circa 02-10-2021</title>
 
 	<!-- The closing tag for the head element. -->
     </head>
