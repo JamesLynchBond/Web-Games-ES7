@@ -1,46 +1,12 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 
 <!--
-
-	According to the w3.org, who determine the specs of all web languages,
-	the <!DOCTYPE html> above should be the first line of code for a well formed document.
-	
-	From w3schools.com: 
-	
-		Definition and Usage
-		All HTML documents must start with a <!DOCTYPE> declaration.
-
-		The declaration is not an HTML tag. It is an "information" to the browser about what document type to expect.
-
-
-	World Wide Web Consortium (Standards organization) w3.org
-	
-		The World Wide Web Consortium is the main international standards organization for the World Wide Web. 
-		Founded in 1994 and currently led by Tim Berners-Lee, the consortium is made up of member organizations 
-		that maintain full-time staff working together in the development of standards for the World Wide Web. Wikipedia
-		
-		Founder: 		Tim Berners-Lee
-		Founded: 		October 1, 1994
-		CEO: 			Jeffrey M. Jaffe (Mar 8, 2010–)
-		Director: 		Tim Berners-Lee (author of HTML, which is why hyperlinks let us click to the next webpage!)
-		Purpose: 		Developing protocols and guidelines that ensure long-term growth for the Web
-		Formation: 		1 October 1994; 26 years ago
-	
-	About 429 world wide web consortium members from corporations form the board that decides future languages,
-	what goes in and what does not, (w3.org has collected all our info).
-	
-	 
-	
-	The corporations are all listed, if you want to see who they are, search "wiki.com w3c.org"
-	
-	Microsoft, Google, Samsung, ... 429 corps as of 02-01-2021.
-
 
 	*****************************************************
 	*  													*
 	*	Author:		James Marion Lynch, CEO		 		*
     *   Corp.:      JML_3D_Studios                      *
-	*  	Date:		02-12-2021                          *
+	*  	Date:		02-17-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
 	* 	Title:		Audio, Blackjack, Video            	*
 	*  	Filename:	Blackjack.html             			*
@@ -71,47 +37,124 @@
 	Blackjack.html				The main HTML5 document (this file.)
 	
 	css/normalize.css			The Cascading Style Sheet (browsers all behave the same, found on github.com).
-	css/style.css				The Cascading Style Sheet (specific codes to display size, color, special effects.
+	css/style.css				The Cascading Style Sheet (specific, when fully devoloped, many style sheets will exist,
+                                    so user can choose light or dark theme or other.
+                                    This one file gives the entire game info on how to look and behave.)
 	
 	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
                                 Based on 4 suits and 13 types, numbered 0-3, 0-12.
                                 Any card name is built from these 2 numbers and filename extension.
-								Cards are created with the JavaScript code inside Blackjack.js,
-								using the class keyword, along with classes, Hand, Deck, Player and Blackjack.
-								A nice touch was allowing the player to switch between the image files and Unicode characters.
-								An image file is about 50,000 bytes, whereas Unicode characters are 4 bytes each.
-								If a person has an old low power device, it will move 4 bytes versus 50,000 bytes, per card!
-								Whatever memory overhead per class Card() object is the same for either type.
-								The Unicode character set is huge, billions of characters or symbols, they name it in astral planes! 
                                 
-	img/covers/*.png			Audio music files for playlist (10).
+	img/covers/albumn-cover-art-1.png		Audio music files for playlist.
     
-    img/Slides/slide1.jpg		A background image, (1 thru 15) 2, 3, 4,  ... .jpg
+    img/Slides/slide1.jpg
+	img/Slides/slide2.jpg
+	img/Slides/slide3.jpg
+	img/Slides/slide4.jpg
+	img/Slides/slide5.jpg
+	img/Slides/slide6.jpg
+	img/Slides/slide7.jpg		15 total background slides user can change with one button click
 	
-	js/jquery.min.js			Helper Utility library
-	js/math.min.js				class definitions for Vec3, Vec4, Mat4,...
+	jquery.min.js is free to use for anyone.
+	js/jquery.min.js			Helper Utility library.
+	
+	I, James Marion Lynch, said author of this MIT licensed code base.
+	No frameworks are used, except to say one file that uses jquery.
+	llection of web pages, CSS, JavaScript99.5% of this code, written over a decade.
+	wrote the 3D Graphics Library myself over a 10 year period.
+	I used the JavaScript's (ES6) class keyword to create Vec3, Vec4, Mat4, Quat, Camera.
+	All the classes inherit from the parent super class Float32Array[].
+	Using the ES6 syntax and 2 keywords, we can inherit all the class behaviors.
+
+	
+	class Vec3 extends Float32Array
+	{
+	  constructor(x = 0, y = 0, z = 0)
+	  {
+		  super([x, y, z]);
+	  }
+
+	  // Accessors.
+	  get x() { return this[0]; }
+	  get y() { return this[1]; }
+	  get z() { return this[2]; }
+
+
+	Notice 'this' self-reference is not used. 
+	A call is made to the parent super class, along with the parameters.	
+	This is how inheritance works, by getting a pointer to .prototype of parent.
+	All the methods are stored on the .prototype object, not on the instance.
+	This is done to keep the memory of each instance of an object down.
+	
+	NOTE: Every new class extends Object() so every class object has a common ancestor.
+	This is how an array can hold all data types, they are all Object classes.
+	Named a .prototype chain Vec3 has Object -- Float32Array[] -- Vec3().
+	This is how all classes of Objects have a toString() function returning a string.
+	To override Object.prototype.toString() method, add one to your class prototype.
+
+	js/math.min.js
+
 	js/utils.js					Utility Helper library, geometry for Platonic solids.
 	js/audio-player.js			The Audio Player jQuery program.
 	js/Icosa.js	 				WebGL codes, GLSL shader programs, geo data sets it gets from above.
-	js/Blackjack.js				class definitions for Player, Hand, Card, Deck & Blackjack.
+	js/Blackjack.js				class definitions for Player, hand, Card, Deck & Blackjack.
 	
-	res/movie.mp4				Place your favorite movie.mp4
-	res/*.mp3					Place your favorite mp3 files, edit this file.
-
-
-
-
-    Dir output from batch file program;
+	The movie is of my pet rat named: 'Blackie' who scampers about happy, as I spoil him.
+	Therefore, the movie does not violate any Copyrights or Intellectual Property laws.
 	
+	res/movie.mp4				Place your file here of favorite movie.mp4
+	
+	The music files that come with the app are in the public domain.
+	
+	res/music1.mp3				Place your music.mp3 file in the folder named res = resources.
+	res/music2.mp3				Place your music.mp3 file in the folder named res = resources.
+	res/music3.mp3				Place your music.mp3 file in the folder named res = resources.
+	res/music4.mp3				Place your music.mp3 file in the folder named res = resources.
+
+	
+	A dir listing packing slit.
+	
+	
+	A Template.html
+	An editor.html
+	Audio-Player.html
 	Blackjack.html
-	
-	Cascading Style Sheets
-	
+	Card, Playing, flippable.html
+	card-codepen.io.html
+	Chessboard CSS3.html
+	ChessBoard.html
+	color.switcher.webgl.html
+	CommandShip.html
+	Cube.html
+	CubeColors.html
+	CubeImg.html
+	CubeVideo.html
+	Deck of Unicode Playing Cards.html
+	Detect-WebGL.html
+	Dir list.txt
+	Dir.bat
+	Dodecahedron.html
+	Flippable Playing Card.html
+	IcosaFan.html
+	Icosahedron.html
+	Octahedron.html
+	setup.webgl.html
+	shader-icosa.html
+	Shapes.html
+	Standalone Image Playing Card.html
+	Standalone Unicode Playing Cards.html
+	Tetrahedron.html
+	zBuild.html
+	css\card-codepen.io.css
+	css\chessboard.css3.css
+	css\detect.webgl.style.css
 	css\normalize.css
+	css\shader-icosa.css
 	css\style.css
-
-	Playing Card Images
-	
+	img\blackSquare.png
+	img\li-img.png
+	img\li-img-redSq.jpg
+	img\whiteSquare.png
 	img\Cards\Ace_of_clubs.png
 	img\Cards\Ace_of_diamonds.png
 	img\Cards\Ace_of_hearts.png
@@ -165,25 +208,26 @@
 	img\Cards\Two_of_diamonds.png
 	img\Cards\Two_of_hearts.png
 	img\Cards\Two_of_spades.png
-	
-	The Albumn covers or media art
-	
-	img\covers\arlo-gunthrie.png
-	img\covers\beach-boys.png
-	img\covers\blue-ocean.jpg
-	img\covers\golden-ocean.jpg
-	img\covers\h2r.jpg
-	img\covers\janis-joplin.jpg
-	img\covers\joe-walsh.jpg
-	img\covers\led-zeppelin.jpg
-	img\covers\love-songs.jpg
-	img\covers\oldies.jpg
-	img\covers\pink-floyd.jpg
-	img\covers\pink-floyd-sae.jpg
-	img\covers\vortex.png
-	
-	for the 16 background images you can change
-	
+	img\Chess\chess.pieces.1\BlackBishop 180.png
+	img\Chess\chess.pieces.1\BlackBishop.png
+	img\Chess\chess.pieces.1\BlackKing.png
+	img\Chess\chess.pieces.1\BlackKnight 180 blk bg.png
+	img\Chess\chess.pieces.1\BlackKnight.png
+	img\Chess\chess.pieces.1\BlackPawn.png
+	img\Chess\chess.pieces.1\BlackQueen.png
+	img\Chess\chess.pieces.1\BlackRook.png
+	img\Chess\chess.pieces.1\WhiteBishop 180.png
+	img\Chess\chess.pieces.1\WhiteBishop.png
+	img\Chess\chess.pieces.1\WhiteKing.png
+	img\Chess\chess.pieces.1\WhiteKnight 180.png
+	img\Chess\chess.pieces.1\WhiteKnight.png
+	img\Chess\chess.pieces.1\WhitePawn.png
+	img\Chess\chess.pieces.1\WhiteQueen.png
+	img\Chess\chess.pieces.1\WhiteRook.png
+	img\covers\albumn-cover-art-1.png
+	img\covers\albumn-cover-art-2.png
+	img\covers\albumn-cover-art-3.png
+	img\covers\albumn-cover-art-4.jpg
 	img\Slides\slide1.jpg
 	img\Slides\slide10.jpg
 	img\Slides\slide11.jpg
@@ -199,46 +243,72 @@
 	img\Slides\slide7.jpg
 	img\Slides\slide8.jpg
 	img\Slides\slide9.jpg
-	
-	Our JavaScript files
-	
+	js\A Help file.txt
+	js\ammo.js
 	js\audio-player.js
 	js\Blackjack.js
+	js\chessboard.css3.js
+	js\ChessBoard.js
+	js\color.switcher.js
+	js\createIcosaFan.js
+	js\crossorigin.txt
+	js\Cube.js
+	js\CubeColors.js
+	js\CubeImg.js
+	js\CubeVideo.js
+	js\detect.webgl.js
+	js\Dodecahedron.js
 	js\Icosa.js
+	js\IcosaFan.js
+	js\Icosahedron.js
+	js\jquery.js
 	js\jquery.min.js
+	js\math.js
 	js\math.min.js
+	js\mo.txt
+	js\Octahedron.js
+	js\playcanvas.js
+	js\playcanvas-stable.js
+	js\README.md
+	js\setup.webgl.js
+	js\shader-icosa.js
+	js\Shapes.js
+	js\template.txt
+	js\Tetrahedron.js
 	js\utils.js
-	
-	Music files *.mp3 & movie.mp4, res = resources
-	
-	res\amazing-grace.mp3
-	res\Bring It On Home.mp3
-	res\Coming Into Los Angeles.mp3
-	res\lifes-been-good.mp3
-	res\Money.mp3
+	js\w3.js
+	js\zBuild.js
+	js\Pieces\Bishop.js
+	js\Pieces\King.js
+	js\Pieces\Knight.js
+	js\Pieces\Pawn.js
+	js\Pieces\Piece.js
+	js\Pieces\Queen.js
+	js\Pieces\Rook.js
+	js\ship\CommandShip.js
+	js\ship\Laser.js
+	js\ship\Obj3.js
+	js\ship\Particle.js
+	js\ship\ParticleEmitter.js
+	js\ship\Ship-3D.js
+	js\ship\System.js
 	res\movie.mp4
-	res\papa-loved-momma.mp3
-	res\Piece Of My Heart.mp3
-	res\Respect.mp3
-	res\Time.mp3
-	res\When A Man Loves A Woman.mp3
-	res\Whole Lotta Love.mp3
+	res\music1.mp3
+	res\music2.mp3
+	res\music3.mp3
+	res\music4.mp3
 
+
+
+
+	The head element has meta data, links external Cascading Style Sheets & JavaScript.
+	The <title>element</title> is mandatory per w3schools.com.
+	
  -->
 
 <html lang="en-US">
 
     <head>
-
-<!-- 
-		
-		Meta-data is content type="text/html", encoding is utf-8, language is English, USA, viewport size & limits,
-		page contents, all so Search Engines can better index the page.
-		
-		The head element has meta data, links external Cascading Style Sheets & JavaScript.
-		The <title>element</title> is mandatory per w3schools.com.	 
-			 
--->
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport"    content="width=device-width, initial-scale=1" />
@@ -257,18 +327,13 @@
         <script type="text/ecmascript" src="js/math.min.js"></script>
         <script type="text/ecmascript" src="js/utils.js"></script>
 
-		<!-- The title appears in browser tab. -->
-		<title>JML 3D Studios, Blackjack in ES7 2017, circa 02-10-2021</title>
+		<title>JML 3D Studios, Blackjack 2021 writen in ES7 2017</title>
 
-	<!-- The closing tag for the head element. -->
     </head>
-
-	<!-- The opening tag for the body element which is mandatory in all HTML5 documents,
-		 & shows the JavaScript function to run when the body element is through loading.  -->
 
     <body onload="setupWebGL();">
 
-		<!-- The menu_bar button container element @top of screen. -->
+		
         <div id="menu_bar" class="menus">
 			<button type="button" id="cmd_edit_name"    onclick="JML_Blackjack.player.cmdEditName();"  title="Edit your name?"></button> 
 			<button type="button" id="bank"             onclick="JML_Blackjack.player.cmdResetBank();" title="Click to set bank $0.00"></button>
@@ -276,8 +341,7 @@
 			 <input type="range"  id="cmd_change_bet"  onchange="JML_Blackjack.player.cmdChangeBet();" class="slider" min="5" max="1000" value="1000" />
             </button>
             <button type="button" id="cmd_slider_delay" title="Slider adjusts deal speed?">
-			
-				<!--  The speed is in milliseconds, from 10 to 2000 is max 2 seconds delay. -->
+
 				<input type="range" id="cmd_slider_deal_speed" onchange="JML_Blackjack.cmdSliderDealSpeed();" class="slider" min="10" max="2000" value="10" />
             </button>
             <select id="cmd_select_decks" onchange="JML_Blackjack.deck.cmdSelectDecks();" title="Select from 1 to 6 decks?">
@@ -289,22 +353,18 @@
 			<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"      title="Slide show right?">&#10095;</button>  
            	<button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?" style="float: right;" >Mode?</button>
         </div>
-        
-        <!-- The log history element shares screen space with Audio Player element.  -->
+
         <div id="log_div" style="visibility: hidden"></div>
 
 		<div id="audio-player">
 		
-			<!-- The clock is updated by setInterval() every second.  -->
 			<div id="clock" title="Local time"></div>
 		
-			<!-- Audio Image (album covers)-->
 			<div id="audio-image">
 				<img class="cover" alt="Album covers and or Media Art">
 				<p id="audio_title">Scroll down for Audio Player controls!</p>
 			</div>
 
-			<!-- Audio information. -->
             <div id="audio-info">
 				<p>Artist/Band:</p><span class="artist"></span>		
             </div>
@@ -321,7 +381,6 @@
 				   
 			<br>&nbsp;
 
-			<!-- The Audio menu container element. -->
 			<div id="audio_bar" class="menus">
 				<span>
 					<button id="prev"  type="button" title="Previous song?">&#10094;</button>
@@ -332,57 +391,46 @@
 				</span>
 			</div>
 
-            <!-- Tracker Audio View -->
             <div id="tracker">
 				<span id="duration"></span>
 			</div>
 
 			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
-				<li song="amazing-grace.mp3" 			cover="pink-floyd.jpg"    artist="Judy Collins">   Amazing Grace</li>
-				<li song="Money.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Money</li>
-				<li song="Time.mp3" 					cover="pink-floyd.jpg" 	  artist="Pink Floyd">     Time</li>
-				<li song="papa-loved-momma.mp3" 		cover="vortex.png" 		  artist="Garth Brooks">   Papa Loved Momma</li>
-				<li song="Respect.mp3" 					cover="pink-floyd.jpg"    artist="Aretha Franklin">Respect</li>
-				<li song="Coming Into Los Angeles.mp3" 	cover="arlo-gunthrie.png" artist="Arlo Gunthrie">  Coming Into Los Angeles</li>
-				<li song="Whole Lotta Love.mp3" 		cover="led-zeppelin.jpg"  artist="Led Zepplin">    Whole Lotta Love</li>
-				<li song="Piece Of My Heart.mp3" 		cover="golden-ocean.jpg"  artist="Janis Joplin">   Piece Of My Heart</li>
-				<li song="When A Man Loves A Woman.mp3" cover="pink-floyd.jpg" 	  artist="Percy Sledge">   When A Man Loves A Woman</li>
-				<li song="lifes-been-good.mp3" 			cover="joe-walsh.jpg" 	  artist="Joe Walsh">      Lifes Been Good</li>
+				<li song="music1.mp3" cover="media.art1.jpg" artist="Artist 1">Song 1</li>
+				<li song="music2.mp3" cover="media.art2.jpg" artist="Artist 2">Song 2</li>
+				<li song="music3.mp3" cover="media.art3.jpg" artist="Artist 3">Song 3</li>
+				<li song="music4.mp3" cover="media.art4.jpg" artist="Artist 4">Song 4</li>
+				<li song="music5.mp3" cover="media.art5.jpg" artist="Artist 5">Song 5</li>
+				<li song="music6.mp3" cover="media.art6.jpg" artist="Artist 6">Song 6</li>
+				<li song="music7.mp3" cover="media.art7.jpg" artist="Artist 7">Song 7</li>
+				<li song="music8.mp3" cover="media.art8.jpg" artist="Artist 8">Song 8</li>
+				<li song="music9.mp3" cover="media.art9.jpg" artist="Artist 9">Song 9</li>
 			</ul>
-			
-		<!-- End of Audio Player element.  -->
 		</div>
 
         <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
 
-		<!-- The parent element allows resize of the child elements width & height.  -->
 		<div id="video_container" class="resizable" style="visibility:hidden;">
+		
 			<video id="video_element" style="visibility:hidden;" mute controls loop>
 				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
 			</video>
 		</div>
 
-		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed.  -->
         <div id="title_bar"></div>
 
-		<!-- Our card table elements. -->
         <div class="card_table" id="card_table_player"></div>
         <div class="card_table" id="card_table_player_split_hand"></div>
         <div class="card_table" id="card_table_dealer"></div>
         <div class="card_table" id="card_table_fullscreen"></div>
-        
-        
-        <!-- The progress bar percentage is displayed in this div element. -->
+
 		<div id="displayProgress"></div>
 
-		<!-- The progress bar container div element. -->
 		<div id="myProgress" style="visibility: hidden">
 
-			<!-- The progress bar div element. -->
 			<div id="myBar"></div>
 		</div>
 
-		<!-- The menu button container element @bottom of screen. -->
         <div id="task_bar" class="menus">
             <button type="button" id="cmd_deal"        onclick="JML_Blackjack.cmdDeal();" 		title="Deal the cards?">      Deal?</button>	
             <button type="button" id="cmd_stay"        onclick="JML_Blackjack.cmdStay();"	 	title="Stay?"        disabled>Stay?</button>	
@@ -398,7 +446,7 @@
             <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>
 <!--  
       
-      <button type="button" id="cmd_progress_bar" onclick="cmdProgressBar();" title="Progress Bar">Test</button>  save code  
+      <button type="button" id="cmd_progress_bar" onclick="cmdProgressBar();" title="Progress Bar">Test</button>  
       <button type="button" id="cmd_get_gps"      onclick="cmdGetGPS();"      title="Get GPS location?">GPS?</button>
       
 -->
@@ -407,7 +455,6 @@
             
         </div>
 
-		<!--  The 16 background images for slideshow.  -->
 		<div id="mySlideShow" class="w3-content w3-display-container">
 			<img class="mySlides" src="img/Slides/slide1.jpg" alt="an image load error">
 			<img class="mySlides" src="img/Slides/slide2.jpg" alt="an image load error">
@@ -426,15 +473,10 @@
 			<img class="mySlides" src="img/Slides/slide15.jpg" alt="an image load error">
 		</div>
 
-		<!-- The scripts I want loaded last.  -->
 		<script type="text/ecmascript" src="js/audio-player.js"></script>
 		<script type="text/ecmascript" src="js/Icosa.js"></script>
         <script type="text/ecmascript" src="js/Blackjack.js"></script>
 
-	<!-- The closing tag of the body element.  -->
     </body>
-
-<!-- The closing tag of the html document.  -->
 </html>
 
-<!-- eof -->
