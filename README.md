@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <!--
 
@@ -26,7 +13,7 @@
 	*                                                   *
 	*****************************************************
 
-	Notes: 
+	Notes: If you set the tab = 4, it will straighten out.
 	
 	This program scales with the window, so it is able
 	to be played on any size screen, 100 inches diagonal,
