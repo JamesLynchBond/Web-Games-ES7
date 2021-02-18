@@ -1,5 +1,17 @@
-<!DOCTYPE html>
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
 <!--
 
 	*****************************************************
@@ -173,6 +185,7 @@
 	preset switches by prefixing any switch with - (hyphen)--for example, /-W.
 	
 	Output of the dir command shown below:
+	Consider it a packing list of required files.
 	
 	Blackjack.html		(This file)
 	Dir list.txt
