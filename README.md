@@ -44,11 +44,11 @@ HTML5, CSS3, JavaScript (ES7 2017, ECMAScript 2017), WebGL &amp; GLSL, Audio &am
                                     so user can choose light or dark theme or other.
                                     This one file gives the entire game info on how to look and behave.)
 	
-	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
+	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ...
                                 Based on 4 suits and 13 types, numbered 0-3, 0-12.
                                 Any card name is built from these 2 numbers and filename extension.
                                 
-	img/covers/albumn-cover-art-1.png		Audio music files for playlist.
+	img/covers/media.art1.png	Audio music files for playlist (I included 4, but it accepts 10 easy).
     
     img/Slides/slide1.jpg
 	img/Slides/slide2.jpg
@@ -61,9 +61,9 @@ HTML5, CSS3, JavaScript (ES7 2017, ECMAScript 2017), WebGL &amp; GLSL, Audio &am
 	jquery.min.js is free to use for anyone.
 	js/jquery.min.js			Helper Utility library.
 	
-	I, James Marion Lynch, said author of this MIT licensed code base.
+	I, James Marion Lynch, am said author of this MIT licensed code base.
 	No frameworks are used, except to say one file that uses jquery.
-	llection of web pages, CSS, JavaScript99.5% of this code, written over a decade.
+	It is a collection of web pages, CSS, JavaScript99.5% of this code, written over a decade.
 	wrote the 3D Graphics Library myself over a 10 year period.
 	I used the JavaScript's (ES6) class keyword to create Vec3, Vec4, Mat4, Quat, Camera.
 	All the classes inherit from the parent super class Float32Array[].
@@ -72,18 +72,27 @@ HTML5, CSS3, JavaScript (ES7 2017, ECMAScript 2017), WebGL &amp; GLSL, Audio &am
 	
 	class Vec3 extends Float32Array
 	{
-	  constructor(x = 0, y = 0, z = 0)
-	  {
+		constructor(x = 0, y = 0, z = 0)
+		{
 		  super([x, y, z]);
-	  }
+		}
 
-	  // Accessors.
-	  get x() { return this[0]; }
-	  get y() { return this[1]; }
-	  get z() { return this[2]; }
+		// Accessors.
+		get x() { return this[0]; }
+		get y() { return this[1]; }
+		get z() { return this[2]; }
 
+		... many more methods, all the required ones.
+		the file math.min.js is compressed, I will send anyone the uncompressed version.
+		The file utils.js found in the /js/ folder is the mate to math.min.js.
+		All programs in my collection use the same framework I created.
+		Files normalize.css, style.css, jquery.min.js, math,min.js, utils.js,
+		audio-player.js, Icosa.js, ... and more.
 
-	Notice 'this' self-reference is not used. 
+	}
+
+	Notice 'this' self-reference is not used.
+	If used, must appear after the super, it doesn't exist until that call.
 	A call is made to the parent super class, along with the parameters.	
 	This is how inheritance works, by getting a pointer to .prototype of parent.
 	All the methods are stored on the .prototype object, not on the instance.
@@ -114,15 +123,71 @@ HTML5, CSS3, JavaScript (ES7 2017, ECMAScript 2017), WebGL &amp; GLSL, Audio &am
 	res/music3.mp3				Place your music.mp3 file in the folder named res = resources.
 	res/music4.mp3				Place your music.mp3 file in the folder named res = resources.
 
-    Here is a file packing list for you.
+    Here is a file packing list for you, aquired with a call to dir command,
+	(from a dir.bat file I created, contents shown below.)
 	
-	Blackjack.html
+	dir /a:-d /s /b /o:n > "Dir list.txt"
+	
+	The output for dir is shown below:
+	
+	
+	C:\Users\James Lynch>dir /?
+	
+	Displays a list of files and subdirectories in a directory.
+
+	DIR [drive:][path][filename] [/A[[:]attributes]] [/B] [/C] [/D] [/L] [/N]
+	  [/O[[:]sortorder]] [/P] [/Q] [/R] [/S] [/T[[:]timefield]] [/W] [/X] [/4]
+
+	  [drive:][path][filename]
+				  Specifies drive, directory, and/or files to list.
+
+	  /A          Displays files with specified attributes.
+	  attributes   D  Directories                R  Read-only files
+				   H  Hidden files               A  Files ready for archiving
+				   S  System files               I  Not content indexed files
+				   L  Reparse Points             O  Offline files
+				   -  Prefix meaning not
+	  /B          Uses bare format (no heading information or summary).
+	  /C          Display the thousand separator in file sizes.  This is the
+				  default.  Use /-C to disable display of separator.
+	  /D          Same as wide but files are list sorted by column.
+	  /L          Uses lowercase.
+	  /N          New long list format where filenames are on the far right.
+	  /O          List by files in sorted order.
+	  sortorder    N  By name (alphabetic)       S  By size (smallest first)
+				   E  By extension (alphabetic)  D  By date/time (oldest first)
+				   G  Group directories first    -  Prefix to reverse order
+	  /P          Pauses after each screenful of information.
+	  /Q          Display the owner of the file.
+	  /R          Display alternate data streams of the file.
+	  /S          Displays files in specified directory and all subdirectories.
+	  /T          Controls which time field displayed or used for sorting
+	  timefield   C  Creation
+				  A  Last Access
+				  W  Last Written
+	  /W          Uses wide list format.
+	  /X          This displays the short names generated for non-8dot3 file
+				  names.  The format is that of /N with the short name inserted
+				  before the long name. If no short name is present, blanks are
+				  displayed in its place.
+	  /4          Displays four-digit years
+
+	Switches may be preset in the DIRCMD environment variable.  Override
+	preset switches by prefixing any switch with - (hyphen)--for example, /-W.
+	
+	Output of the dir command shown below:
+	
+	Blackjack.html		(This file)
 	Dir list.txt
 	Dir.bat
+	LICENSE
+	README.md
 	css\normalize.css
 	css\style.css
+	img\blackSquare.png
 	img\li-img.png
 	img\li-img-redSq.jpg
+	img\whiteSquare.png
 	img\Cards\Ace_of_clubs.png
 	img\Cards\Ace_of_diamonds.png
 	img\Cards\Ace_of_hearts.png
@@ -176,10 +241,10 @@ HTML5, CSS3, JavaScript (ES7 2017, ECMAScript 2017), WebGL &amp; GLSL, Audio &am
 	img\Cards\Two_of_diamonds.png
 	img\Cards\Two_of_hearts.png
 	img\Cards\Two_of_spades.png
-	img\covers\albumn-cover-art-1.png
-	img\covers\albumn-cover-art-2.png
-	img\covers\albumn-cover-art-3.png
-	img\covers\albumn-cover-art-4.jpg
+	img\covers\media.art1.jpg
+	img\covers\media.art2.jpg
+	img\covers\media.art3.jpg
+	img\covers\media.art4.jpg
 	img\Slides\slide1.jpg
 	img\Slides\slide10.jpg
 	img\Slides\slide11.jpg
@@ -206,8 +271,6 @@ HTML5, CSS3, JavaScript (ES7 2017, ECMAScript 2017), WebGL &amp; GLSL, Audio &am
 	res\music2.mp3
 	res\music3.mp3
 	res\music4.mp3
-
-  
 
 
 	The head element has meta data, links external Cascading Style Sheets & JavaScript.
@@ -305,10 +368,10 @@ HTML5, CSS3, JavaScript (ES7 2017, ECMAScript 2017), WebGL &amp; GLSL, Audio &am
 			</div>
 
 			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
-				<li song="music1.mp3" cover="albumn-cover-art-1.jpg" artist="Artist 1">Song-1</li>
-				<li song="music2.mp3" cover="albumn-cover-art-2.jpg" artist="Artist 2">Song-2</li>
-				<li song="music3.mp3" cover="albumn-cover-art-3.jpg" artist="Artist 3">Song-3</li>
-				<li song="music4.mp3" cover="albumn-cover-art-4.jpg" artist="Artist 4">Song-4</li>
+				<li song="music1.mp3" cover="media.art1.jpg" artist="Artist 1">Song-1</li>
+				<li song="music2.mp3" cover="media.art2.jpg" artist="Artist 2">Song-2</li>
+				<li song="music3.mp3" cover="media.art3.jpg" artist="Artist 3">Song-3</li>
+				<li song="music4.mp3" cover="media.art4.jpg" artist="Artist 4">Song-4</li>
 			</ul>
 			
 		</div>
