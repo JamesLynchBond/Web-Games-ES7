@@ -4,25 +4,27 @@
     /****************************************************
     *  													*
     *	Author:		James Marion Lynch			 		*
-    *  	Date:		01-10-2021                          *
+    *  	Date:		02-27-2021                          *
     * 	Version:	Alpha 1.0.0.0                      	*
-    * 	Title:		3D Graphics Library math          	*
-    *  	Filename:	js/math.js             				*
-    * 	Language:	JavaScript ES7 2017            		*
+    * 	Title:		3D Graphics Library 	          	*
+    *  	Filename:	math.txt             				*
+    * 	Language:	JavaScript ES7 2016            		*
     *                                                   *
     *****************************************************
 
 
     NOTES:
 
-    'utils.js' relies on 'math.js' being loaded before;
+    'utils.js' relies on 'math.min.js' being loaded before;
+	This file math.txt is the file that creates 'js/math.min.js' (reduced size)
+	It is included so you cam clearly read the file.
 
-    <script type="text/javascript" src="js/math.js"></script>
+    <script type="text/javascript" src="js/math.min.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
 
     (line 82 of 'utils.js'; const objOrigin = new Vec3(0, 0, -8);)
 
-    This file contains the following JavaScript (ES6 2015) class definitions:
+    This file contains the following JavaScript (E76 2016) class definitions:
 
     Camera(fieldOfView, aspectRatio, nearPlane = NEAR_PLANE, farPlane = FAR_PLANE);
     Vec3(x = 0, y = 0, z = 0);
