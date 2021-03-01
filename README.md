@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!--
 
 	*****************************************************
@@ -13,7 +14,7 @@
 	*                                                   *
 	*****************************************************
 
-	Notes: If you set the tab = 4, it will straighten out.
+	Notes: 
 	
 	This program scales with the window, so it is able
 	to be played on any size screen, 100 inches diagonal,
@@ -40,11 +41,11 @@
                                     so user can choose light or dark theme or other.
                                     This one file gives the entire game info on how to look and behave.)
 	
-	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ...
+	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
                                 Based on 4 suits and 13 types, numbered 0-3, 0-12.
                                 Any card name is built from these 2 numbers and filename extension.
                                 
-	img/covers/media.art1.png	Audio music files for playlist (I included 4, but it accepts 10 easy).
+	img/covers/media-art1.png		Audio music files for playlist.
     
     img/Slides/slide1.jpg
 	img/Slides/slide2.jpg
@@ -57,9 +58,9 @@
 	jquery.min.js is free to use for anyone.
 	js/jquery.min.js			Helper Utility library.
 	
-	I, James Marion Lynch, am said author of this MIT licensed code base.
+	I, James Marion Lynch, said author of this MIT licensed code base.
 	No frameworks are used, except to say one file that uses jquery.
-	It is a collection of web pages, CSS, JavaScript99.5% of this code, written over a decade.
+	llection of web pages, CSS, JavaScript99.5% of this code, written over a decade.
 	wrote the 3D Graphics Library myself over a 10 year period.
 	I used the JavaScript's (ES6) class keyword to create Vec3, Vec4, Mat4, Quat, Camera.
 	All the classes inherit from the parent super class Float32Array[].
@@ -68,27 +69,18 @@
 	
 	class Vec3 extends Float32Array
 	{
-		constructor(x = 0, y = 0, z = 0)
-		{
+	  constructor(x = 0, y = 0, z = 0)
+	  {
 		  super([x, y, z]);
-		}
+	  }
 
-		// Accessors.
-		get x() { return this[0]; }
-		get y() { return this[1]; }
-		get z() { return this[2]; }
+	  // Accessors.
+	  get x() { return this[0]; }
+	  get y() { return this[1]; }
+	  get z() { return this[2]; }
 
-		... many more methods, all the required ones.
-		the file math.min.js is compressed, I will send anyone the uncompressed version.
-		The file utils.js found in the /js/ folder is the mate to math.min.js.
-		All programs in my collection use the same framework I created.
-		Files normalize.css, style.css, jquery.min.js, math,min.js, utils.js,
-		audio-player.js, Icosa.js, ... and more.
 
-	}
-
-	Notice 'this' self-reference is not used.
-	If used, must appear after the super, it doesn't exist until that call.
+	Notice 'this' self-reference is not used. 
 	A call is made to the parent super class, along with the parameters.	
 	This is how inheritance works, by getting a pointer to .prototype of parent.
 	All the methods are stored on the .prototype object, not on the instance.
@@ -110,7 +102,7 @@
 	The movie is of my pet rat named: 'Blackie' who scampers about happy, as I spoil him.
 	Therefore, the movie does not violate any Copyrights or Intellectual Property laws.
 	
-	res/movie.mp4				Place your file here of favorite movie.mp4
+	res/movie.mp4				Place your favorite video in /res/ folder named 'movie.mp4'
 	
 	The music files that come with the app are in the public domain.
 	
@@ -119,72 +111,24 @@
 	res/music3.mp3				Place your music.mp3 file in the folder named res = resources.
 	res/music4.mp3				Place your music.mp3 file in the folder named res = resources.
 
-    Here is a file packing list for you, aquired with a call to dir command,
-	(from a dir.bat file I created, contents shown below.)
+    Here is a file packing list for you.
 	
-	dir /a:-d /s /b /o:n > "Dir list.txt"
-	
-	The output for dir is shown below:
-	
-	
-	C:\Users\James Lynch>dir /?
-	
-	Displays a list of files and subdirectories in a directory.
-
-	DIR [drive:][path][filename] [/A[[:]attributes]] [/B] [/C] [/D] [/L] [/N]
-	  [/O[[:]sortorder]] [/P] [/Q] [/R] [/S] [/T[[:]timefield]] [/W] [/X] [/4]
-
-	  [drive:][path][filename]
-				  Specifies drive, directory, and/or files to list.
-
-	  /A          Displays files with specified attributes.
-	  attributes   D  Directories                R  Read-only files
-				   H  Hidden files               A  Files ready for archiving
-				   S  System files               I  Not content indexed files
-				   L  Reparse Points             O  Offline files
-				   -  Prefix meaning not
-	  /B          Uses bare format (no heading information or summary).
-	  /C          Display the thousand separator in file sizes.  This is the
-				  default.  Use /-C to disable display of separator.
-	  /D          Same as wide but files are list sorted by column.
-	  /L          Uses lowercase.
-	  /N          New long list format where filenames are on the far right.
-	  /O          List by files in sorted order.
-	  sortorder    N  By name (alphabetic)       S  By size (smallest first)
-				   E  By extension (alphabetic)  D  By date/time (oldest first)
-				   G  Group directories first    -  Prefix to reverse order
-	  /P          Pauses after each screenful of information.
-	  /Q          Display the owner of the file.
-	  /R          Display alternate data streams of the file.
-	  /S          Displays files in specified directory and all subdirectories.
-	  /T          Controls which time field displayed or used for sorting
-	  timefield   C  Creation
-				  A  Last Access
-				  W  Last Written
-	  /W          Uses wide list format.
-	  /X          This displays the short names generated for non-8dot3 file
-				  names.  The format is that of /N with the short name inserted
-				  before the long name. If no short name is present, blanks are
-				  displayed in its place.
-	  /4          Displays four-digit years
-
-	Switches may be preset in the DIRCMD environment variable.  Override
-	preset switches by prefixing any switch with - (hyphen)--for example, /-W.
-	
-	Output of the dir command shown below:
-	Consider it a packing list of required files.
-	
-	Blackjack.html		(This file)
+	Blackjack.html
 	Dir list.txt
 	Dir.bat
-	LICENSE
-	README.md
 	css\normalize.css
 	css\style.css
-	img\blackSquare.png
+
+The small squares used in audio player.
+
 	img\li-img.png
 	img\li-img-redSq.jpg
-	img\whiteSquare.png
+
+Take note these card images are not even required if you choose to use all Unicode characters.
+I have a button that allows testing either type, the memory savings using Unicode is huge.
+Per card an image on average takes up 50,000 bytes on disc, times 52 cards required.
+A Unicode Playing Card is one character x 52 cards, add it up, see what you think.
+
 	img\Cards\Ace_of_clubs.png
 	img\Cards\Ace_of_diamonds.png
 	img\Cards\Ace_of_hearts.png
@@ -238,10 +182,16 @@
 	img\Cards\Two_of_diamonds.png
 	img\Cards\Two_of_hearts.png
 	img\Cards\Two_of_spades.png
-	img\covers\media.art1.jpg
-	img\covers\media.art2.jpg
-	img\covers\media.art3.jpg
-	img\covers\media.art4.jpg
+
+The albumn covers!
+
+	img\covers\media-art1.png
+	img\covers\media-art2.png
+	img\covers\media-art3.png
+	img\covers\media-art4.jpg
+
+The 15 background images you can change anytime.
+
 	img\Slides\slide1.jpg
 	img\Slides\slide10.jpg
 	img\Slides\slide11.jpg
@@ -257,17 +207,28 @@
 	img\Slides\slide7.jpg
 	img\Slides\slide8.jpg
 	img\Slides\slide9.jpg
+
+Our JavaScript code.
+
 	js\audio-player.js
 	js\Blackjack.js
 	js\Icosa.js
 	js\jquery.min.js
 	js\math.min.js
 	js\utils.js
+
+Place your favorite movie & music for the files below.
+Easily 10 music files can be used, possibly way more.
+Ten songs was enough for me, I am far too busy to enjoy music. 
+That will change after my bank says full!
+
 	res\movie.mp4
 	res\music1.mp3
 	res\music2.mp3
 	res\music3.mp3
 	res\music4.mp3
+
+  
 
 
 	The head element has meta data, links external Cascading Style Sheets & JavaScript.
@@ -296,7 +257,7 @@
         <script type="text/ecmascript" src="js/math.min.js"></script>
         <script type="text/ecmascript" src="js/utils.js"></script>
 
-		<title>JML 3D Studios, Blackjack 2021 writen in ES7 2017</title>
+		<title>JML-3D-Studios, Blackjack, circa 2021, HTML5</title>
 
     </head>
 
@@ -323,6 +284,14 @@
            	<button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?" style="float: right;" >Mode?</button>
         </div>
 
+<!--
+		
+Take note that log-div & audio-player div elements below are both being assigned the same CSS.
+And they share the same div space, but are both a separate div.
+See file 'css/style.css' to see how it is being done, some sophisticated fancy CSS coding using transtion and more. 
+	
+-->	
+		
         <div id="log_div" style="visibility: hidden"></div>
 
 		<div id="audio-player">
@@ -397,27 +366,36 @@
 		</div>
 
         <div id="task_bar" class="menus">
+
+<!--
+
+It would be better to make Deal & Stay use the same button, toggling the assigned event handlers & innerHTML.
+I toggle the log-div button, same concept used her will work fine, and easy coding one you get the hand of it.
+I make several copies of any code I am working on before touching it.
+As I get a few days of good code I like, I copy over all versions and make that my base code.
+(Somtimes if I made great improvements, I will save it at that point, naming it with the exact date and time.)
+That is a poor mans version control. I used Notepad++ and no frameworks, except for a single block of code uses jquery.min.js
+I really love the synatx of JavaScript, and now that I have a math.min.js 3D Graphics Library, plus a single CSS
+If I ever mess up a lot of my code when trying to improve it, I just start over from the latest version.
+Sometimes I get what I think will improve the code way better than it was, I make tons of changes.
+Sometimes it works, other times it ruins the app. I just copy back a new base code.
+github has version control built-in, and I like it a lot now that I understand how to use it.
+You should have seen me when I first uploaded here. Wow, if you are not familiar with github, steep learning curve, but well worth it. 
+Hard to use in the beginning, because you do not know how, especially when I did not know how version control worked
+
+-->	
+			
             <button type="button" id="cmd_deal"        onclick="JML_Blackjack.cmdDeal();" 		title="Deal the cards?">      Deal?</button>	
             <button type="button" id="cmd_stay"        onclick="JML_Blackjack.cmdStay();"	 	title="Stay?"        disabled>Stay?</button>	
             <button type="button" id="cmd_hit"         onclick="JML_Blackjack.cmdHit();" 		title="Hit?"         disabled>Hit?</button>
             <button type="button" id="cmd_double_down" onclick="JML_Blackjack.cmdDoubleDown();" title="Double down?" disabled>Double?</button>
             <button type="button" id="cmd_split_hand"  onclick="JML_Blackjack.cmdSplitHand();"  title="Split hand?"  disabled>Split?</button>
             <button type="button" id="cmd_cardtype"    onclick="cmdCardType();"                 title="Switch card type?">    Unicode?</button>
-            
-            
 			<button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
 			 <input type="range"  id="cmd_opacity"  onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
 			</button>
             <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>
-<!--  
-      
-      <button type="button" id="cmd_progress_bar" onclick="cmdProgressBar();" title="Progress Bar">Test</button>  
-      <button type="button" id="cmd_get_gps"      onclick="cmdGetGPS();"      title="Get GPS location?">GPS?</button>
-      
--->
-      
             <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
-            
         </div>
 
 		<div id="mySlideShow" class="w3-content w3-display-container">
