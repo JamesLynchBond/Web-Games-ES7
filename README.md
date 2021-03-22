@@ -6,10 +6,10 @@
 	*  													*
 	*	Author:		James Marion Lynch, CEO		 		*
     *   Corp.:      JML_3D_Studios                      *
-	*  	Date:		02-17-2021                          *
+	*  	Date:		02-22-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
 	* 	Title:		Audio, Blackjack, Video            	*
-	*  	Filename:	Blackjack.html             			*
+	*  	Filename:	index.html              			*
 	* 	Language:	HTML5                          		*
 	*                                                   *
 	*****************************************************
@@ -34,7 +34,7 @@
 	Dependencies:       		(Shown in load order.)
 	Filenames:					Descriptions:
 
-	Blackjack.html				The main HTML5 document (this file.)
+	index.html					The main HTML5 document (this file.)
 	
 	css/normalize.css			The Cascading Style Sheet (browsers all behave the same, found on github.com).
 	css/style.css				The Cascading Style Sheet (specific, when fully devoloped, many style sheets will exist,
@@ -45,7 +45,7 @@
                                 Based on 4 suits and 13 types, numbered 0-3, 0-12.
                                 Any card name is built from these 2 numbers and filename extension.
                                 
-	img/covers/media-art1.png		Audio music files for playlist.
+	img/covers/media-art1.png	Audio music files for playlist.
     
     img/Slides/slide1.jpg
 	img/Slides/slide2.jpg
@@ -113,7 +113,7 @@
 
     Here is a file packing list for you.
 	
-	Blackjack.html
+	index.html
 	Dir list.txt
 	Dir.bat
 	css\normalize.css
