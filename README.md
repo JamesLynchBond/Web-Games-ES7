@@ -6,7 +6,7 @@
 	*  													*
 	*	Author:		James Marion Lynch, CEO		 		*
     *   Corp.:      JML_3D_Studios                      *
-	*  	Date:		02-22-2021                          *
+	*  	Date:		06-06-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
 	* 	Title:		Audio, Blackjack, Video            	*
 	*  	Filename:	index.html              			*
@@ -20,12 +20,8 @@
 	to be played on any size screen, 100 inches diagonal,
 	or down to your cell phone screen size. 
     
-	I tested it on both my 43 inch TV HDMI cabled an Asus Rog String (Windows 10 Home) laptop,
-	and my S21 Ultra Samsung 6.8 inch sreen, running Android 11 OS, 6 GB System RAM, 256 BG SSD.
-	It uses viewport height, or viewport width for a way to size things in relation to screen.
+	It uses viewport height & viewport width to size things to the screen.
 	(vh = viewport height, vw = viewport width).
-	Normally, people would use pixels, em, % or something else.
-    like margin: 10px; this program says margin: 1vh;
 	By using vh & vw, it scales with the browser, from 25% to 500% it all looks the same.
 	The only downside of this is you cannot scale the window to zoom in or out.
 
@@ -57,16 +53,12 @@
 	
 	jquery.min.js is free to use for anyone.
 	js/jquery.min.js			Helper Utility library.
-	
-	I, James Marion Lynch, said author of this MIT licensed code base.
-	No frameworks are used, except to say one file that uses jquery.
-	llection of web pages, CSS, JavaScript99.5% of this code, written over a decade.
-	wrote the 3D Graphics Library myself over a 10 year period.
+
+	No frameworks are used, except one file uses js/jquery.min.js.
 	I used the JavaScript's (ES6) class keyword to create Vec3, Vec4, Mat4, Quat, Camera.
 	All the classes inherit from the parent super class Float32Array[].
 	Using the ES6 syntax and 2 keywords, we can inherit all the class behaviors.
 
-	
 	class Vec3 extends Float32Array
 	{
 	  constructor(x = 0, y = 0, z = 0)
@@ -82,7 +74,8 @@
 
 	Notice 'this' self-reference is not used. 
 	A call is made to the parent super class, along with the parameters.	
-	This is how inheritance works, by getting a pointer to .prototype of parent.
+	In JavaScript chaining of prototypes is how inheritence works, 
+	(Float32Array.prototype.constructor)
 	All the methods are stored on the .prototype object, not on the instance.
 	This is done to keep the memory of each instance of an object down.
 	
@@ -92,43 +85,62 @@
 	This is how all classes of Objects have a toString() function returning a string.
 	To override Object.prototype.toString() method, add one to your class prototype.
 
-	js/math.min.js
-
-	js/utils.js					Utility Helper library, geometry for Platonic solids.
+	js/math.js					The 3D Graphics Library.
+	js/utils.js					Utility Helper function library, geometry for Platonic solids.
 	js/audio-player.js			The Audio Player jQuery program.
-	js/Icosa.js	 				WebGL codes, GLSL shader programs, geo data sets it gets from above.
+	js/Icosa.js	 				WebGL codes, GLSL shader programs, geometry data sets it gets from above.
 	js/Blackjack.js				class definitions for Player, hand, Card, Deck & Blackjack.
 	
-	The movie is of my pet rat named: 'Blackie' who scampers about happy, as I spoil him.
-	Therefore, the movie does not violate any Copyrights or Intellectual Property laws.
-	
 	res/movie.mp4				Place your favorite video in /res/ folder named 'movie.mp4'
-	
+
 	The music files that come with the app are in the public domain.
-	
+
 	res/music1.mp3				Place your music.mp3 file in the folder named res = resources.
 	res/music2.mp3				Place your music.mp3 file in the folder named res = resources.
 	res/music3.mp3				Place your music.mp3 file in the folder named res = resources.
 	res/music4.mp3				Place your music.mp3 file in the folder named res = resources.
 
     Here is a file packing list for you.
-	
+
 	index.html
 	Dir list.txt
 	Dir.bat
 	css\normalize.css
 	css\style.css
 
-The small squares used in audio player.
+	The small squares used in audio player.
 
 	img\li-img.png
 	img\li-img-redSq.jpg
 
-Take note these card images are not even required if you choose to use all Unicode characters.
-I have a button that allows testing either type, the memory savings using Unicode is huge.
-Per card an image on average takes up 50,000 bytes on disc, times 52 cards required.
-A Unicode Playing Card is one character x 52 cards, add it up, see what you think.
+	Take note these card images are not even required if you choose to use all Unicode Symbols for Playing Cards.
+	I emploee the same system of my Chess Pieces, they are Unicode Symblows for each Chess piece.
+	I have a button that allows testing either type, the memory savings using Unicode is huge.
+	Per Card() image on average takes up 50k bytes on disc, x 52 cards in a normal deck, + 2 jokers.
+	A Unicode Playing Card is one character x 52 cards, add it up, see what you think.
+	A Card.png or Card.img.png is 50k x 52 Card()s = about 2.6 million bytes versus below, 208 bytes.
+	A Unicode Symbol for a Playing Card remains the same for all Symbols, about 4 bytes per Symbol.
+	Memory requirements are about 4 bytes per card image x 52 cards per deck = 208 bytes of RAM.
+	I say about 4 bytes of RAM because the size can flucate, based on future system needs.
+ 	Here is how our decimal, base 10 numbering system calculates the value. 
+	The column value is (base to the power of (column - 1)) counting columns from right to left, 52 becomes 5 x 1o + 2 x 0 = 52.
+	The great thing about this, it works for all numbering systems exactly the same.
+	The reason is due to the computer using a binary numbering system. One bit of information is represented by
+	a one or a zero, base 2, binary has column values as shown.
+	bi-nary as bi = 2  as in a bi-cycle has 2 wheels.
+	(k = 1024 in tech speak.) k = 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024.
+	
 
+	8	7	6	5	4	3	2	1 = The number of the column from right to left.
+	128	64	32	16	8	4	2	1 = column values, the number of the column, c to the power of column - 1.
+	0	1	0	0	0	0	0	0 = binary value in decimal.
+
+	It helps to see the full relationship written out.
+
+	(128 x 0) + (64 x 1) + (32 x 0) + (16 x 0) + (8 x 0) + (4 x 0) + (2 x 0) + (1 x 0) = 64!
+	
+	The number 64 in binary is super simple to solve. Look above at the column values in binary.
+	
 	img\Cards\Ace_of_clubs.png
 	img\Cards\Ace_of_diamonds.png
 	img\Cards\Ace_of_hearts.png
