@@ -252,12 +252,12 @@ That will change after my bank says full!
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-		<!-- Load external JavaScript program text files.  -->
-		<script type="text/ecmascript" src="js/jquery.min.js"></script>
-        <script type="text/ecmascript" src="js/math.min.js"></script>
+	<!-- Load external JavaScript program text files.  -->
+	<script type="text/ecmascript" src="js/jquery.min.js"></script>
+        <script type="text/ecmascript" src="js/math.js"></script>
         <script type="text/ecmascript" src="js/utils.js"></script>
 
-		<title>JML-3D-Studios, Blackjack, circa 2021, HTML5</title>
+	<title>JML-3D-Studios, Blackjack, circa 2021, HTML5</title>
 
     </head>
 
@@ -265,22 +265,21 @@ That will change after my bank says full!
 
 		
         <div id="menu_bar" class="menus">
-			<button type="button" id="cmd_edit_name"    onclick="JML_Blackjack.player.cmdEditName();"  title="Edit your name?"></button> 
-			<button type="button" id="bank"             onclick="JML_Blackjack.player.cmdResetBank();" title="Click to set bank $0.00"></button>
-            <button type="button" id="cmd_slider_bet" title="Slider bets $5.00 to $1,000.00">
-			 <input type="range"  id="cmd_change_bet"  onchange="JML_Blackjack.player.cmdChangeBet();" class="slider" min="5" max="1000" value="1000" />
-            </button>
-            <button type="button" id="cmd_slider_delay" title="Slider adjusts deal speed?">
-
-				<input type="range" id="cmd_slider_deal_speed" onchange="JML_Blackjack.cmdSliderDealSpeed();" class="slider" min="10" max="2000" value="10" />
-            </button>
-            <select id="cmd_select_decks" onchange="JML_Blackjack.deck.cmdSelectDecks();" title="Select from 1 to 6 decks?">
-                <option value="1">1 deck </option><option value="2">2 decks</option><option value="3">3 decks</option>
-				<option value="4">4 decks</option><option value="5">5 decks</option><option value="6">6 decks</option>
-            </select>
-			<button type="button" id="cmd_show_deck"   onclick="JML_Blackjack.deck.cmdShowDeck();" title="Display a deck of cards?">Demo?</button>
-			<button type="button" id="cmd_slide_left"  onclick="plusDivs(-1)"     title="Slide show left?">&#10094;</button>  
-			<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"      title="Slide show right?">&#10095;</button>  
+		<button type="button" id="cmd_edit_name"    onclick="JML_Blackjack.player.cmdEditName();"  title="Edit your name?"></button> 
+	        <button type="button" id="bank"             onclick="JML_Blackjack.player.cmdResetBank();" title="Click to set bank $0.00"></button>
+                <button type="button" id="cmd_slider_bet" title="Slider bets $5.00 to $1,000.00">
+		  <input type="range"  id="cmd_change_bet"  onchange="JML_Blackjack.player.cmdChangeBet();" class="slider" min="5" max="1000" value="1000" />
+                </button>
+                <button type="button" id="cmd_slider_delay" title="Slider adjusts deal speed?">
+                        <input type="range" id="cmd_slider_deal_speed" onchange="JML_Blackjack.cmdSliderDealSpeed();" class="slider" min="10" max="2000" value="10" />
+                </button>
+                <select id="cmd_select_decks" onchange="JML_Blackjack.deck.cmdSelectDecks();" title="Select from 1 to 6 decks?">
+                        <option value="1">1 deck </option><option value="2">2 decks</option><option value="3">3 decks</option>
+			<option value="4">4 decks</option><option value="5">5 decks</option><option value="6">6 decks</option>
+                </select>
+		<button type="button" id="cmd_show_deck"   onclick="JML_Blackjack.deck.cmdShowDeck();" title="Display a deck of cards?">Demo?</button>
+		<button type="button" id="cmd_slide_left"  onclick="plusDivs(-1)"     title="Slide show left?">&#10094;</button>  
+		<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"      title="Slide show right?">&#10095;</button>  
            	<button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?" style="float: right;" >Mode?</button>
         </div>
 
