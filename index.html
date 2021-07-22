@@ -3,16 +3,19 @@
 <!--
 
 	*****************************************************
-	*  													*
-	*	Author:		James Marion Lynch, CEO		 		*
-    *   Corp.:      JML_3D_Studios                      *
-	*  	Date:		02-17-2021                          *
-	* 	Version:	Alpha 1.0.0.0                      	*
-	* 	Title:		Audio, Blackjack, Video            	*
-	*  	Filename:	Blackjack.html             			*
-	* 	Language:	HTML5                          		*
+	*  						    *
+	*	Author:		James Marion Lynch, CEO	    *
+    	*	Corp.:      	JML-3D-Studios              *
+	*  	Date:		07-17-2021                  *
+	* 	Version:	Alpha 1.0.0.0               *
+	* 	Title:		Audio, Blackjack, Video     *
+	*  	Filename:	index.html             	    *
+	* 	Language:	HTML5                       *
 	*                                                   *
 	*****************************************************
+
+
+	URL(https://www.jml-3d-studios.com);
 
 	Notes: 
 	
@@ -21,33 +24,35 @@
 	or down to your cell phone screen size. 
     
 	I tested it on both my 43 inch TV HDMI cabled an Asus Rog String (Windows 10 Home) laptop,
-	and my S21 Ultra Samsung 6.8 inch sreen, running Android 11 OS, 6 GB System RAM, 256 BG SSD.
-	It uses viewport height, or viewport width for a way to size things in relation to screen.
+	and my S21 Ultra Samsung 6.8 inch screen, running Android 11 OS, 12 GB System RAM, 256 GB SSD.
+	I recently bought a 2021 Dell XPS Desktop Intel(TM) Core(R) i9-10900.
+
+	It uses viewport height + width for size in relation to screen.
 	(vh = viewport height, vw = viewport width).
-	Normally, people would use pixels, em, % or something else.
-    like margin: 10px; this program says margin: 1vh;
+	You could use pixels, em, % or something else;
+    	like margin: 10px; this program says margin: 1vh;
 	By using vh & vw, it scales with the browser, from 25% to 500% it all looks the same.
 	The only downside of this is you cannot scale the window to zoom in or out.
 
 
 
 	Dependencies:       		(Shown in load order.)
-	Filenames:					Descriptions:
+	Filenames:			Descriptions:
 
-	Blackjack.html				The main HTML5 document (this file.)
+	index.html			The main HTML5 document (this file.)
 	
-	css/normalize.css			The Cascading Style Sheet (browsers all behave the same, found on github.com).
-	css/style.css				The Cascading Style Sheet (specific, when fully devoloped, many style sheets will exist,
-                                    so user can choose light or dark theme or other.
-                                    This one file gives the entire game info on how to look and behave.)
+	css/normalize.css		The Cascading Style Sheet (browsers all behave the same, found on github.com).
+	css/style.css			The Cascading Style Sheet (specific, when fully devoloped, many style sheets will exist,
+                                    		so user can choose light or dark theme or other.
+                                    		This one file gives the entire game info on how to look and behave.)
 	
-	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
-                                Based on 4 suits and 13 types, numbered 0-3, 0-12.
-                                Any card name is built from these 2 numbers and filename extension.
+	img/Cards/*.png			52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
+                                		Based on 4 suits and 13 types, numbered 0-3, 0-12.
+                                		Any card name is built from these 2 numbers and filename extension.
                                 
-	img/covers/media-art1.png		Audio music files for playlist.
+	img/covers/media-art1.png	Audio music files for playlist.
     
-    img/Slides/slide1.jpg
+    	img/Slides/slide1.jpg
 	img/Slides/slide2.jpg
 	img/Slides/slide3.jpg
 	img/Slides/slide4.jpg
@@ -55,16 +60,16 @@
 	img/Slides/slide6.jpg
 	img/Slides/slide7.jpg		15 total background slides user can change with one button click
 	
-	jquery.min.js is free to use for anyone.
-	js/jquery.min.js			Helper Utility library.
+	js/jquery.min.js		Helper Utility library.
 	
-	I, James Marion Lynch, said author of this MIT licensed code base.
-	No frameworks are used, except to say one file that uses jquery.
-	llection of web pages, CSS, JavaScript99.5% of this code, written over a decade.
-	wrote the 3D Graphics Library myself over a 10 year period.
-	I used the JavaScript's (ES6) class keyword to create Vec3, Vec4, Mat4, Quat, Camera.
-	All the classes inherit from the parent super class Float32Array[].
-	Using the ES6 syntax and 2 keywords, we can inherit all the class behaviors.
+	I, James Marion Lynch, am the author of this MIT licensed code.
+ 	It was designed it as a free textbook quality offline capable web page.
+	No frameworks are used, except one file 'js/jquery.js' is used in 'js/audio-player.js'
+
+	I used JavaScript's (ES5+) 'class' keyword to create Vec3, Vec4, Mat4, Color, Quat, & Camera.
+	All the math class objects inherit from the parent super class Float32Array[], (which itself has parent Object()).
+	Using the ES5+ syntax and 2 keywords, we can inherit all the class methods, thereby, insure a strongly typed.
+	All elements of a Float32Array are single precision floating point decimal values.
 
 	
 	class Vec3 extends Float32Array
@@ -87,29 +92,28 @@
 	This is done to keep the memory of each instance of an object down.
 	
 	NOTE: Every new class extends Object() so every class object has a common ancestor.
-	This is how an array can hold all data types, they are all Object classes.
-	Named a .prototype chain Vec3 has Object -- Float32Array[] -- Vec3().
-	This is how all classes of Objects have a toString() function returning a string.
-	To override Object.prototype.toString() method, add one to your class prototype.
+	This is how an Array[] class object can seemingly store different data types, they are all Object() types.
+	Therefore, inheritance is accomplished through prototype chaining, very clever.
+ 	This is how all classes of Objects have a toString() method returning a string.
+	To override the Object.prototype.toString() method, add one to your class prototype.
 
-	js/math.min.js
-
-	js/utils.js					Utility Helper library, geometry for Platonic solids.
-	js/audio-player.js			The Audio Player jQuery program.
-	js/Icosa.js	 				WebGL codes, GLSL shader programs, geo data sets it gets from above.
-	js/Blackjack.js				class definitions for Player, hand, Card, Deck & Blackjack.
+	js/math.js
+	js/utils.js			Utility Helper library, geometry for Platonic solids.
+	js/audio-player.js		The Audio Player jQuery program.
+	js/Icosa.js	 		WebGL codes, GLSL shader programs, geo data sets it gets from above.
+	js/Blackjack.js			class definitions for Player, hand, Card, Deck & Blackjack.
 	
 	The movie is of my pet rat named: 'Blackie' who scampers about happy, as I spoil him.
 	Therefore, the movie does not violate any Copyrights or Intellectual Property laws.
 	
-	res/movie.mp4				Place your favorite video in /res/ folder named 'movie.mp4'
+	res/movie.mp4			Place your favorite video in /res/ folder named 'movie.mp4'
 	
 	The music files that come with the app are in the public domain.
 	
-	res/music1.mp3				Place your music.mp3 file in the folder named res = resources.
-	res/music2.mp3				Place your music.mp3 file in the folder named res = resources.
-	res/music3.mp3				Place your music.mp3 file in the folder named res = resources.
-	res/music4.mp3				Place your music.mp3 file in the folder named res = resources.
+	res/music1.mp3			Place your music.mp3 file in the folder named res = resources.
+	res/music2.mp3			Place your music.mp3 file in the folder named res = resources.
+	res/music3.mp3			Place your music.mp3 file in the folder named res = resources.
+	res/music4.mp3			Place your music.mp3 file in the folder named res = resources.
 
     Here is a file packing list for you.
 	
@@ -231,39 +235,41 @@ That will change after my bank says full!
   
 
 
-	The head element has meta data, links external Cascading Style Sheets & JavaScript.
+	The head element has metadata, links external Cascading Style Sheets & JavaScript.
 	The <title>element</title> is mandatory per w3schools.com.
 	
  -->
 
 <html lang="en-US">
-
+	
+    <!-- The opening tag of the head element, all are children of the element or node.   -->
     <head>
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport"    content="width=device-width, initial-scale=1" />
         <meta name="description" content="Blackjack Card Game, Audio & Video player." />
-        <meta name="keywords"    content="HTML5, CSS3, JavaScript ES7 2017, WebGL, GLSL." />
+        <meta name="keywords"    content="HTML5, CSS3, JavaScript ECAScript, WebGL, GLSL." />
         <meta name="author"      content="James M. Lynch." />
-        <meta name="college"     content="Los Angeles Trade Tech College (LATTC)." />
-		<meta name="professor"   content="Albert Saryan" />
+        <meta name="college"     content="Los Angeles Trade Technical College (LATTC)." />
+	<meta name="professor"   content="Albert Saryan" />
 
-		<!-- Link external Cascading Style Sheets to page. -->
+	<!-- Link external Cascading Style Sheets to page. -->
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-	<!-- Load external JavaScript program text files.  -->
+	<!-- Load external JavaScript / ECMAScript source code files.  -->
 	<script type="text/ecmascript" src="js/jquery.min.js"></script>
         <script type="text/ecmascript" src="js/math.js"></script>
         <script type="text/ecmascript" src="js/utils.js"></script>
 
 	<title>JML-3D-Studios, Blackjack, circa 2021, HTML5</title>
-
+	    
+	    
+    <!-- The closing tag of the head element   -->
     </head>
 
-    <body onload="setupWebGL();">
-
-		
+    <!-- The opening tag of the body element, all are children of the element or node.   -->
+    <body onload="setupWebGL();">	
         <div id="menu_bar" class="menus">
 		<button type="button" id="cmd_edit_name"    onclick="JML_Blackjack.player.cmdEditName();"  title="Edit your name?"></button> 
 	        <button type="button" id="bank"             onclick="JML_Blackjack.player.cmdResetBank();" title="Click to set bank $0.00"></button>
