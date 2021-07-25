@@ -2,26 +2,39 @@
 
 <!--
 
-	*****************************************************
-	*  													*
-	*	Author:		James Marion Lynch, CEO		 		*
-    *   Corp.:      JML_3D_Studios                      *
-	*  	Date:		06-06-2021                          *
-	* 	Version:	Alpha 1.0.0.0                      	*
-	* 	Title:		Audio, Blackjack, Video            	*
-	*  	Filename:	index.html              			*
-	* 	Language:	HTML5                          		*
-	*                                                   *
-	*****************************************************
+	*********************************************
+	*  						    				*
+	*	Author:		James Marion Lynch, CEO	    *
+    *	Corp.:      JML-3D-Studios          	*
+	*  	Date:		07-24-2021                  *
+	* 	Version:	Alpha 1.0.0.0               *
+	* 	Title:		Audio, Blackjack, Video     *
+	*  	Filename:	index.html             	    *
+	* 	Language:	HTML5                       *
+	*                                           *
+	*********************************************
 
+
+	URL(https://www.Linkedin.com/in/jml-3d-studios/);			Linkedin	
+	URL(https://www.GitHub.com/JamesLynchBond/Web-Games-ES7/);	GitHub (this file).
+	URL(https://www.facebook.com/james.lynch.77736310/);		Facebook
+	URL(https://www.jml-3dstudios.com);							AWS (Amazon Web Services).	
+	URL(https://www.jml-3d-studios.com);	
+	
 	Notes: 
 	
 	This program scales with the window, so it is able
 	to be played on any size screen, 100 inches diagonal,
 	or down to your cell phone screen size. 
     
-	It uses viewport height & viewport width to size things to the screen.
+	I tested it on both my 43 inch TV HDMI cabled an Asus Rog String (Windows 10 Home) laptop,
+	and my S21 Ultra Samsung 6.8 inch screen, running Android 11 OS, 12 GB System RAM, 256 GB SSD.
+	I recently bought a 2021 Dell XPS Desktop Intel(TM) Core(R) i9-10900.
+
+	It uses viewport height + width for size in relation to screen.
 	(vh = viewport height, vw = viewport width).
+	You could use pixels, em, % or something else;
+    like margin: 10px; this program says margin: 1vh;
 	By using vh & vw, it scales with the browser, from 25% to 500% it all looks the same.
 	The only downside of this is you cannot scale the window to zoom in or out.
 
@@ -34,12 +47,12 @@
 	
 	css/normalize.css			The Cascading Style Sheet (browsers all behave the same, found on github.com).
 	css/style.css				The Cascading Style Sheet (specific, when fully devoloped, many style sheets will exist,
-                                    so user can choose light or dark theme or other.
-                                    This one file gives the entire game info on how to look and behave.)
+                                    		so user can choose light or dark theme or other.
+                                    		This one file gives the entire game info on how to look and behave.)
 	
 	img/Cards/*.png				52 card images, example of a card filename image: Ace_Of_Hearts.png, Two_Of_Hearts.png, ....
-                                Based on 4 suits and 13 types, numbered 0-3, 0-12.
-                                Any card name is built from these 2 numbers and filename extension.
+                                	Based on 4 suits and 13 types, numbered 0-3, 0-12.
+                                	Any card name is built from these 2 numbers and filename extension.
                                 
 	img/covers/media-art1.png	Audio music files for playlist.
     
@@ -51,96 +64,81 @@
 	img/Slides/slide6.jpg
 	img/Slides/slide7.jpg		15 total background slides user can change with one button click
 	
-	jquery.min.js is free to use for anyone.
 	js/jquery.min.js			Helper Utility library.
+	
+	I, James Marion Lynch, am the author of this MIT licensed code.
+ 	It was designed it as a free textbook quality offline capable web page.
+	No frameworks are used, except one file 'js/jquery.js' is used in 'js/audio-player.js'
 
-	No frameworks are used, except one file uses js/jquery.min.js.
-	I used the JavaScript's (ES6) class keyword to create Vec3, Vec4, Mat4, Quat, Camera.
-	All the classes inherit from the parent super class Float32Array[].
-	Using the ES6 syntax and 2 keywords, we can inherit all the class behaviors.
+	I used JavaScript's (ES5+) 'class' keyword to create Vec3, Vec4, Mat4, Color, Quat, & Camera.
+	All the math class objects inherit from the parent super class Float32Array[], (which itself has parent Object()).
+	Using the ES5+ syntax and 2 keywords, we can inherit all the class methods, thereby, insure a strongly typed data type.
+	All elements of a Float32Array are single precision floating point decimal values, example 3404.00032049.
 
 	class Vec3 extends Float32Array
 	{
-	  constructor(x = 0, y = 0, z = 0)
-	  {
-		  super([x, y, z]);
-	  }
+		constructor(x = 0, y = 0, z = 0)
+		{
+			// Never use 'this' (self-reference) until a call to super();
+			// As it does not exist yet!
+			super([x, y, z]);
+		}
 
-	  // Accessors.
-	  get x() { return this[0]; }
-	  get y() { return this[1]; }
-	  get z() { return this[2]; }
+		// Accessors.
+		get x() { return this[0]; }
+		get y() { return this[1]; }
+		get z() { return this[2]; }
 
-
-	Notice 'this' self-reference is not used. 
-	A call is made to the parent super class, along with the parameters.	
-	In JavaScript chaining of prototypes is how inheritence works, 
-	(Float32Array.prototype.constructor)
+		...
+		
+	}
+	
+	This is how inheritance works, by getting a pointer to .prototype of parent.
 	All the methods are stored on the .prototype object, not on the instance.
 	This is done to keep the memory of each instance of an object down.
 	
 	NOTE: Every new class extends Object() so every class object has a common ancestor.
-	This is how an array can hold all data types, they are all Object classes.
-	Named a .prototype chain Vec3 has Object -- Float32Array[] -- Vec3().
-	This is how all classes of Objects have a toString() function returning a string.
-	To override Object.prototype.toString() method, add one to your class prototype.
+	This is how an Array[] class object can seemingly store different data types, they are all Object() types.
+	Therefore, inheritance is accomplished through prototype chaining, very clever.
+ 	This is how all classes of Objects have a toString() method returning a string.
+	To override the Object.prototype.toString() method, add one to your class prototype.
 
-	js/math.js					The 3D Graphics Library.
-	js/utils.js					Utility Helper function library, geometry for Platonic solids.
-	js/audio-player.js			The Audio Player jQuery program.
-	js/Icosa.js	 				WebGL codes, GLSL shader programs, geometry data sets it gets from above.
-	js/Blackjack.js				class definitions for Player, hand, Card, Deck & Blackjack.
+	js/math.js
+	js/utils.js			Utility Helper library, geometry for Platonic solids.
+	js/audio-player.js		The Audio Player jQuery program.
+	js/Icosa.js	 		WebGL codes, GLSL shader programs, geo data sets it gets from above.
+	js/Blackjack.js			class definitions for Player, hand, Card, Deck & Blackjack.
 	
-	res/movie.mp4				Place your favorite video in /res/ folder named 'movie.mp4'
-
+	The movie is of my pet rat named: 'Blackie' who scampers about happy, as I spoil him.
+	Therefore, the movie does not violate any Copyrights or Intellectual Property laws.
+	
+	res/movie.mp4			Place your favorite video in /res/ folder named 'movie.mp4'
+	
 	The music files that come with the app are in the public domain.
-
-	res/music1.mp3				Place your music.mp3 file in the folder named res = resources.
-	res/music2.mp3				Place your music.mp3 file in the folder named res = resources.
-	res/music3.mp3				Place your music.mp3 file in the folder named res = resources.
-	res/music4.mp3				Place your music.mp3 file in the folder named res = resources.
+	
+	res/music1.mp3			Place your music.mp3 file in the folder named res = resources.
+	res/music2.mp3			Place your music.mp3 file in the folder named res = resources.
+	res/music3.mp3			Place your music.mp3 file in the folder named res = resources.
+	res/music4.mp3			Place your music.mp3 file in the folder named res = resources.
 
     Here is a file packing list for you.
-
-	index.html
+	
+	Blackjack.html
 	Dir list.txt
 	Dir.bat
 	css\normalize.css
 	css\style.css
 
-	The small squares used in audio player.
+The small squares used in audio player.
 
 	img\li-img.png
 	img\li-img-redSq.jpg
 
-	Take note these card images are not even required if you choose to use all Unicode Symbols for Playing Cards.
-	I emploee the same system of my Chess Pieces, they are Unicode Symblows for each Chess piece.
-	I have a button that allows testing either type, the memory savings using Unicode is huge.
-	Per Card() image on average takes up 50k bytes on disc, x 52 cards in a normal deck, + 2 jokers.
-	A Unicode Playing Card is one character x 52 cards, add it up, see what you think.
-	A Card.png or Card.img.png is 50k x 52 Card()s = about 2.6 million bytes versus below, 208 bytes.
-	A Unicode Symbol for a Playing Card remains the same for all Symbols, about 4 bytes per Symbol.
-	Memory requirements are about 4 bytes per card image x 52 cards per deck = 208 bytes of RAM.
-	I say about 4 bytes of RAM because the size can flucate, based on future system needs.
- 	Here is how our decimal, base 10 numbering system calculates the value. 
-	The column value is (base to the power of (column - 1)) counting columns from right to left, 52 becomes 5 x 1o + 2 x 0 = 52.
-	The great thing about this, it works for all numbering systems exactly the same.
-	The reason is due to the computer using a binary numbering system. One bit of information is represented by
-	a one or a zero, base 2, binary has column values as shown.
-	bi-nary as bi = 2  as in a bi-cycle has 2 wheels.
-	(k = 1024 in tech speak.) k = 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024.
-	
+Take note these card images are not even required if you choose to use all Unicode characters.
+I have a button that allows testing either type, the memory savings using Unicode is huge.
+Per card an image on average takes up 50,000 bytes on disc, times 52 cards required.
+A Unicode Playing Card is one character x 52 cards, add it up, see what you think.
 
-	8	7	6	5	4	3	2	1 = The number of the column from right to left.
-	128	64	32	16	8	4	2	1 = column values, the number of the column, c to the power of column - 1.
-	0	1	0	0	0	0	0	0 = binary value in decimal.
-
-	It helps to see the full relationship written out.
-
-	(128 x 0) + (64 x 1) + (32 x 0) + (16 x 0) + (8 x 0) + (4 x 0) + (2 x 0) + (1 x 0) = 64!
-	
-	The number 64 in binary is super simple to solve. Look above at the column values in binary.
-	
 	img\Cards\Ace_of_clubs.png
 	img\Cards\Ace_of_diamonds.png
 	img\Cards\Ace_of_hearts.png
@@ -195,7 +193,7 @@
 	img\Cards\Two_of_hearts.png
 	img\Cards\Two_of_spades.png
 
-The albumn covers!
+The album covers!
 
 	img\covers\media-art1.png
 	img\covers\media-art2.png
@@ -243,62 +241,64 @@ That will change after my bank says full!
   
 
 
-	The head element has meta data, links external Cascading Style Sheets & JavaScript.
+	The head element has metadata, links external Cascading Style Sheets & JavaScript.
 	The <title>element</title> is mandatory per w3schools.com.
 	
  -->
 
 <html lang="en-US">
-
+	
+    <!-- The opening tag of the head element, all are children of the element or node.   -->
     <head>
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport"    content="width=device-width, initial-scale=1" />
         <meta name="description" content="Blackjack Card Game, Audio & Video player." />
-        <meta name="keywords"    content="HTML5, CSS3, JavaScript ES7 2017, WebGL, GLSL." />
+        <meta name="keywords"    content="HTML5, CSS3, JavaScript ECAScript, WebGL, GLSL." />
         <meta name="author"      content="James M. Lynch." />
-        <meta name="college"     content="Los Angeles Trade Tech College (LATTC)." />
+        <meta name="college"     content="Los Angeles Trade Technical College (LATTC)." />
 		<meta name="professor"   content="Albert Saryan" />
 
 		<!-- Link external Cascading Style Sheets to page. -->
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-		<!-- Load external JavaScript program text files.  -->
+		<!-- Load external JavaScript / ECMAScript source code files.  -->
 		<script type="text/ecmascript" src="js/jquery.min.js"></script>
-        <script type="text/ecmascript" src="js/math.min.js"></script>
+        <script type="text/ecmascript" src="js/math.js"></script>
         <script type="text/ecmascript" src="js/utils.js"></script>
 
-		<title>JML-3D-Studios, Blackjack, circa 2021, HTML5</title>
-
+	<title>JML-3D-Studios, Blackjack, circa 2021, HTML5</title>
+	    
+	    
+    <!-- The closing tag of the head element   -->
     </head>
 
-    <body onload="setupWebGL();">
-
-		
+    <!-- The opening tag of the body element, all are children of the element.  -->
+    <body onload="setupWebGL();">	
         <div id="menu_bar" class="menus">
-			<button type="button" id="cmd_edit_name"    onclick="JML_Blackjack.player.cmdEditName();"  title="Edit your name?"></button> 
-			<button type="button" id="bank"             onclick="JML_Blackjack.player.cmdResetBank();" title="Click to set bank $0.00"></button>
-            <button type="button" id="cmd_slider_bet" title="Slider bets $5.00 to $1,000.00">
-			 <input type="range"  id="cmd_change_bet"  onchange="JML_Blackjack.player.cmdChangeBet();" class="slider" min="5" max="1000" value="1000" />
-            </button>
-            <button type="button" id="cmd_slider_delay" title="Slider adjusts deal speed?">
-
+			<button type="button" id="cmd_edit_name"    onclick="JML_Blackjack.player.cmdEditName();"  title="Edit your name?"></button>
+	        <button type="button" id="bank"             onclick="JML_Blackjack.player.cmdResetBank();" title="Click to set bank $0.00"></button>
+			<button type="button" id="cmd_slider_bet" title="Slider bets $5.00 to $1,000.00">
+		  		<input type="range"  id="cmd_change_bet"  onchange="JML_Blackjack.player.cmdChangeBet();" class="slider" min="5" max="1000" value="1000" />
+			</button>
+			<button type="button" id="cmd_slider_delay" title="Slider adjusts deal speed?">
 				<input type="range" id="cmd_slider_deal_speed" onchange="JML_Blackjack.cmdSliderDealSpeed();" class="slider" min="10" max="2000" value="10" />
-            </button>
-            <select id="cmd_select_decks" onchange="JML_Blackjack.deck.cmdSelectDecks();" title="Select from 1 to 6 decks?">
-                <option value="1">1 deck </option><option value="2">2 decks</option><option value="3">3 decks</option>
-				<option value="4">4 decks</option><option value="5">5 decks</option><option value="6">6 decks</option>
-            </select>
-			<button type="button" id="cmd_show_deck"   onclick="JML_Blackjack.deck.cmdShowDeck();" title="Display a deck of cards?">Demo?</button>
-			<button type="button" id="cmd_slide_left"  onclick="plusDivs(-1)"     title="Slide show left?">&#10094;</button>  
-			<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"      title="Slide show right?">&#10095;</button>  
-           	<button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?" style="float: right;" >Mode?</button>
+			</button>
+
+          	<select id="cmd_select_decks" onchange="JML_Blackjack.deck.cmdSelectDecks();" title="Select from 1 to 6 decks?">
+			  	<option value="1">1 deck </option><option value="2">2 decks</option><option value="3">3 decks</option>
+			  	<option value="4">4 decks</option><option value="5">5 decks</option><option value="6">6 decks</option>
+		  	</select>
+			<button id="cmd_show_deck" onclick="JML_Blackjack.deck.cmdShowDeck();" title="Display a deck of cards?" type="button">Demo?</button>
+			<button id="cmd_slide_left" onclick="plusDivs(-1)" title="Slide show left?" type="button">&#10094;</button>
+			<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"      title="Slide show right?">&#10095;</button>
+			<button id="cmd_full_screen" onclick="cmdFullScreen();" style="float: right;" title="Full Screen Mode?" type="button">Mode?</button>
         </div>
 
 <!--
 		
-Take note that log-div & audio-player div elements below are both being assigned the same CSS.
+Take note that log-div & audio-player div elements are both being assigned the same CSS.
 And they share the same div space, but are both a separate div.
 See file 'css/style.css' to see how it is being done, some sophisticated fancy CSS coding using transtion and more. 
 	
@@ -325,8 +325,8 @@ See file 'css/style.css' to see how it is being done, some sophisticated fancy C
 			<p style="margin-left: 3vh; font-weight: bold;">Volume:
 			
 				<!-- Volume Control, your cursor keys control volume. -->
-				<input id="audio_volume" class="slider" type="range" min="0" max="20" 
-					   title="Slide right to increase volume, left decreases!" value="3" />
+				<input class="slider" id="audio_volume" max="20" min="0" title="Slide right to increase volume, left decreases!"
+					   type="range" value="3"/>
 			</p>
 				   
 			<br>&nbsp;
@@ -380,21 +380,19 @@ See file 'css/style.css' to see how it is being done, some sophisticated fancy C
         <div id="task_bar" class="menus">
 
 <!--
-
-It would be better to make Deal & Stay use the same button, toggling the assigned event handlers & innerHTML.
-I toggle the log-div button, same concept used her will work fine, and easy coding one you get the hand of it.
-I make several copies of any code I am working on before touching it.
-As I get a few days of good code I like, I copy over all versions and make that my base code.
-(Somtimes if I made great improvements, I will save it at that point, naming it with the exact date and time.)
-That is a poor mans version control. I used Notepad++ and no frameworks, except for a single block of code uses jquery.min.js
-I really love the synatx of JavaScript, and now that I have a math.min.js 3D Graphics Library, plus a single CSS
-If I ever mess up a lot of my code when trying to improve it, I just start over from the latest version.
-Sometimes I get what I think will improve the code way better than it was, I make tons of changes.
-Sometimes it works, other times it ruins the app. I just copy back a new base code.
-github has version control built-in, and I like it a lot now that I understand how to use it.
-You should have seen me when I first uploaded here. Wow, if you are not familiar with github, steep learning curve, but well worth it. 
-Hard to use in the beginning, because you do not know how, especially when I did not know how version control worked
-
+	It would be better to make Deal & Stay use the same button, toggling the assigned event handlers & innerHTML.
+	I toggle the log-div button, same concept used her will work fine, and easy coding one you get the hand of it.
+	I make several copies of any code I am working on before touching it.
+	As I get a few days of good code I like, I copy over all versions and make that my base code.
+	(Sometimes if I made great improvements, I will save it at that point, naming it with the exact date and time.)
+	That is a poor man's version control. I used Notepad++ and no frameworks, except for a single block of code uses 'js/jquery.min.js'.
+	I really love the syntax of JavaScript, and now that I have a math.js 3D Graphics Library, plus a 'css/style.css'.
+	If I ever mess up a lot of my code when trying to improve it, I just start over from the latest version.
+	Sometimes I get what I think will improve the code way better than it was, I make tons of changes.
+	Sometimes it works, other times it ruins the app. I just copy back a new base code.
+	github has version control built-in, and I like it a lot now that I understand how to use it.
+	You should have seen me when I first uploaded there. Wow, if you are not familiar with github, steep learning curve, but well worth it.
+	Hard to use in the beginning, because you do not know how, especially when I did not know how version control worked.
 -->	
 			
             <button type="button" id="cmd_deal"        onclick="JML_Blackjack.cmdDeal();" 		title="Deal the cards?">      Deal?</button>	
@@ -404,7 +402,7 @@ Hard to use in the beginning, because you do not know how, especially when I did
             <button type="button" id="cmd_split_hand"  onclick="JML_Blackjack.cmdSplitHand();"  title="Split hand?"  disabled>Split?</button>
             <button type="button" id="cmd_cardtype"    onclick="cmdCardType();"                 title="Switch card type?">    Unicode?</button>
 			<button type="button" id="cmd_opacity_btn" title="Slider changes opacity of video?">
-			 <input type="range"  id="cmd_opacity"  onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
+				<input type="range"  id="cmd_opacity"  onchange="cmdOpacity()" class="slider" min="1"  max="20" value="10"/>
 			</button>
             <button type="button" id="cmd_toggle_vid" onclick="cmdToggleVid();" title="Play Pause Video">Video?</button>
             <button type="button" id="cmd_toggle_log" onclick="cmdToggleLog();" title="Show log history?">View?</button>
