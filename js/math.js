@@ -37,7 +37,7 @@
 
 
 const ONE_SECOND = 1000,
-       FAR_PLANE = 200.0,
+      FAR_PLANE = 200.0,
       NEAR_PLANE = 0.1,
       EPSILON = 0.000001,
       PI = Math.PI,
@@ -159,7 +159,7 @@ function getIcosahedronVerticesIndicesNormals()
 	};
 	
 	// To normalize a vector is to trim it to 1 unit in length.
-	// It is Pythagoras therom c = Math.sqrt(x*x + y*y + z*z);
+	// It is Pythagoras theorem c = Math.sqrt(x*x + y*y + z*z);
 	// If the zero vector is passed in, a divide by zero error would occur.
 	// Therefore the test for magnitude having a zero length.
 	function normalize(a)
@@ -216,7 +216,7 @@ function calcNormals(positions)
 		};
 	
 		// To normalize a vector is to trim it to 1 unit in length.
-		// It is Pythagoras therom c = Math.sqrt(x*x + y*y + z*z);
+		// It is Pythagoras theorem c = Math.sqrt(x*x + y*y + z*z);
 		// If the zero vector is passed in, a divide by zero error would occur.
 		// Therefore the test for magnitude having a zero length.
 		function normalize(a)
@@ -411,7 +411,7 @@ class Vec3 extends Float32Array
     return this;
   }
 
-  // Tests for exact equalness.
+  // Tests for equality.
   isEqual(v){ return this[0] === v[0] && this[1] === v[1] && this[2] === v[2]; }
   
   isZero(){ return this[0] === 0 && this[1] === 0 && this[2] === 0; }
@@ -603,10 +603,10 @@ class Vec3 extends Float32Array
  *  mulScalar(scalar)
  *  modScalar(scalar)
  *
- *  toQuat()                    taken from wiki page converting Euler Angles to Quaterions
+ *  toQuat()                    taken from wiki page converting Euler Angles to Quaternions
  *  toZero()                    sets 'this' object to all zeros
  *  toNorm()                    normalized the 'this' self reference object {Vec4}, call vec.toNorm();
- *  canonize()                  use to normailze Euler Angles, needs work!
+ *  canonize()                  use to normalize Euler Angles, needs work!
  *  sum()                       add up all values, sum();
  *  mag()                       the magnitude of a vector in 3 dimensions (dist of vector from (0, 0, 0) origin)
  *  magSq()                     the magnitude squared function
@@ -640,7 +640,7 @@ class Vec4 extends Float32Array
 	  super([x, y, z, w]);
   }    
 
-  // Accessors for vectors, Eulers, ... in various forms.
+  // Accessors for vectors, Euler's, ... in various forms.
   get x() { return this[0]; }
   get y() { return this[1]; }
   get z() { return this[2]; }
@@ -947,14 +947,14 @@ const Color = Vec4;
  *
  *  end of class definition Vec4().
  *
- *  begining of Mat4 class defintion
+ *  beginning of Mat4 class definition
  *
  *  Extends built-in data type Float32Array, 16 floating point decimals.
  *  An identity matrix scales an object to size = 1, the 1's you see diagonally.
  *  With a matrix you can change the origin, orient & scale of all vectors in a wire frame mesh.
  *  You multiply matrices together & multiply the vectors by the final matrix to transform a mesh.
  *  This imports an Object Space mesh into your Virtual World Space.
- *  The super keyword calls the parent constructor (super class Float32Array() so you have all its functionallity.)
+ *  The super keyword calls the parent constructor (super class Float32Array() so you have all its functionality.)
  *
  *  static functions on prototype:
  *
@@ -964,7 +964,7 @@ const Color = Vec4;
  *  static inverse(matrix)              returns Mat4
  *  static invert()
  *  static transpose()
- *  static multipy(a, b)                returns Mat4 (where a & b are Mat4 or Array with a length >= 16.)
+ *  static multiply(a, b)                returns Mat4 (where a & b are Mat4 or Array with a length >= 16.)
  *  static perspective(eye, target, up) returns Mat4 (where parameters are Vec4 class objects or Array with a length >= 3.)
  *  static rotationX(angleInRadians)    returns Mat4
  *  static rotationY(angleInRadians)    returns Mat4
@@ -978,9 +978,9 @@ const Color = Vec4;
  *  inverse()                           returns 'this'
  *  mul(a, b)                           returns 'this'
  *  rotate(rad, axis)                   returns 'this'
- *  rotateX(angleInradians)             returns 'this'
- *  rotateY(angleInradians)             returns 'this'
- *  rotateZ(angleInradians)             returns 'this'
+ *  rotateX(angleRadians)             returns 'this'
+ *  rotateY(angleRadians)             returns 'this'
+ *  rotateZ(angleRadians)             returns 'this'
  *
  *  Plus 20 accessors! Please read code below;
  *
@@ -1195,7 +1195,7 @@ class Mat4 extends Float32Array
     matrix[9] = zAxis[1];
     matrix[10] = zAxis[2];
     matrix[11] = 0;
-    matrix[12] = eye[0];     // position of camera focal eye (apeture.)
+    matrix[12] = eye[0];     // position of camera focal eye (aperture.)
     matrix[13] = eye[1];
     matrix[14] = eye[2];
     matrix[15] = 1;
@@ -1342,8 +1342,8 @@ class Mat4 extends Float32Array
 /*
  @param {number} fov          Vertical field of view on the y axis in radians.
  @param {number} aspect       Aspect ratio of canvas viewport gl.canvas.width / gl.canvas.height.
-  @param {number} nearPlane    Near plane boundry of the camera view frustum.
- @param {number} farPlane     Far plane boundry of the camera view frustum.
+  @param {number} nearPlane    Near plane boundary of the camera view frustum.
+ @param {number} farPlane     Far plane boundary of the camera view frustum.
  @return new Mat4();
  
  Must be called Example:
@@ -1790,7 +1790,7 @@ static transpose(out, a)
  
  
  
-// The quaterion class object for special math dealing with angles.
+// The quaternion class object for special math dealing with angles.
 class Quat extends Vec4
 {
 
@@ -1879,7 +1879,7 @@ class Quat extends Vec4
 
 	mul(quat){
 		let ax = this[0], ay = this[1], az = this[2], aw = this[3],
-			bx = quat[0], by = quat[1], bz = quat[2], bw = quat[3];
+			bx = quat[1], by = quat[1], bz = quat[2], bw = quat[3];
 		  
 		this[0] = ax * bw + aw * bx + ay * bz - az * by;
 		this[1] = ay * bw + aw * by + az * bx - ax * bz;
