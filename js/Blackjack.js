@@ -3,12 +3,12 @@
 	/****************************************************
 	*  													*
 	*	Author:		James Marion Lynch, CEO		 		*
-    *   Corp.:      JML_3D_Studios                      *
-	*  	Date:		02-02-2021                          *
+    *   Corp.:      JML-3D-Studios                      *
+	*  	Date:		07-28-2021                          *
 	* 	Version:	Alpha 1.0.0.0                      	*
 	* 	Title:		Audio, Blackjack, Video            	*
 	*  	Filename:	Blackjack.js             			*
-	* 	Language:	JaveScript                    		*
+	* 	Language:	JavaScript, ES5+              		*
 	*                                                   *
 	*****************************************************
 
@@ -25,7 +25,7 @@ The folders for files;
 	Dependencies:       		(Shown in load order.)
 	Filenames:					Descriptions:
 
-	Blackjack.html				The main HTML5 document.
+	index.html					The main HTML5 document.
 	
 	css/normalize.css			The Cascading Style Sheet (reset).
 	css/style.css				The Cascading Style Sheet (specific.)
@@ -57,8 +57,8 @@ The folders for files;
 
 
 
-logEvent("Entering file 'js/Blackjack.js', the class definition file for many playing card game classes.");
-logEvent("Player, Hand, Card, Deck & Blackjack classes.");
+logEvent("Entering file 'js/Blackjack.js', the class definition file for many playing card game classes: <br>" +
+	"Player, Hand, Card, Deck & Blackjack classes.");
 
 
 // Define constants for Hand class. 
